@@ -12,9 +12,9 @@ $(document).ready(function () {
 
   // Collapse ibox function
   $('.collapse-link').click(function () {
-    var ibox = $(this).closest('div.ibox');
-    var button = $(this).find('i');
-    var content = ibox.find('div.ibox-content');
+    let ibox = $(this).closest('div.ibox');
+    let button = $(this).find('i');
+    let content = ibox.find('div.ibox-content');
     content.slideToggle(200);
     button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
     ibox.toggleClass('').toggleClass('border-bottom');
@@ -26,14 +26,14 @@ $(document).ready(function () {
 
   // Close ibox function
   $('.close-link').click(function () {
-    var content = $(this).closest('div.ibox');
+    let content = $(this).closest('div.ibox');
     content.remove();
   });
 
   // Fullscreen ibox function
   $('.fullscreen-link').click(function () {
-    var ibox = $(this).closest('div.ibox');
-    var button = $(this).find('i');
+    let ibox = $(this).closest('div.ibox');
+    let button = $(this).find('i');
     $('body').toggleClass('fullscreen-ibox-mode');
     button.toggleClass('fa-expand').toggleClass('fa-compress');
     ibox.toggleClass('fullscreen');
@@ -80,8 +80,8 @@ $(document).ready(function () {
 
   // Small todo handler
   $('.check-link').click(function () {
-    var button = $(this).find('i');
-    var label = $(this).next('span');
+    let button = $(this).find('i');
+    let label = $(this).next('span');
     button.toggleClass('fa-check-square').toggleClass('fa-square-o');
     label.toggleClass('todo-completed');
     return false;
@@ -112,23 +112,23 @@ $(document).ready(function () {
 
   // Full height of sidebar
   function fix_height() {
-    var heightWithoutNavbar = $("body > #wrapper").height() - 61;
+    let heightWithoutNavbar = $("body > #wrapper").height() - 61;
     $(".sidebard-panel").css("min-height", heightWithoutNavbar + "px");
 
-    var navbarHeigh = $('nav.navbar-default').height();
-    var wrapperHeigh = $('#page-wrapper').height();
+    let navbarHeight = $('nav.navbar-default').height();
+    let wrapperHeight = $('#page-wrapper').height();
 
-    if (navbarHeigh > wrapperHeigh) {
-      $('#page-wrapper').css("min-height", navbarHeigh + "px");
+    if (navbarHeight > wrapperHeight) {
+      $('#page-wrapper').css("min-height", navbarHeight + "px");
     }
 
-    if (navbarHeigh < wrapperHeigh) {
+    if (navbarHeight < wrapperHeight) {
       $('#page-wrapper').css("min-height", $(window).height() + "px");
     }
 
     if ($('body').hasClass('fixed-nav')) {
-      if (navbarHeigh > wrapperHeigh) {
-        $('#page-wrapper').css("min-height", navbarHeigh - 60 + "px");
+      if (navbarHeight > wrapperHeight) {
+        $('#page-wrapper').css("min-height", navbarHeight - 60 + "px");
       } else {
         $('#page-wrapper').css("min-height", $(window).height() - 60 + "px");
       }
@@ -187,13 +187,13 @@ $(window).bind("resize", function () {
 $(document).ready(function () {
   if (localStorageSupport) {
 
-    var collapse = localStorage.getItem("collapse_menu");
-    var fixedsidebar = localStorage.getItem("fixedsidebar");
-    var fixednavbar = localStorage.getItem("fixednavbar");
-    var boxedlayout = localStorage.getItem("boxedlayout");
-    var fixedfooter = localStorage.getItem("fixedfooter");
+    let collapse = localStorage.getItem("collapse_menu");
+    let fixedsidebar = localStorage.getItem("fixedsidebar");
+    let fixednavbar = localStorage.getItem("fixednavbar");
+    let boxedlayout = localStorage.getItem("boxedlayout");
+    let fixedfooter = localStorage.getItem("fixedfooter");
 
-    var body = $('body');
+    let body = $('body');
 
     if (fixedsidebar == 'on') {
       body.addClass('fixed-sidebar');
@@ -274,9 +274,9 @@ function SmoothlyMenu() {
 
 // Dragable panels
 function WinMove() {
-  var element = "[class*=col]";
-  var handle = ".ibox-title";
-  var connect = "[class*=col]";
+  let element = "[class*=col]";
+  let handle = ".ibox-title";
+  let connect = "[class*=col]";
   $(element).sortable(
     {
       handle: handle,
