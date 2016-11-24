@@ -1,34 +1,32 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
+<div class="row border-bottom white-bg">
+    <nav class="navbar navbar-static-top main-navigation" role="navigation">
+
         <div class="navbar-header">
 
             {{-- Collapsed Hamburger --}}
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse"
+                    class="navbar-toggle collapsed" type="button">
+                <i class="fa fa-reorder"></i>
             </button>
 
             {{-- Branding Image --}}
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                {{ config('app.name', 'LaraForum') }}
             </a>
         </div>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+        <div class="navbar-collapse collapse" id="navbar">
             {{-- Left Side Of Navbar --}}
             <ul class="nav navbar-nav">
                 &nbsp;
             </ul>
 
             {{-- Right Side Of Navbar --}}
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-top-links navbar-right">
                 {{-- Authentication Links --}}
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ route('auth.login') }}">Login</a></li>
+                    <li><a href="{{ route('auth.register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -38,21 +36,13 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
+                                <a href="{{ route('auth.logout') }}">Logout</a>
                             </li>
                         </ul>
                     </li>
                 @endif
             </ul>
         </div>
-    </div>
-</nav>
+
+    </nav>
+</div>

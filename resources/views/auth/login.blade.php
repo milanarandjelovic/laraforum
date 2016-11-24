@@ -1,5 +1,7 @@
 @extends('layouts.app-blank')
 
+@section('title', '| Login')
+
 @section('content')
     <div class="container">
         <div class="middle-box text-center loginscreen animated fadeInDown">

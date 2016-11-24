@@ -8,7 +8,7 @@
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Laravel') }} @yield('title')</title>
 
         {{-- Styles --}}
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
@@ -21,7 +21,7 @@
         </script>
     </head>
     <body>
-        <div id="app">
+        <div id="app" class="gray-bg">
             @yield('content')
         </div>
 

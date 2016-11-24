@@ -1,5 +1,7 @@
 @extends('layouts.app-blank')
 
+@section('title', '| Reset')
+
 @section('content')
     <div class="middle-box text-center animated fadeInDown">
         <div class="col-md-8 col-md-offset-2">
