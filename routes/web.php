@@ -15,6 +15,22 @@ Route::post('password/email', ['as' => 'auth.password.email', 'uses' => 'Auth\Fo
 Route::get('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
 Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\ResetPasswordController@reset']);
 
+/* Discussion routes */
+Route::get('/discuss', ['as' => 'discussion.index', 'uses' => 'Forum\DiscussionController@index']);
+
+/* Routes for login user */
+Route::group(['middleware' => 'auth'], function () {
+    /* Discussion routes */
+    Route::group(['prefix' => 'discuss'], function () {
+        Route::get('conversations/create', ['as' => 'discussion.create', 'uses' => 'Forum\DiscussionController@create']);
+    });
+});
+
+/* Routes for admin user */
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+    /* Dashboard routes */
+    Route::get('dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
+});
 
 Route::get('/', function () {
     return view('welcome');
