@@ -20,12 +20,14 @@
             ]); ?>
         </script>
     </head>
-    <body class="top-navigation pace-done">
+    <body class="top-navigation pace-done public-layout">
 
         <div id="app" class="gray-bg">
             <div id="wrapper">
                 @include('layouts.partials.navigation')
-                @yield('content')
+                <div class="container forum-content">
+                    @yield('content')
+                </div> {{-- /.container --}}
             </div> {{-- /#wrapper --}}
         </div> {{-- /#app --}}
 

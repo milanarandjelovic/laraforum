@@ -36,6 +36,9 @@
 /* Media query style */
 @import "theme/media";
 
+/* Helpers */
+@import "theme/helpers";
+
 /* Custom style */
 /* Your custom style to override base style */
 @import "theme/custom";

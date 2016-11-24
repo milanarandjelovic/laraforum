@@ -20308,10 +20308,21 @@ body.md-skin {
   }
 }
 
+/* Helpers */
+.button {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Margin */
+.mb-1 {
+  margin-bottom: 1em !important;
+}
+
 /* Custom style */
 /* Your custom style to override base style */
-body {
-  background-color: #fff;
+body.public-layout {
+  background-color: #F3F3F4;
 }
 
 .holder {
@@ -20322,8 +20333,28 @@ body {
   margin-right: 5px;
 }
 
+.forum-content {
+  margin-top: 30px;
+}
+
 .main-navigation {
   margin-bottom: 0;
+}
+
+/* Sidebar */
+.forum-sidebar .sidebar-filter .sidebar-label,
+.forum-sidebar .sidebar-channel .sidebar-label {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -.5px;
+  margin-bottom: 1em;
+  color: #cacaca;
+  text-transform: uppercase;
+}
+
+/* Page Heading */
+.page-heading .breadcrumb li:last-child {
+  font-weight: bold;
 }
 
 /* Clear layout on print mode */

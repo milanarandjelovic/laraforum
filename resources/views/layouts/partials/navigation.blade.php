@@ -36,7 +36,9 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="{{ route('auth.logout') }}">Logout</a>
+                                <a href="{{ route('auth.logout') }}">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                                </a>
                             </li>
                         </ul>
                     </li>

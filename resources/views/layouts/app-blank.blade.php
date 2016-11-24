@@ -20,7 +20,7 @@
             ]); ?>
         </script>
     </head>
-    <body>
+    <body class="public-layout">
         <div id="app" class="gray-bg">
             @yield('content')
         </div>
