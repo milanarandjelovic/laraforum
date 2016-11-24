@@ -1,9 +1,52 @@
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
-@import "variables";
-
-// Bootstrap
+/* Bootstrap */
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+/* Variables, Mixins */
+@import "theme/variables";
+@import "theme/mixins";
+
+/* Theme Elements */
+@import "theme/typography";
+@import "theme/navigation";
+@import "theme/top_navigation";
+@import "theme/buttons";
+@import "theme/badgets_labels";
+@import "theme/elements";
+@import "theme/sidebar";
+@import "theme/base";
+@import "theme/pages";
+@import "theme/chat";
+@import "theme/metismenu";
+@import "theme/spinners";
+@import "theme/checkboxes";
+
+/* Landing page styles */
+@import "theme/landing";
+
+/* RTL Support */
+@import "theme/rtl";
+
+/* For demo only - config box style */
+@import "theme/theme-config";
+
+/* Skins */
+@import "theme/skins";
+@import "theme/md-skin";
+
+/* Media query style */
+@import "theme/media";
+
+/* Custom style */
+/* Your custom style to override base style */
+@import "theme/custom";
+
+/* Clear layout on print mode */
+@media print {
+  nav.navbar-static-side {
+    display: none;
+  }
+
+  #page-wrapper {
+    margin: 0;
+  }
+}
