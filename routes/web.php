@@ -27,9 +27,10 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 /* Routes for admin user */
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     /* Dashboard routes */
-    Route::get('dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
+    Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
+    Route::get('/channels', ['as' => 'channel.index', 'uses' => 'Admin\ChannelController@index']);
 });
 
 Route::get('/', function () {
