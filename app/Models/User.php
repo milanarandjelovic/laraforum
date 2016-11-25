@@ -52,4 +52,19 @@ class User extends Authenticatable
     {
         return $this->first_name ?: $this->username;
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
+
+    public function isAdmin()
+    {
+        // If user admin return true
+        if ($this->roles()->first()->name === 'admin') {
+            return true;
+        }
+
+        return false;
+    }
 }
