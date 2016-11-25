@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for
@@ -15,6 +14,15 @@ require('./bootstrap');
 
 Vue.component('example', require('./vuejs/components/Example.vue'));
 
+import PassportClients from "./vuejs/components/passport/Clients.vue";
+import PassportAuthorizedClients from "./vuejs/components/passport/AuthorizedClients.vue";
+import PassportPersonalAccessTokens from "./vuejs/components/passport/PersonalAccessTokens.vue";
+
 const app = new Vue({
-    el: '#app'
+  el: '#app',
+  components: {
+    PassportClients,
+    PassportAuthorizedClients,
+    PassportPersonalAccessTokens
+  }
 });

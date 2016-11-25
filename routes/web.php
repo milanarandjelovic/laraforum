@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     /* Dashboard routes */
     Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
     Route::get('/channels', ['as' => 'channel.index', 'uses' => 'Admin\ChannelController@index']);
+
+    /* Passport routes */
+    Route::get('/passport', ['as' => 'passport.index', 'uses' => 'Admin\PassportController@index']);
 });
 
 Route::get('/', function () {

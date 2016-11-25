@@ -42,6 +42,12 @@
                 </a>
             </li> {{-- /channels --}}
 
+            <li class="{{ \App\LaraForum\Helpers\Menu::activeMenu('admin/passport') }}">
+                <a href="{{ route('passport.index') }}"><i class="fa  fa-cog"></i>
+                    <span class="nav-label">Passport</span>
+                </a>
+            </li> {{-- /passport --}}
+
             {{--<li>--}}
                 {{--<a href="#"><i class="fa fa-envelope"></i>--}}
                     {{--<span class="nav-label">Mailbox</span>--}}
