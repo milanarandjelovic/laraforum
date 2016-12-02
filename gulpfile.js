@@ -16,6 +16,8 @@ require('laravel-elixir-vue-2');
 elixir((mix) => {
   mix
     .sass([
+      'toastr.scss',
+      './node_modules/sweetalert/dist/sweetalert.css',
       './node_modules/font-awesome/scss/font-awesome.scss',
       'app.scss'
     ])
