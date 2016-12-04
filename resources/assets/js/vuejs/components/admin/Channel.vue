@@ -28,6 +28,7 @@
                               name="name"
                               class="form-control"
                               v-model="channelForm.name"
+                              autofocus
                       >
                       <div v-if="error" class="form-error-message">
                         <p class="text-danger">{{ error }}</p>
@@ -75,6 +76,7 @@
                               name="name"
                               class="form-control"
                               v-model="channelForm.name"
+                              autofocus
                       >
                       <div v-if="error" class="form-error-message">
                         <p class="text-danger">{{ error }}</p>
