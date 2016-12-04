@@ -34,6 +34,17 @@
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">Color</label>
+                    <div class="col-sm-10">
+                      <input
+                              type="color"
+                              id="channel_color"
+                              name="color"
+                              v-model="channelForm.color"
+                      >
+                    </div>
+                  </div> <!-- /.form-group -->
                 </form> <!-- /.form-horizontal -->
               </div>
               <div class="modal-footer">
@@ -68,6 +79,17 @@
                       <div v-if="error" class="form-error-message">
                         <p class="text-danger">{{ error }}</p>
                       </div>
+                    </div>
+                  </div> <!-- /.form-group -->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="name">Color</label>
+                    <div class="col-sm-10">
+                      <input
+                              type="color"
+                              id="channel_color"
+                              name="color"
+                              v-model="channelForm.color"
+                      >
                     </div>
                   </div> <!-- /.form-group -->
                 </form> <!-- /.form-horizontal -->
@@ -128,6 +150,7 @@
       return {
         channelForm: {
            name: '',
+           color: ''
         },
         error: '',
         hasError: false,
@@ -146,6 +169,7 @@
         this.channelForm.name = ''
         this.error = '',
         this.hasError = false
+        this.channelForm.color = ''
         $('#add-channel-modal').modal('show')
       }, // openChannelModal()
 
@@ -185,6 +209,7 @@
         this.$http.get('/api/channels/' + id).then(res => {
           this.channel_id = res.data.id
           this.channelForm.name = res.data.name
+          this.channelForm.color = res.data.color
         }).catch(err => {
           this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
         });

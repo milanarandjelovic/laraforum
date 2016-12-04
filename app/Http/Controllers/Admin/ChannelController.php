@@ -41,8 +41,9 @@ class ChannelController extends Controller
     public function store(Request $request)
     {
 
-        $validator = Validator::make($request->only('name'), [
-            'name' => 'required|min:3|max:255',
+        $validator = Validator::make($request->only(['name', 'color']), [
+            'name'  => 'required|min:3|max:255',
+            'color' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -52,7 +53,8 @@ class ChannelController extends Controller
         }
 
         Channel::create([
-            'name' => $request->input('name'),
+            'name'  => $request->input('name'),
+            'color' => $request->input('color'),
         ]);
 
         return response()->json([
@@ -83,8 +85,9 @@ class ChannelController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->only('name'), [
-            'name' => 'required|min:3|max:255',
+        $validator = Validator::make($request->only(['name', 'color']), [
+            'name'  => 'required|min:3|max:255',
+            'color' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -94,7 +97,8 @@ class ChannelController extends Controller
         }
 
         Channel::where('id', $id)->update([
-            'name' => $request->input('name'),
+            'name'  => $request->input('name'),
+            'color' => $request->input('color'),
         ]);
 
         return response()->json([

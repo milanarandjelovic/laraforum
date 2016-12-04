@@ -21700,13 +21700,14 @@ body.md-skin {
 /* Custom style */
 /* Your custom style to override base style */
 body.public-layout {
-  background-color: #F3F3F4;
+  background-color: #FFF;
 }
 
 .holder {
   margin-top: 70px;
 }
 
+/* Helper classes */
 .tag {
   margin-right: 5px;
 }
@@ -21723,6 +21724,10 @@ body.public-layout {
   margin-top: 10px;
 }
 
+.mt-4 {
+  margin-top: 4em !important;
+}
+
 /* Sidebar */
 .forum-sidebar .sidebar-filter .sidebar-label,
 .forum-sidebar .sidebar-channel .sidebar-label {
@@ -21732,6 +21737,42 @@ body.public-layout {
   margin-bottom: 1em;
   color: #cacaca;
   text-transform: uppercase;
+}
+
+.forum-sidebar .sidebar-filter .menu-list,
+.forum-sidebar .sidebar-channel .menu-list {
+  padding-left: 0;
+}
+
+.forum-sidebar .sidebar-filter .menu-list li,
+.forum-sidebar .sidebar-channel .menu-list li {
+  list-style: none;
+  border-bottom: 1px dotted #D7D7D7;
+}
+
+.forum-sidebar .sidebar-filter .menu-list li:last-child,
+.forum-sidebar .sidebar-channel .menu-list li:last-child {
+  border-bottom: none;
+}
+
+.forum-sidebar .sidebar-filter .menu-list li:hover,
+.forum-sidebar .sidebar-channel .menu-list li:hover {
+  padding-left: 10px;
+  background-color: #F5F7FA;
+  -webkit-transition: padding-left .4s;
+  transition: padding-left .4s;
+}
+
+.forum-sidebar .sidebar-filter .menu-list li a,
+.forum-sidebar .sidebar-channel .menu-list li a {
+  display: block;
+  padding: 10px 0;
+  color: #69707A;
+}
+
+.forum-sidebar .sidebar-filter .menu-list li a i,
+.forum-sidebar .sidebar-channel .menu-list li a i {
+  padding-right: 10px;
 }
 
 /* Page Heading */
