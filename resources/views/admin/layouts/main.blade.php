@@ -13,6 +13,12 @@
         {{-- Styles --}}
         <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+
         {{-- Scripts --}}
         <script>
           window.Laravel = <?php echo json_encode([
@@ -30,6 +36,8 @@
 
                     @include('admin.layouts.partials.navigation')
                     @include('admin.layouts.partials.page-heading')
+
+                    <vue-toastr ref="toastr"></vue-toastr>
 
                     <div class="row">
                         <div class="col-lg-12">

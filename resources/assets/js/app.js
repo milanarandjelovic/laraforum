@@ -14,15 +14,25 @@ require('./bootstrap');
 
 Vue.component('example', require('./vuejs/components/Example.vue'));
 
+/* Passport component */
 import PassportClients from "./vuejs/components/passport/Clients.vue";
 import PassportAuthorizedClients from "./vuejs/components/passport/AuthorizedClients.vue";
 import PassportPersonalAccessTokens from "./vuejs/components/passport/PersonalAccessTokens.vue";
+
+import VueToastr from 'vue-toastr';
+
+/* Channels component */
+import Channel from './vuejs/components/admin/Channel.vue';
 
 const app = new Vue({
   el: '#app',
   components: {
     PassportClients,
     PassportAuthorizedClients,
-    PassportPersonalAccessTokens
+    PassportPersonalAccessTokens,
+
+    VueToastr,
+
+    Channel
   }
 });

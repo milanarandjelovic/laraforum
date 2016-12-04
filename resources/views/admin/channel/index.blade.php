@@ -3,5 +3,5 @@
 @section('title', '| Channel')
 
 @section('content')
-
+    <channel></channel>
 @endsection
