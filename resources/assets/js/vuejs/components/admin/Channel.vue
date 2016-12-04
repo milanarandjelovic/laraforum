@@ -150,7 +150,7 @@
       return {
         channelForm: {
            name: '',
-           color: ''
+           color: '#000000'
         },
         error: '',
         hasError: false,
@@ -169,7 +169,7 @@
         this.channelForm.name = ''
         this.error = '',
         this.hasError = false
-        this.channelForm.color = ''
+        this.channelForm.color = '#000000'
         $('#add-channel-modal').modal('show')
       }, // openChannelModal()
 
