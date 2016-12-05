@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Validator;
 use App\Models\Channel;
 use Illuminate\Http\Request;
-use Validator;
+use App\Http\Controllers\Controller;
 
 class ChannelController extends Controller
 {
@@ -49,7 +49,10 @@ class ChannelController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'error' => $validator->errors()->first(),
+                'errors' => [
+                    'name'        => $validator->errors()->first('name'),
+                    'channel_url' => $validator->errors()->first('channel_url'),
+                ],
             ]);
         }
 
@@ -95,7 +98,10 @@ class ChannelController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'error' => $validator->errors()->first(),
+                'errors' => [
+                    'name'        => $validator->errors()->first('name'),
+                    'channel_url' => $validator->errors()->first('channel_url'),
+                ],
             ]);
         }
 

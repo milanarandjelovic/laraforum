@@ -19,7 +19,7 @@
               </div>
               <div class="modal-body">
                 <form class="form-horizontal">
-                  <div class="form-group" :class="{ 'has-error' : hasError }">
+                  <div class="form-group" :class="{ 'has-error' : hasErrorName }">
                     <label class="col-sm-2 control-label" for="name">Name</label>
                     <div class="col-sm-10">
                       <input
@@ -30,13 +30,13 @@
                               v-model="channelForm.name"
                               autofocus
                       >
-                      <div v-if="error" class="form-error-message">
-                        <p class="text-danger">{{ error }}</p>
+                      <div v-if="errors.name.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.name }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
                   <form class="form-horizontal">
-                    <div class="form-group" :class="{ 'has-error' : hasError }">
+                    <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
                       <label class="col-sm-2 control-label" for="channel_url">Url</label>
                       <div class="col-sm-10">
                         <input
@@ -46,23 +46,23 @@
                                 class="form-control"
                                 v-model="channelForm.channel_url"
                         >
-                        <div v-if="error" class="form-error-message">
-                          <p class="text-danger">{{ error }}</p>
+                        <div v-if="errors.channel_url.length > 0" class="form-error-message">
+                          <p class="text-danger">{{ errors.channel_url }}</p>
                         </div>
                       </div>
                     </div> <!-- /.form-group -->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">Color</label>
-                    <div class="col-sm-10">
-                      <input
-                              type="color"
-                              id="channel_color"
-                              name="color"
-                              v-model="channelForm.color"
-                      >
-                    </div>
-                  </div> <!-- /.form-group -->
-                </form> <!-- /.form-horizontal -->
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="channel_color">Color</label>
+                      <div class="col-sm-10">
+                        <input
+                                type="color"
+                                id="channel_color"
+                                name="color"
+                                v-model="channelForm.color"
+                        >
+                      </div>
+                    </div> <!-- /.form-group -->
+                  </form> <!-- /.form-horizontal -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -83,7 +83,7 @@
               </div>
               <div class="modal-body">
                 <form class="form-horizontal">
-                  <div class="form-group" :class="{ 'has-error' : hasError }">
+                  <div class="form-group" :class="{ 'has-error' : hasErrorName }">
                     <label class="col-sm-2 control-label" for="name">Name</label>
                     <div class="col-sm-10">
                       <input
@@ -94,13 +94,13 @@
                               v-model="channelForm.name"
                               autofocus
                       >
-                      <div v-if="error" class="form-error-message">
-                        <p class="text-danger">{{ error }}</p>
+                      <div v-if="errors.name.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.name }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
                   <form class="form-horizontal">
-                    <div class="form-group" :class="{ 'has-error' : hasError }">
+                    <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
                       <label class="col-sm-2 control-label" for="channel_url">Url</label>
                       <div class="col-sm-10">
                         <input
@@ -110,23 +110,23 @@
                                 class="form-control"
                                 v-model="channelForm.channel_url"
                         >
-                        <div v-if="error" class="form-error-message">
-                          <p class="text-danger">{{ error }}</p>
+                        <div v-if="errors.channel_url.length > 0" class="form-error-message">
+                          <p class="text-danger">{{ errors.channel_url }}</p>
                         </div>
                       </div>
                     </div> <!-- /.form-group -->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="name">Color</label>
-                    <div class="col-sm-10">
-                      <input
-                              type="color"
-                              id="channel_color"
-                              name="color"
-                              v-model="channelForm.color"
-                      >
-                    </div>
-                  </div> <!-- /.form-group -->
-                </form> <!-- /.form-horizontal -->
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="channel_color">Color</label>
+                      <div class="col-sm-10">
+                        <input
+                                type="color"
+                                id="channel_color"
+                                name="color"
+                                v-model="channelForm.color"
+                        >
+                      </div>
+                    </div> <!-- /.form-group -->
+                  </form> <!-- /.form-horizontal -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -187,8 +187,12 @@
            channel_url: '',
            color: '#000000'
         },
-        error: '',
-        hasError: false,
+        errors: {
+          name: '',
+          channel_url: ''
+        },
+        hasErrorName: false,
+        hasErrorChannelUrl: false,
         channel_id: '',
         channels: {},
         channel: {}
@@ -202,30 +206,44 @@
     methods: {
       openChannelModal () {
         this.channelForm.name = ''
-        this.error = '',
-        this.hasError = false
+        this.errors.channel_url = ''
+        this.errors.name = ''
+        this.hasErrorName = false
+        this.hasErrorChannelUrl = false
+        this.channelForm.channel_url = ''
         this.channelForm.color = '#000000'
         $('#add-channel-modal').modal('show')
       }, // openChannelModal()
 
       openUpdateChannelModal (id) {
         this.channelForm.name = ''
-        this.error = '',
-        this.hasError = false
+        this.errors.channel_url = ''
+        this.errors.name = ''
+        this.hasErrorName = false
+        this.hasErrorChannelUrl = false
         this.getChannel(id)
         $('#update-channel-modal').modal('show')
       }, // openUpdateChannelModal()
 
       createChannel () {
+        this.hasErrorName = false
+        this.hasErrorChannelUrl = false
         this.$http.post('/api/channels/store', this.channelForm).then(res => {
-          this.error = res.data.error
-          this.hasError = true
-
-          if(!res.data.error) {
+          if(res.data.message) {
             this.channelForm.name = ''
-            $('#add-channel-modal').modal('hide')
-            this.getAllChannels()
+            this.channelForm.channel_url = ''
             this.$root.$refs.toastr.s(res.data.message, 'Success')
+            this.getAllChannels()
+            $('#add-channel-modal').modal('hide')
+          }
+          if(res.data.errors) {
+            this.errors = res.data.errors
+            if(res.data.errors.name) {
+              this.hasErrorName = true
+            }
+            if(res.data.errors.channel_url) {
+              this.hasErrorChannelUrl = true
+            }
           }
         }).catch(err => {
           this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
@@ -252,16 +270,24 @@
       }, // getChannel()
 
       updateChannel () {
+        this.hasErrorName = false
+        this.hasErrorChannelUrl = false
         this.$http.put('/api/channels/' + this.channel_id + '/update', this.channelForm).then(res => {
-          this.error = res.data.error
-          this.hasError = true
-
-          if(!res.data.error) {
+          if(res.data.message) {
             this.channelForm.name = ''
-            this.hasError = false
-            $('#update-channel-modal').modal('hide')
-            this.getAllChannels()
+            this.channelForm.channel_url = ''
             this.$root.$refs.toastr.s(res.data.message, 'Success')
+            this.getAllChannels()
+            $('#update-channel-modal').modal('hide')
+          }
+          if(res.data.errors) {
+            this.errors = res.data.errors
+            if(res.data.errors.name) {
+              this.hasErrorName = true
+            }
+            if(res.data.errors.channel_url) {
+              this.hasErrorChannelUrl = true
+            }
           }
         }).catch(err => {
           this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
