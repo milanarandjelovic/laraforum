@@ -21786,6 +21786,7 @@ body.public-layout {
 .forum-sidebar .sidebar-filter .menu-list li a i,
 .forum-sidebar .sidebar-channel .menu-list li a i {
   padding-right: 10px;
+  font-weight: bolder;
 }
 
 .forum-sidebar .sidebar-filter .menu-list li a i.filter-ico,

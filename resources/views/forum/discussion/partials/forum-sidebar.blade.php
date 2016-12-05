@@ -19,7 +19,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('discussion.index') . '?trending=1' }}" class="{{ HelpMenu::activeForumMenu('discuss?trending=1') }}">
+                <a href="{{ route('discussion.index') . '?trending=1' }}"
+                   class="{{ HelpMenu::activeForumMenu('discuss?trending=1') }}">
                     <i class="fa fa-line-chart fa-lg filter-ico" aria-hidden="true"></i>Popular This Week
                 </a>
             </li>
@@ -51,11 +52,18 @@
         <ul class="menu-list">
             @foreach($forumChannels as $channel)
                 <li>
-                    <a href="/discuss/channels/{{ $channel->channel_url }}">
-                        <i class="fa fa-circle-o" aria-hidden="true" style="color: {{ $channel->color }}"></i>
-                        {{ $channel->name }}
-                    </a>
+                    @if($channel->channel_url == '')
+                        <a href="/discuss/{{ $channel->channel_url }}">
+                            <i class="fa fa-circle-o fa-lg" aria-hidden="true" style="color: {{ $channel->color }}"></i>
+                            {{ $channel->name }}
+                        </a>
+                    @else
+                        <a href="/discuss/channels/{{ $channel->channel_url }}">
+                            <i class="fa fa-circle-o fa-lg" aria-hidden="true" style="color: {{ $channel->color }}"></i>
+                            {{ $channel->name }}
+                        </a>
                 </li>
+                @endif
             @endforeach
         </ul> {{-- /.menu-list --}}
     </div> {{-- /.sidebar-channel --}}
