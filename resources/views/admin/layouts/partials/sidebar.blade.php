@@ -10,14 +10,12 @@
                              src="https://placeholdit.imgix.net/~text?txtsize=33&txt=profile%20image&w=48&h=48">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
-                            <span class="clear">
-                                <span class="block m-t-xs">
-                                    <strong class="font-bold">{{ (Auth::user()->getNameOrUsername()) }}</strong>
-                                </span>
-                                <span class="text-muted text-xs block">
-                                    Art Director <b class="caret"></b>
-                                </span>
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">{{ (Auth::user()->getNameOrUsername()) }}</strong>
+                                <b class="caret"></b>
                             </span>
+                        </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs profile-element-menu">
                         <li>
