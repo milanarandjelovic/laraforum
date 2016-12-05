@@ -22,12 +22,12 @@
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                     {{ csrf_field() }}
 
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
-                               placeholder="Name" autofocus>
-                        @if ($errors->has('name'))
+                    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                        <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}"
+                               placeholder="Username" autofocus>
+                        @if ($errors->has('username'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('name') }}</strong>
+                                <strong>{{ $errors->first('username') }}</strong>
                             </span>
                         @endif
                     </div> {{-- /.form-group --}}
