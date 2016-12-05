@@ -137,6 +137,15 @@
         </div> <!-- /.modal -->
         <!-- /UPDATE CHANNEL MODAL -->
 
+        <scale-loader
+                class="channel-loader"
+                :loading="loading"
+                :color="color"
+                :height="height"
+                :width="width"
+                :margin="margin"
+        >
+        </scale-loader>
 
         <table class="table table-hover" v-if="channels.length > 0">
           <thead>
@@ -178,10 +187,13 @@
 </template>
 
 <script>
+  import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue';
+
   export default {
     name: 'channel',
     data () {
       return {
+        height: '60px',
         channelForm: {
            name: '',
            channel_url: '',
@@ -199,7 +211,16 @@
       }
     },
 
+    components: {
+        'scale-loader': ScaleLoader
+    },
+
+    beforeMount () {
+      this.loading = true
+    },
+
     mounted () {
+      this.loading = false
       this.getAllChannels()
     },
 
