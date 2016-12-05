@@ -25,7 +25,11 @@
                                 <i class="fa fa-user" aria-hidden="true"></i>Profile
                             </a>
                         </li>
-                        <li><a href="#">Contacts</a></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-users" aria-hidden="true"></i>Contacts
+                            </a>
+                        </li>
                         <li>
                             <a href="#">
                                 <i class="fa fa-envelope"></i>Mailbox
