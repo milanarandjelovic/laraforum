@@ -19,12 +19,24 @@
                                 </span>
                             </span>
                     </a>
-                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="profile.html">Profile</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
-                        <li><a href="mailbox.html">Mailbox</a></li>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs profile-element-menu">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user" aria-hidden="true"></i>Profile
+                            </a>
+                        </li>
+                        <li><a href="#">Contacts</a></li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-envelope"></i>Mailbox
+                            </a>
+                        </li>
                         <li class="divider"></li>
-                        <li><a href="login.html">Logout</a></li>
+                        <li>
+                            <a href="{{ route('auth.logout') }}">
+                                <i aria-hidden="true" class="fa fa-sign-out"></i>Logout
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="logo-element">LF</div>
@@ -49,9 +61,9 @@
             </li> {{-- /passport --}}
 
             {{--<li>--}}
-                {{--<a href="#"><i class="fa fa-envelope"></i>--}}
-                    {{--<span class="nav-label">Mailbox</span>--}}
-                {{--</a>--}}
+            {{--<a href="#"><i class="fa fa-envelope"></i>--}}
+            {{--<span class="nav-label">Mailbox</span>--}}
+            {{--</a>--}}
             {{--</li>--}}
         </ul>
     </div> {{-- /.sidebar-collapse --}}

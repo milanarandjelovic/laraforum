@@ -21805,6 +21805,10 @@ body.public-layout {
   margin: 60px 0;
 }
 
+.navbar-static-side .profile-element .profile-element-menu li a i.fa {
+  padding-right: 5px;
+}
+
 /* Clear layout on print mode */
 @media print {
   nav.navbar-static-side {

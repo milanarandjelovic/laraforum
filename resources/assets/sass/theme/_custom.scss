@@ -99,3 +99,17 @@ body.public-layout {
 .channel-loader {
   margin: 60px 0;
 }
+
+.navbar-static-side {
+  .profile-element {
+    .profile-element-menu {
+      li {
+        a {
+          i.fa {
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
