@@ -35,6 +35,22 @@
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
+                  <form class="form-horizontal">
+                    <div class="form-group" :class="{ 'has-error' : hasError }">
+                      <label class="col-sm-2 control-label" for="channel_url">Url</label>
+                      <div class="col-sm-10">
+                        <input
+                                type="text"
+                                id="channel_url"
+                                name="channel_url"
+                                class="form-control"
+                                v-model="channelForm.channel_url"
+                        >
+                        <div v-if="error" class="form-error-message">
+                          <p class="text-danger">{{ error }}</p>
+                        </div>
+                      </div>
+                    </div> <!-- /.form-group -->
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="name">Color</label>
                     <div class="col-sm-10">
@@ -83,6 +99,22 @@
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
+                  <form class="form-horizontal">
+                    <div class="form-group" :class="{ 'has-error' : hasError }">
+                      <label class="col-sm-2 control-label" for="channel_url">Url</label>
+                      <div class="col-sm-10">
+                        <input
+                                type="text"
+                                id="channel_url"
+                                name="channel_url"
+                                class="form-control"
+                                v-model="channelForm.channel_url"
+                        >
+                        <div v-if="error" class="form-error-message">
+                          <p class="text-danger">{{ error }}</p>
+                        </div>
+                      </div>
+                    </div> <!-- /.form-group -->
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="name">Color</label>
                     <div class="col-sm-10">
@@ -152,6 +184,7 @@
       return {
         channelForm: {
            name: '',
+           channel_url: '',
            color: '#000000'
         },
         error: '',
@@ -212,6 +245,7 @@
           this.channel_id = res.data.id
           this.channelForm.name = res.data.name
           this.channelForm.color = res.data.color
+          this.channelForm.channel_url = res.data.channel_url
         }).catch(err => {
           this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
         });

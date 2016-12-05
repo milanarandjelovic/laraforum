@@ -21701,6 +21701,8 @@ body.md-skin {
 /* Your custom style to override base style */
 body.public-layout {
   background-color: #FFF;
+  font-weight: 500;
+  line-height: 1.428571428571429;
 }
 
 .holder {
@@ -21748,6 +21750,9 @@ body.public-layout {
 .forum-sidebar .sidebar-channel .menu-list li {
   list-style: none;
   border-bottom: 1px dotted #D7D7D7;
+  padding-left: 0;
+  -webkit-transition: padding-left .4s;
+  transition: padding-left .4s;
 }
 
 .forum-sidebar .sidebar-filter .menu-list li:last-child,
@@ -21757,8 +21762,8 @@ body.public-layout {
 
 .forum-sidebar .sidebar-filter .menu-list li:hover,
 .forum-sidebar .sidebar-channel .menu-list li:hover {
-  padding-left: 10px;
   background-color: #F5F7FA;
+  padding-left: 10px;
   -webkit-transition: padding-left .4s;
   transition: padding-left .4s;
 }
@@ -21768,11 +21773,24 @@ body.public-layout {
   display: block;
   padding: 10px 0;
   color: #69707A;
+  font-weight: 400;
+  letter-spacing: -.5px;
+}
+
+.forum-sidebar .sidebar-filter .menu-list li a.is-active,
+.forum-sidebar .sidebar-channel .menu-list li a.is-active {
+  color: #00b1b3;
+  font-weight: 700;
 }
 
 .forum-sidebar .sidebar-filter .menu-list li a i,
 .forum-sidebar .sidebar-channel .menu-list li a i {
   padding-right: 10px;
+}
+
+.forum-sidebar .sidebar-filter .menu-list li a i.filter-ico,
+.forum-sidebar .sidebar-channel .menu-list li a i.filter-ico {
+  color: #EF6733;
 }
 
 /* Page Heading */
