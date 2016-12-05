@@ -26,12 +26,17 @@
             <div id="wrapper">
                 @include('layouts.partials.navigation')
                 <div class="container forum-content">
-                    @yield('content')
+                    <div class="col-md-3">
+                        @include('forum.discussion.partials.forum-sidebar')
+                    </div> {{-- /.col-md-3 --}}
+                    <div class="col-md-9">
+                        @yield('content')
+                    </div> {{-- /.col-md-9 --}}
                 </div> {{-- /.container --}}
             </div> {{-- /#wrapper --}}
         </div> {{-- /#app --}}
 
-    {{-- Scripts --}}
-    <script src="{{ elixir('js/app.js') }}"></script>
+        {{-- Scripts --}}
+        <script src="{{ elixir('js/app.js') }}"></script>
     </body>
 </html>

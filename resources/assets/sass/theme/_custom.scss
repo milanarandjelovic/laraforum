@@ -1,11 +1,14 @@
 body.public-layout {
-  background-color: #F3F3F4;
+  background-color: #FFF;
+  font-weight: 500;
+  line-height: 1.428571428571429;
 }
 
 .holder {
   margin-top: 70px;
 }
 
+/* Helper classes */
 .tag {
   margin-right: 5px;
 }
@@ -22,6 +25,10 @@ body.public-layout {
   margin-top: 10px;
 }
 
+.mt-4 {
+  margin-top: 4em !important;
+}
+
 /* Sidebar */
 .forum-sidebar {
   .sidebar-filter,
@@ -33,6 +40,46 @@ body.public-layout {
       margin-bottom: 1em;
       color: #cacaca;
       text-transform: uppercase;
+    }
+
+    .menu-list {
+      padding-left: 0;
+      li {
+        list-style: none;
+        border-bottom: 1px dotted #D7D7D7;
+        padding-left: 0;
+        transition: padding-left .4s;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:hover {
+          background-color: #F5F7FA;
+          padding-left: 10px;
+          transition: padding-left .4s;
+        }
+
+        a {
+          display: block;
+          padding: 10px 0;
+          color: #69707A;
+          font-weight: 400;
+          letter-spacing: -.5px;
+
+          &.is-active {
+            color: #00b1b3;
+            font-weight: 700;
+          }
+
+          i {
+            padding-right: 10px;
+            &.filter-ico {
+              color: #EF6733;
+            }
+          }
+        }
+      }
     }
   }
 }

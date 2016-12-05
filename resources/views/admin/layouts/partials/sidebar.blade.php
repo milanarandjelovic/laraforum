@@ -30,19 +30,19 @@
                 <div class="logo-element">LF</div>
             </li>
 
-            <li class="{{ \App\LaraForum\Helpers\Menu::activeMenu('admin/dashboard') }}">
+            <li class="{{ HelpMenu::activeAdminMenu('admin/dashboard') }}">
                 <a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i>
                     <span class="nav-label">Dashboard</span>
                 </a>
             </li> {{-- /dashboard --}}
 
-            <li class="{{ \App\LaraForum\Helpers\Menu::activeMenu('admin/channels') }}">
+            <li class="{{ HelpMenu::activeAdminMenu('admin/channels') }}">
                 <a href="{{ route('channel.index') }}"><i class="fa fa-list-alt"></i>
                     <span class="nav-label">Channels</span>
                 </a>
             </li> {{-- /channels --}}
 
-            <li class="{{ \App\LaraForum\Helpers\Menu::activeMenu('admin/passport') }}">
+            <li class="{{ HelpMenu::activeAdminMenu('admin/passport') }}">
                 <a href="{{ route('passport.index') }}"><i class="fa  fa-cog"></i>
                     <span class="nav-label">Passport</span>
                 </a>

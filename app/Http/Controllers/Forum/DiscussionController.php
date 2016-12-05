@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Forum;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class DiscussionController extends Controller
@@ -11,10 +12,11 @@ class DiscussionController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
+
         return view('forum.discussion.index');
     }
 
