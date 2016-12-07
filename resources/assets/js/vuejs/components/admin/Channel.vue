@@ -1,6 +1,17 @@
 <template>
   <div id="channel">
-    <div class="ibox">
+
+    <scale-loader
+            class="channel-loader"
+            :loading="loading"
+            :color="color"
+            :height="height"
+            :width="width"
+            :margin="margin"
+    >
+    </scale-loader>
+
+    <div class="ibox" v-if="channels.length > 0">
       <div class="ibox-title">
         <h5>All channel assigned for this forum</h5>
         <div class="ibox-tools">
@@ -137,17 +148,7 @@
         </div> <!-- /.modal -->
         <!-- /UPDATE CHANNEL MODAL -->
 
-        <scale-loader
-                class="channel-loader"
-                :loading="loading"
-                :color="color"
-                :height="height"
-                :width="width"
-                :margin="margin"
-        >
-        </scale-loader>
-
-        <table class="table table-hover" v-if="channels.length > 0">
+        <table class="table table-hover">
           <thead>
           <tr>
             <th>#</th>
