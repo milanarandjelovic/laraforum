@@ -12,7 +12,7 @@
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
                         <span class="clear">
                             <span class="block m-t-xs">
-                                <strong class="font-bold">{{ (Auth::user()->getNameOrUsername()) }}</strong>
+                                <strong class="font-bold">{{ Auth::user()->getNameOrUsername() }}</strong>
                                 <b class="caret"></b>
                             </span>
                         </span>
