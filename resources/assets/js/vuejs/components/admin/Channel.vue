@@ -2,7 +2,7 @@
   <div id="channel">
 
     <scale-loader
-            class="channel-loader"
+            class="admin-scale-loader"
             :loading="loading"
             :color="color"
             :height="height"
