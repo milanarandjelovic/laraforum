@@ -9,7 +9,7 @@
         <a data-page="prev" @click.prevent="changePage(pagination.current_page - 1)">‹</a>
       </li>
       <li v-for="page in pagination.per_page"
-          class="footable-page"
+          class="paginate_button"
           :class="page == pagination.current_page ? 'active': ''"
       >
         <a @click.prevent="changePage(page)">{{ page }}</a>
