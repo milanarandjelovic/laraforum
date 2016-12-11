@@ -8,7 +8,7 @@
       <li class="footable-page-arrow" v-if="pagination.current_page > 1">
         <a data-page="prev" @click.prevent="changePage(pagination.current_page - 1)">‹</a>
       </li>
-      <li v-for="page in pagination.per_page"
+      <li v-for="page in pagination.last_page"
           class="paginate_button"
           :class="page == pagination.current_page ? 'active': ''"
       >
