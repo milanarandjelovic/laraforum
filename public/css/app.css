@@ -21821,6 +21821,14 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   padding-right: 5px;
 }
 
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    white-space: nowrap;
+    margin: 2px 0px;
+  }
+}
+
 /* Clear layout on print mode */
 @media print {
   nav.navbar-static-side {

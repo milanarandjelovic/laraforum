@@ -125,3 +125,12 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     }
   }
 }
+
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    white-space: nowrap;
+    margin: 2px 0px;
+  }
+}

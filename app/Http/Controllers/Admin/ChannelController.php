@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Models\Channel;
 use Illuminate\Http\Request;
@@ -27,9 +28,23 @@ class ChannelController extends Controller
      */
     public function channels()
     {
-        $channels = Channel::all();
+//        $channels = Channel::paginate(10);
+        $channels = DB::table('channels')->paginate(15);
 
-        return response()->json($channels);
+        $response = [
+            'pagination' => [
+                'total'        => $channels->total(),
+                'per_page'     => $channels->perPage(),
+                'current_page' => $channels->currentPage(),
+                'last_page'    => $channels->lastPage(),
+                'from'         => $channels->firstItem(),
+                'to'           => $channels->lastItem(),
+
+            ],
+            'channels'   => $channels,
+        ];
+
+        return response()->json($response);
     }
 
     /**

@@ -148,33 +148,45 @@
         </div> <!-- /.modal -->
         <!-- /UPDATE CHANNEL MODAL -->
 
-        <table class="table table-hover">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Created at</th>
-            <th>Updated at</th>
-            <th>Action</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="channel in channels">
-            <td>{{ channel.id }}</td>
-            <td>{{ channel.name }}</td>
-            <td>{{ channel.created_at }}</td>
-            <td>{{ channel.updated_at }}</td>
-            <td>
-              <button class="btn btn-white btn-xs" @click.prevent="openUpdateChannelModal(channel.id)">
-                <i class="fa fa-pencil"></i> Edit
-              </button>
-              <button class="btn btn-danger btn-xs" @click.prevent="deleteChannel(channel.id)">
-                <i class="fa fa-trash-o"></i> Deleted
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap">
+            <table class="table table-striped table-bordered table-hover dataTable dtr-inline">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-for="channel in channels">
+                <td>{{ channel.id }}</td>
+                <td>{{ channel.name }}</td>
+                <td>{{ channel.created_at }}</td>
+                <td>{{ channel.updated_at }}</td>
+                <td>
+                  <button class="btn btn-white btn-xs" @click.prevent="openUpdateChannelModal(channel.id)">
+                    <i class="fa fa-pencil"></i> Edit
+                  </button>
+                  <button class="btn btn-danger btn-xs" @click.prevent="deleteChannel(channel.id)">
+                    <i class="fa fa-trash-o"></i> Deleted
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <div class="dataTables_paginate paging_simple_numbers">
+              <div class="pull-left">
+                Showing {{ pagination.from }} to {{ pagination.to }} of {{ pagination.total }} entries
+              </div>
+              <pagination :pagination="pagination" :callback="getAllChannels" navClass="pull-right"></pagination>
+            </div>
+
+          </div>
+        </div>
 
         <div class="text-center" v-if="channels.length == 0">
           <h3>You have no channel, begin by creating a
@@ -189,6 +201,7 @@
 
 <script>
   import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue';
+  import Pagination from '../common/Pagination.vue';
 
   export default {
     name: 'channel',
@@ -208,12 +221,14 @@
         hasErrorChannelUrl: false,
         channel_id: '',
         channels: {},
-        channel: {}
+        channel: {},
+        pagination: {}
       }
     },
 
     components: {
-        'scale-loader': ScaleLoader
+        'scale-loader': ScaleLoader,
+        Pagination
     },
 
     beforeMount () {
@@ -272,9 +287,12 @@
         });
       }, // createChannel()
 
-      getAllChannels () {
-        this.$http.get('/api/admin/channels').then(res => {
-          this.channels = res.data
+      getAllChannels (page) {
+        let pg = page ? '/api/admin/channels?page=' + page : '/api/admin/channels'
+        this.$http.get(pg).then(res => {
+          console.log(res)
+          this.pagination = res.data.pagination
+          this.channels = res.data.channels.data
         }).catch(err => {
           this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
         });
