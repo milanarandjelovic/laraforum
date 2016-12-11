@@ -250,7 +250,7 @@
       createChannel () {
         this.hasErrorName = false
         this.hasErrorChannelUrl = false
-        this.$http.post('/api/channels/store', this.channelForm).then(res => {
+        this.$http.post('/api/admin/channels/store', this.channelForm).then(res => {
           if(res.data.message) {
             this.channelForm.name = ''
             this.channelForm.channel_url = ''
@@ -273,7 +273,7 @@
       }, // createChannel()
 
       getAllChannels () {
-        this.$http.get('/api/channels').then(res => {
+        this.$http.get('/api/admin/channels').then(res => {
           this.channels = res.data
         }).catch(err => {
           this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
@@ -281,7 +281,7 @@
        }, // getAllChannel()
 
       getChannel (id) {
-        this.$http.get('/api/channels/' + id).then(res => {
+        this.$http.get('/api/admin/channels/' + id).then(res => {
           this.channel_id = res.data.id
           this.channelForm.name = res.data.name
           this.channelForm.color = res.data.color
@@ -294,7 +294,7 @@
       updateChannel () {
         this.hasErrorName = false
         this.hasErrorChannelUrl = false
-        this.$http.put('/api/channels/' + this.channel_id + '/update', this.channelForm).then(res => {
+        this.$http.put('/api/admin/channels/' + this.channel_id + '/update', this.channelForm).then(res => {
           if(res.data.message) {
             this.channelForm.name = ''
             this.channelForm.channel_url = ''
@@ -332,7 +332,7 @@
         function(isConfirm){
           if (isConfirm) {
             swal("Deleted!", "Your channel has been deleted.", "success");
-            vm.$http.delete('/api/channels/' + id).then(res => {
+            vm.$http.delete('/api/admin/channels/' + id).then(res => {
               vm.getAllChannels()
               vm.$root.$refs.toastr.s(res.data.message, 'Success')
             }).catch(err => {
