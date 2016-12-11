@@ -24,6 +24,10 @@ import VueToastr from 'vue-toastr';
 /* Channels component */
 import Channel from './vuejs/components/admin/Channel.vue';
 
+/* Users component */
+import User from './vuejs/components/admin/User.vue';
+
+
 const app = new Vue({
   el: '#app',
   components: {
@@ -33,6 +37,7 @@ const app = new Vue({
 
     VueToastr,
 
-    Channel
+    Channel,
+    User
   }
 });

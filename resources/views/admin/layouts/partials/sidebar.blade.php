@@ -56,6 +56,12 @@
                 </a>
             </li> {{-- /channels --}}
 
+            <li class="{{ HelpMenu::activeAdminMenu('admin/users') }}">
+                <a href="{{ route('users.index') }}"><i class="fa fa-users"></i>
+                    <span class="nav-label">Users</span>
+                </a>
+            </li> {{-- /users --}}
+
             <li class="{{ HelpMenu::activeAdminMenu('admin/passport') }}">
                 <a href="{{ route('passport.index') }}"><i class="fa  fa-cog"></i>
                     <span class="nav-label">Passport</span>
