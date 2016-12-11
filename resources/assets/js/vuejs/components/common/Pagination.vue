@@ -14,11 +14,11 @@
       >
         <a @click.prevent="changePage(page)">{{ page }}</a>
       </li>
-      <li class="footable-page-arrow" v-if="pagination.current_page < pagination.total_page">
+      <li class="footable-page-arrow" v-if="pagination.current_page < pagination.last_page">
         <a data-page="next" @click.prevent="changePage(pagination.current_page + 1)">›</a>
       </li>
-      <li class="footable-page-arrow" v-if="pagination.current_page < pagination.total_page">
-        <a data-page="last" @click.prevent="changePage(pagination.total.page)">»</a>
+      <li class="footable-page-arrow" v-if="pagination.current_page < pagination.last_page">
+        <a data-page="last" @click.prevent="changePage(pagination.last_page)">»</a>
       </li>
     </ul>
 
