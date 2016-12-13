@@ -31,10 +31,24 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-expanded="false">
+                            <img src="{{ Gravatar::src(Auth::user()->email, 38) }}" class="img-circle" alt="profile">
                             {{ Auth::user()->getNameOrUsername() }} <span class="caret"></span>
                         </a>
 
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu profile-dropdown-menu" role="menu">
+                            @if(Auth::user()->isAdmin())
+                                <li>
+                                    <a href="{{ route('admin.dashboard')  }}">
+                                        <i class="fa fa-user" aria-hidden="true"></i>Dashboard
+                                    </a>
+                                </li>
+                            @endif
+                            <li>
+                                <a href="{{ '@' . Auth::user()->username }}">
+                                    <i class="fa fa-user" aria-hidden="true"></i>Profile
+                                </a>
+                            </li>
+                            <li class="divider"></li>
                             <li>
                                 <a href="{{ route('auth.logout') }}">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>Logout

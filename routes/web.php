@@ -27,6 +27,9 @@ Route::group(['prefix' => '/discuss'], function () {
     });
 });
 
+/* User profile routes */
+Route::get('/@{username}', 'Forum\UserController@show');
+
 /* Routes for login user */
 Route::group(['middleware' => 'auth'], function () {
     /* Discussion routes */

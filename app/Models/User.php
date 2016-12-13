@@ -21,6 +21,15 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
+        'description',
+        'personal_website',
+        'twitter_username',
+        'github_username',
+        'place_of_employment',
+        'job_title',
+        'hometown',
+        'country_flag',
+        'for_hire',
         'password',
     ];
 

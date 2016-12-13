@@ -7,7 +7,7 @@
                 <div class="dropdown profile-element">
                     <span>
                         <img alt="image" class="img-circle"
-                             src="https://placeholdit.imgix.net/~text?txtsize=33&txt=profile%20image&w=48&h=48">
+                             src="{{ Gravatar::src(Auth::user()->email, 48) }}">
                     </span>
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">
                         <span class="clear">
@@ -19,7 +19,7 @@
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs profile-element-menu">
                         <li>
-                            <a href="#">
+                            <a href="/{{ '@' . Auth::user()->username }}">
                                 <i class="fa fa-user" aria-hidden="true"></i>Profile
                             </a>
                         </li>
