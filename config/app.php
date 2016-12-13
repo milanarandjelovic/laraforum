@@ -179,9 +179,14 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
-         * Laravel Passport Service Provider
+         * Laravel Passport Service Provider...
          */
         Laravel\Passport\PassportServiceProvider::class,
+
+        /*
+         * Laravel Gravatar Service Provider...
+         */
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
     ],
 
@@ -231,6 +236,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'HelpMenu' => App\LaraForum\Helpers\Menu::class,
+
+        /*
+         * Laravel Gravatar Aliases
+         */
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
     ],
 
 ];
