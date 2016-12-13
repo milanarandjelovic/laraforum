@@ -42,6 +42,8 @@
 /* Custom style */
 /* Your custom style to override base style */
 @import "theme/custom";
+@import "custom/admin";
+@import "custom/forum";
 
 /* Clear layout on print mode */
 @media print {

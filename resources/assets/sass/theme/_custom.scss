@@ -25,112 +25,18 @@ body.public-layout {
   margin-top: 10px;
 }
 
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
 .mt-4 {
   margin-top: 4em !important;
 }
 
-/****************** FORUM ******************/
-/* Sidebar */
-.forum-sidebar {
-  .sidebar-filter,
-  .sidebar-channel {
-    .sidebar-label {
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: -.5px;
-      margin-bottom: 1em;
-      color: #cacaca;
-      text-transform: uppercase;
-    }
-
-    .menu-list {
-      padding-left: 0;
-      li {
-        list-style: none;
-        border-bottom: 1px dotted #D7D7D7;
-        padding-left: 0;
-        transition: padding-left .4s;
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        &:hover {
-          background-color: #F5F7FA;
-          padding-left: 10px;
-          transition: padding-left .4s;
-        }
-
-        a {
-          display: block;
-          padding: 10px 0;
-          color: #69707A;
-          font-weight: 400;
-          letter-spacing: -.5px;
-
-          &.is-active {
-            color: #00b1b3;
-            font-weight: 700;
-          }
-
-          i {
-            padding-right: 10px;
-            font-weight: bolder;
-            &.filter-ico {
-              color: #EF6733;
-            }
-          }
-        }
-      }
-    }
-  }
+.pbr-1 {
+  padding-right: 8px !important;
 }
 
-/* Page Heading */
-.page-heading {
-  .breadcrumb {
-    li:last-child {
-      font-weight: bold;
-    }
-  }
-}
-
-/****************** ADMIN ******************/
-.admin-scale-loader {
-  margin: 120px 0;
-}
-
-table.dataTable {
-  clear: both;
-  margin-top: 6px !important;
-  margin-bottom: 6px !important;
-  max-width: none !important;
-}
-
-div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-  white-space: nowrap;
-  margin: 2px 0px;
-}
-
-.navbar-static-side {
-  .profile-element {
-    .profile-element-menu {
-      li {
-        a {
-          i.fa {
-            padding-right: 5px;
-          }
-        }
-      }
-    }
-  }
-}
-
-
-/* Small devices (tablets, 768px and up) */
-@media (max-width: 768px) {
-  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    white-space: nowrap;
-    margin: 2px 0px;
-  }
+.is-bold {
+  font-weight: 700;
 }

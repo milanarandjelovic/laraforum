@@ -1,0 +1,38 @@
+/****************** ADMIN ******************/
+.admin-scale-loader {
+  margin: 120px 0;
+}
+
+table.dataTable {
+  clear: both;
+  margin-top: 6px !important;
+  margin-bottom: 6px !important;
+  max-width: none !important;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  white-space: nowrap;
+  margin: 2px 0px;
+}
+
+.navbar-static-side {
+  .profile-element {
+    .profile-element-menu {
+      li {
+        a {
+          i.fa {
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    white-space: nowrap;
+    margin: 2px 0px;
+  }
+}
