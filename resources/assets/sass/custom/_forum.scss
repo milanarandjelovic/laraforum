@@ -73,6 +73,21 @@
   i.fa {
     padding-right: 10px;
   }
+
+  .user-social-icon {
+    a {
+      i.fa {
+        padding-right: 0;
+      }
+    }
+  }
+
+  .user-username {
+    h4 {
+      padding-top: 3px;
+      margin-bottom: 5px;
+    }
+  }
 }
 
 /* Page Heading */

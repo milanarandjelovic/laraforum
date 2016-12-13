@@ -16,7 +16,23 @@
                          class="img-responsive center-block" alt="profile">
                 </div>
                 <div class="ibox-content">
-                    <h4><strong>{{ $user->getNameOrUsername() }}</strong></h4>
+                    <div class="clearfix user-username">
+                        <h4 class="pull-left">
+                            <strong>{{ $user->getNameOrUsername() }}</strong>
+                        </h4>
+                        <div class="user-social-icon btn-group pull-right clearfix">
+                            @if($user->twitter_username)
+                                <a href="https://twitter.com/{{ $user->twitter_username }}" class="btn btn-sm btn-default">
+                                    <i class="fa fa fa-twitter fa-lg"></i>
+                                </a>
+                            @endif
+                            @if($user->github_username)
+                                <a href="https://github.com/{{ $user->github_username }}" class="btn btn-sm btn-default">
+                                    <i class="fa fa-github fa-lg"></i>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
                     @if($user->hometown)
                         <p><i class="fa fa-map-marker"></i>{{ $user->hometown }}</p>
                     @endif
@@ -34,18 +50,6 @@
                             <div class="col-md-6 col-sm-6">
                                 <button type="button" class="btn btn-default btn-sm btn-block">
                                     <i class="fa fa-coffee"></i> Buy a coffee
-                                </button>
-                            </div> {{-- /.col-md-6 --}}
-                        </div> {{-- /.row --}}
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <button type="button" class="btn btn-primary btn-sm btn-block">
-                                    <i class="fa fa-envelope"></i> Twitter
-                                </button>
-                            </div> {{-- /.col-md-6 --}}
-                            <div class="col-md-6 col-sm-6">
-                                <button type="button" class="btn btn-default btn-sm btn-block">
-                                    <i class="fa fa-coffee"></i> Github
                                 </button>
                             </div> {{-- /.col-md-6 --}}
                         </div> {{-- /.row --}}
