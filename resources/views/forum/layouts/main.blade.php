@@ -33,6 +33,7 @@
                         @yield('content')
                     </div> {{-- /.col-md-9 --}}
                 </div> {{-- /.container --}}
+                @include('layouts.partials.footer')
             </div> {{-- /#wrapper --}}
         </div> {{-- /#app --}}
 
