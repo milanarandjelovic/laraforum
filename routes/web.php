@@ -49,6 +49,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     /* User routes */
     Route::get('/users', ['as' => 'users.index', 'uses' => 'Admin\UserController@index']);
 
+    /* Role routes */
+    Route::get('/roles', ['as' => 'roles.index', 'uses' => 'Admin\RoleController@index']);
+
     /* Passport routes */
     Route::get('/passport', ['as' => 'passport.index', 'uses' => 'Admin\PassportController@index']);
 });

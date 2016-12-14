@@ -27,6 +27,8 @@ import Channel from './vuejs/components/admin/Channel.vue';
 /* Users component */
 import User from './vuejs/components/admin/User.vue';
 
+/* Role component */
+import AdminRole from './vuejs/components/admin/Role.vue';
 
 const app = new Vue({
   el: '#app',
@@ -38,6 +40,7 @@ const app = new Vue({
     VueToastr,
 
     Channel,
-    User
+    User,
+    AdminRole
   }
 });

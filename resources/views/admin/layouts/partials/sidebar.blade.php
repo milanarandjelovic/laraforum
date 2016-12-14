@@ -62,6 +62,12 @@
                 </a>
             </li> {{-- /users --}}
 
+            <li class="{{ HelpMenu::activeAdminMenu('admin/roles') }}">
+                <a href="{{ route('roles.index') }}"><i class="fa fa-check-square-o"></i>
+                    <span class="nav-label">Roles</span>
+                </a>
+            </li> {{-- /roles --}}
+
             <li class="{{ HelpMenu::activeAdminMenu('admin/passport') }}">
                 <a href="{{ route('passport.index') }}"><i class="fa  fa-cog"></i>
                     <span class="nav-label">Passport</span>
