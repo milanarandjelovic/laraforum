@@ -290,7 +290,6 @@
       getAllChannels (page) {
         let pg = page ? '/api/admin/channels?page=' + page : '/api/admin/channels'
         this.$http.get(pg).then(res => {
-          console.log(res)
           this.pagination = res.data.pagination
           this.channels = res.data.channels.data
         }).catch(err => {
