@@ -26,6 +26,7 @@ import Channel from './vuejs/components/admin/Channel.vue';
 
 /* Users component */
 import User from './vuejs/components/admin/User.vue';
+import EditUser from './vuejs/components/forum/EditUser.vue';
 
 /* Role component */
 import AdminRole from './vuejs/components/admin/Role.vue';
@@ -41,6 +42,7 @@ const app = new Vue({
 
     Channel,
     User,
+    EditUser,
     AdminRole
   }
 });

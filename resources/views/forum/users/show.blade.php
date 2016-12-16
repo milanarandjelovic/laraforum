@@ -9,7 +9,12 @@
 
             <div class="ibox">
                 <div class="ibox-title">
-                    <h3>Profile Detail</h3>
+                    <h3 class="pull-left">Profile Detail</h3>
+                    @if(Auth::user()->username === $user->username)
+                        <div class="pull-right">
+                            <a href="#edit-user" data-toggle="modal" class="btn btn-xs btn-primary">Edit Profile</a>
+                        </div>
+                    @endif
                 </div> {{-- /.ibox-title --}}
                 <div class="ibox-content user-avatar">
                     <img src="{{ Gravatar::src($user->email, 360) }}"
@@ -22,12 +27,14 @@
                         </h4>
                         <div class="user-social-icon btn-group pull-right clearfix">
                             @if($user->twitter_username)
-                                <a href="https://twitter.com/{{ $user->twitter_username }}" class="btn btn-sm btn-default">
+                                <a href="https://twitter.com/{{ $user->twitter_username }}"
+                                   class="btn btn-sm btn-default">
                                     <i class="fa fa fa-twitter fa-lg"></i>
                                 </a>
                             @endif
                             @if($user->github_username)
-                                <a href="https://github.com/{{ $user->github_username }}" class="btn btn-sm btn-default">
+                                <a href="https://github.com/{{ $user->github_username }}"
+                                   class="btn btn-sm btn-default">
                                     <i class="fa fa-github fa-lg"></i>
                                 </a>
                             @endif
@@ -82,4 +89,5 @@
         </div> {{-- /.col-lg-8 --}}
 
     </div> {{-- /.row --}}
+    <edit-user></edit-user>
 @endsection
