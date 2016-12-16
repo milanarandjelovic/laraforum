@@ -12,7 +12,7 @@
       font-size: 15px;
       letter-spacing: -.5px;
       margin-bottom: 1em;
-      color: #cacaca;
+      color: #CACACA;
       text-transform: uppercase;
     }
 
@@ -42,7 +42,7 @@
           letter-spacing: -.5px;
 
           &.is-active {
-            color: #00b1b3;
+            color: #00B1B3;
             font-weight: 700;
           }
 
@@ -60,12 +60,70 @@
 }
 
 /* Navigation */
-.profile-dropdown-menu {
-  right: 12px !important;
+.forum-navigation {
+  border-top: 2px solid #00B1B3;
+  background-color: #4D545D !important;
 
-  i.fa {
-    padding-right: 5px;
+  .brand-holder {
+    min-height: 70px;
+    background: #4D545D;
+
+    .navbar-brand {
+      background-color: #4D545D;
+      line-height: 35px;
+      font-family: 'Molle', cursive;
+      font-size: 30px;
+    }
   }
+
+  .navbar-top-links {
+    li, li.open {
+      padding-top: 10px;
+      &.divider, &.profile-img-holder {
+        padding-top: 0;
+      }
+
+      &.profile-img-holder {
+        img {
+          margin-right: 10px;
+        }
+      }
+
+      a {
+        color: #FFFFFF;
+        &:hover {
+          color: #FFFFFF;
+          background-color: #4D545D;
+        }
+      }
+    }
+    .profile-dropdown-menu {
+      li {
+        a {
+          color: #7D8793;
+          background-color: #FFFFFF;
+
+          &:hover {
+            color: #00B1B3;
+            background-color: #FFFFFF;
+          }
+
+          i.fa {
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.top-navigation .nav > li a:hover,
+.top-navigation .nav > li a:focus,
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  color: #FFFFFF;
+  background-color: #4D545D;
 }
 
 /* User profile */

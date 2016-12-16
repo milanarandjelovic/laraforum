@@ -4429,6 +4429,7 @@ body.stop-scrolling {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css?family=Molle:400i");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
 html {
   font-family: sans-serif;
@@ -21787,7 +21788,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   font-size: 15px;
   letter-spacing: -.5px;
   margin-bottom: 1em;
-  color: #cacaca;
+  color: #CACACA;
   text-transform: uppercase;
 }
 
@@ -21829,7 +21830,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 
 .forum-sidebar .sidebar-filter .menu-list li a.is-active,
 .forum-sidebar .sidebar-channel .menu-list li a.is-active {
-  color: #00b1b3;
+  color: #00B1B3;
   font-weight: 700;
 }
 
@@ -21845,12 +21846,65 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 }
 
 /* Navigation */
-.profile-dropdown-menu {
-  right: 12px !important;
+.forum-navigation {
+  border-top: 2px solid #00B1B3;
+  background-color: #4D545D !important;
 }
 
-.profile-dropdown-menu i.fa {
+.forum-navigation .brand-holder {
+  min-height: 70px;
+  background: #4D545D;
+}
+
+.forum-navigation .brand-holder .navbar-brand {
+  background-color: #4D545D;
+  line-height: 35px;
+  font-family: 'Molle', cursive;
+  font-size: 30px;
+}
+
+.forum-navigation .navbar-top-links li, .forum-navigation .navbar-top-links li.open {
+  padding-top: 10px;
+}
+
+.forum-navigation .navbar-top-links li.divider, .forum-navigation .navbar-top-links li.profile-img-holder, .forum-navigation .navbar-top-links li.open.divider, .forum-navigation .navbar-top-links li.open.profile-img-holder {
+  padding-top: 0;
+}
+
+.forum-navigation .navbar-top-links li.profile-img-holder img, .forum-navigation .navbar-top-links li.open.profile-img-holder img {
+  margin-right: 10px;
+}
+
+.forum-navigation .navbar-top-links li a, .forum-navigation .navbar-top-links li.open a {
+  color: #FFFFFF;
+}
+
+.forum-navigation .navbar-top-links li a:hover, .forum-navigation .navbar-top-links li.open a:hover {
+  color: #FFFFFF;
+  background-color: #4D545D;
+}
+
+.forum-navigation .navbar-top-links .profile-dropdown-menu li a {
+  color: #7D8793;
+  background-color: #FFFFFF;
+}
+
+.forum-navigation .navbar-top-links .profile-dropdown-menu li a:hover {
+  color: #00B1B3;
+  background-color: #FFFFFF;
+}
+
+.forum-navigation .navbar-top-links .profile-dropdown-menu li a i.fa {
   padding-right: 5px;
+}
+
+.top-navigation .nav > li a:hover,
+.top-navigation .nav > li a:focus,
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  color: #FFFFFF;
+  background-color: #4D545D;
 }
 
 /* User profile */
