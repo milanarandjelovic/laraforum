@@ -1,5 +1,5 @@
 <template>
-  <div id="pagination">
+  <div id="pagination" v-if="pagination.per_page < pagination.total">
 
     <ul class="pagination" :class="navClass">
       <li class="footable-page-arrow" v-if="pagination.current_page > 1">
