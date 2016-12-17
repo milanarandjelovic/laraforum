@@ -20,21 +20,18 @@
             ]); ?>
         </script>
     </head>
-    <body class="top-navigation pace-done public-layout">
+    <body class="top-navigation pace-done gray-bg">
 
-        <div id="app" class="white-bg">
+        <div id="app" class="gray-bg">
 
             <vue-toastr ref="toastr"></vue-toastr>
 
             <div id="wrapper">
                 @include('layouts.partials.navigation')
                 <div class="container forum-content">
-                    <div class="col-md-3">
-                        @include('forum.discussion.partials.forum-sidebar')
-                    </div> {{-- /.col-md-3 --}}
-                    <div class="col-md-9">
+                    <div class="row">
                         @yield('content')
-                    </div> {{-- /.col-md-9 --}}
+                    </div> {{-- /.row --}}
                 </div> {{-- /.container --}}
                 @include('layouts.partials.footer')
             </div> {{-- /#wrapper --}}

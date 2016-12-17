@@ -16,8 +16,10 @@ class DiscussionController extends Controller
      */
     public function index()
     {
+        $channels = DB::table('channels')->orderBy('name', 'asc')->get();
 
-        return view('forum.discussion.index');
+        return view('forum.discussion.index')
+            ->with('channels', $channels);
     }
 
     /**
