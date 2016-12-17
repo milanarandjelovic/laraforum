@@ -188,6 +188,11 @@ return [
          */
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
+        /*
+         * Webpatser Countries Service Provider...
+         */
+        Webpatser\Countries\CountriesServiceProvider::class,
+
     ],
 
     /*
@@ -241,6 +246,11 @@ return [
          * Laravel Gravatar Aliases
          */
         'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+
+        /*
+         * Webpatser Countries Aliases
+         */
+        'Countries' => Webpatser\Countries\CountriesFacade::class,
     ],
 
 ];
