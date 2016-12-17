@@ -18,3 +18,9 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'admin'], function () {
     Route::put('roles/{id}/update', 'Admin\RoleController@update');
     Route::delete('roles/{id}', 'Admin\RoleController@destroy');
 });
+
+Route::group(['middleware' => 'auth:api', 'prefix' => 'forum'], function () {
+    /* Users routes */
+    Route::get('/{username}', 'Forum\UserController@showUser');
+    Route::put('/{username}/update', 'Forum\UserController@update');
+});

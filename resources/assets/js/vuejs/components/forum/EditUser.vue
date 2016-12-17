@@ -16,6 +16,7 @@
                       id="first_name"
                       name="first_name"
                       class="form-control"
+                      v-model="userForm.first_name"
               >
               <div v-if="errors.first_name.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.first_name }}</p>
@@ -29,22 +30,10 @@
                       id="last_name"
                       name="last_name"
                       class="form-control"
+                      v-model="userForm.last_name"
               >
               <div v-if="errors.last_name.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.last_name }}</p>
-              </div>
-            </div> <!-- /.form-group -->
-
-            <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
-              <label class="control-label" for="email">Email</label>
-              <input
-                      type="text"
-                      id="email"
-                      name="email"
-                      class="form-control"
-              >
-              <div v-if="errors.email.length > 0" class="form-error-message">
-                <p class="text-danger">{{ errors.email }}</p>
               </div>
             </div> <!-- /.form-group -->
 
@@ -56,6 +45,7 @@
                       id="description"
                       name="description"
                       class="form-control description"
+                      v-model="userForm.description"
               >
               </textarea>
               <div v-if="errors.description.length > 0" class="form-error-message">
@@ -71,6 +61,7 @@
                       name="personal_website"
                       class="form-control"
                       placeholder="http://example.com"
+                      v-model="userForm.personal_website"
               >
               <div v-if="errors.personal_website.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.personal_website }}</p>
@@ -84,6 +75,7 @@
                       id="twitter_username"
                       name="twitter_username"
                       class="form-control"
+                      v-model="userForm.twitter_username"
               >
               <div v-if="errors.twitter_username.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.twitter_username }}</p>
@@ -97,6 +89,7 @@
                       id="github_username"
                       name="github_username"
                       class="form-control"
+                      v-model="userForm.github_username"
               >
               <div v-if="errors.github_username.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.github_username }}</p>
@@ -110,6 +103,7 @@
                       id="place_of_employment"
                       name="place_of_employment"
                       class="form-control"
+                      v-model="userForm.place_of_employment"
               >
               <div v-if="errors.place_of_employment.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.place_of_employment }}</p>
@@ -123,6 +117,7 @@
                       id="job_title"
                       name="job_title"
                       class="form-control"
+                      v-model="userForm.job_title"
               >
               <div v-if="errors.job_title.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.job_title }}</p>
@@ -136,6 +131,7 @@
                       id="hometown"
                       name="hometown"
                       class="form-control"
+                      v-model="userForm.hometown"
               >
               <div v-if="errors.hometown.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.hometown }}</p>
@@ -149,6 +145,7 @@
                       id="country_flag"
                       name="country_flag"
                       class="form-control"
+                      v-model="userForm.country_flag"
               >
               <div v-if="errors.country_flag.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.country_flag }}</p>
@@ -157,7 +154,12 @@
 
             <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
               <div class="checkbox i-checks pull-left">
-                <input type="checkbox" name="remember" id="for_hire" class="filled-in">
+                <input type="checkbox"
+                       name="remember"
+                       id="for_hire"
+                       class="filled-in"
+                       v-model="userForm.for_hire"
+                >
                 <label for="for_hire">Available For Hire?</label>
               </div>
               <div v-if="errors.for_hire.length > 0" class="form-error-message">
@@ -169,7 +171,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Update profile</button>
+          <button type="button" class="btn btn-primary" @click.prevent="updateUserProfile">Update profile</button>
         </div>
       </div> <!-- /.modal-content -->
     </div> <!-- /.modal-dialog -->
@@ -181,10 +183,22 @@
     name: 'edit-user',
     data () {
       return {
+        userForm: {
+          first_name: '',
+          last_name: '',
+          description: '',
+          personal_website: '',
+          twitter_username: '',
+          github_username: '',
+          place_of_employment: '',
+          job_title: '',
+          hometown: '',
+          country_flag: '',
+          for_hire: ''
+        },
         errors: {
           first_name: '',
           last_name: '',
-          email: '',
           description: '',
           personal_website: '',
           twitter_username: '',
@@ -196,7 +210,46 @@
           for_hire: ''
         }
       }
-    }
+    }, // data()
+
+    props: {
+      username: {
+        type: String,
+        require: true
+      }
+    },
+
+    mounted () {
+      this.getUser()
+    }, // mounted ()
+    
+    methods: {
+      getUser () {
+        this.$http.get('api/forum/' + this.username)
+          .then(res => {
+            this.userForm = res.data
+          }).catch(err => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          });
+      }, // getUser()
+
+      updateUserProfile () {
+        this.$http.put('api/forum/' + this.username + '/update', this.userForm)
+          .then(res => {
+            if(res.data.message) {
+              this.$root.$refs.toastr.s(res.data.message, 'Success')
+              $('#edit-user').modal('hide')
+              setTimeout(location.reload(), 9000)
+            }
+
+            if(res.data.errors) {
+              this.errors = res.data.errors
+            }
+          }).catch(err => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          });
+      } // updateUserProfile()
+    } // methods
   }
 </script>
 

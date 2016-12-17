@@ -23,6 +23,9 @@
     <body class="top-navigation pace-done gray-bg">
 
     <div id="app">
+
+        <vue-toastr ref="toastr"></vue-toastr>
+
         <div id="wrapper">
             @include('layouts.partials.navigation')
             <div class="wrapper wrapper-content">

@@ -23,6 +23,9 @@
     <body class="top-navigation pace-done public-layout">
 
         <div id="app" class="white-bg">
+
+            <vue-toastr ref="toastr"></vue-toastr>
+
             <div id="wrapper">
                 @include('layouts.partials.navigation')
                 <div class="container forum-content">

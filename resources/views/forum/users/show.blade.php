@@ -89,5 +89,5 @@
         </div> {{-- /.col-lg-8 --}}
 
     </div> {{-- /.row --}}
-    <edit-user></edit-user>
+    <edit-user :username="'{{ $user->username }}'"></edit-user>
 @endsection
