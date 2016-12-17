@@ -140,13 +140,13 @@
 
             <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
               <label class="control-label" for="country_flag">Country Flag</label>
-              <input
-                      type="text"
-                      id="country_flag"
+              <select id="country_flag"
                       name="country_flag"
                       class="form-control"
                       v-model="userForm.country_flag"
               >
+                <option v-for="country in countries" :value="country.id">{{ country.name }}</option>
+              </select>
               <div v-if="errors.country_flag.length > 0" class="form-error-message">
                 <p class="text-danger">{{ errors.country_flag }}</p>
               </div>
@@ -208,7 +208,8 @@
           hometown: '',
           country_flag: '',
           for_hire: ''
-        }
+        },
+        countries: {}
       }
     }, // data()
 
@@ -227,7 +228,9 @@
       getUser () {
         this.$http.get('api/forum/' + this.username)
           .then(res => {
-            this.userForm = res.data
+            console.log(res)
+            this.userForm = res.data.user
+            this.countries = res.data.countries
           }).catch(err => {
             this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
           });

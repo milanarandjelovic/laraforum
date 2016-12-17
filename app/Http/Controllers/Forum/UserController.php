@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use Webpatser\Countries\Countries;
 
 class UserController extends Controller
 {
@@ -67,8 +68,11 @@ class UserController extends Controller
             )
             ->first();
 
+        $country = Countries::all()->where('id', $user->country_flag)->first();
+
         return view('forum.users.show')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('country', $country);
     }
 
     /**
@@ -97,7 +101,12 @@ class UserController extends Controller
             )
             ->first();
 
-        return response()->json($user);
+        $countries = Countries::all();
+
+        return response()->json([
+            'user'      => $user,
+            'countries' => $countries,
+        ]);
     }
 
     /**
@@ -127,12 +136,12 @@ class UserController extends Controller
             'last_name'           => 'min:3|max:255',
             'description'         => 'min:3',
             'personal_website'    => 'min:3|max:255|url',
-            'twitter_username'    => 'min:3|max:255|',
-            'github_username'     => 'min:3|max:255|',
-            'place_of_employment' => 'min:3|max:255|',
-            'job_title'           => 'min:3|max:255|',
-            'hometown'            => 'min:3|max:255|',
-//            'country_flag'        => 'min:3|max:255|',
+            'twitter_username'    => 'min:3|max:255',
+            'github_username'     => 'min:3|max:255',
+            'place_of_employment' => 'min:3|max:255',
+            'job_title'           => 'min:3|max:255',
+            'hometown'            => 'min:3|max:255',
+            'country_flag'        => 'numeric',
             'for_hire'            => 'boolean',
         ]);
 

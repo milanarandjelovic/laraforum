@@ -40,8 +40,20 @@
                             @endif
                         </div>
                     </div>
-                    @if($user->hometown)
-                        <p><i class="fa fa-map-marker"></i>{{ $user->hometown }}</p>
+                    @if($country)
+                        <p><i class="fa fa-map-marker"></i>
+                            {{ $country->capital }}, {{ $country->name }}
+                            @if($country->flag)
+                                <img src="{{ url('img/countries/flags/' . $country->flag) }}"
+                                     alt="{{ $country->name }}" style="width: 20px;"
+                                >
+                            @endif
+                        </p>
+                    @endif
+                    @if($user->job_title || $user->place_of_employment)
+                        <p style="text-transform: uppercase;">
+                            <strong>{{ $user->job_title }} at, {{ $user->place_of_employment }}</strong>
+                        </p>
                     @endif
                     @if($user->description)
                         <h5>About me</h5>
