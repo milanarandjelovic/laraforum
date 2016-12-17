@@ -19,7 +19,7 @@
             @foreach($channels as $channel)
                 <div class="forum-item">
                     <div class="row">
-                        <div class="col-md-9">
+                        <div class="col-md-9 col-sm-9 col-xs-9">
                             <div class="forum-icon">
                                 <i class="fa fa-bolt"></i>
                             </div> {{-- /.forum-icon --}}
@@ -28,19 +28,19 @@
                                 New to the community? Please stop by, say hi and tell us a bit about yourself.
                             </div> {{-- /.forum-sub-title --}}
                         </div> {{-- /.col-md-9 --}}
-                        <div class="col-md-1 forum-info">
+                        <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
                             <span class="views-number">1216</span>
                             <div>
                                 <small>Views</small>
                             </div>
                         </div> {{-- /.col-md-1 --}}
-                        <div class="col-md-1 forum-info">
+                        <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
                             <span class="views-number">368</span>
                             <div>
                                 <small>Topics</small>
                             </div>
                         </div> {{-- /.col-md-1 --}}
-                        <div class="col-md-1 forum-info">
+                        <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
                             <span class="views-number">140</span>
                             <div>
                                 <small>Posts</small>
