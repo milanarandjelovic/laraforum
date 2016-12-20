@@ -193,6 +193,11 @@ return [
          */
         Webpatser\Countries\CountriesServiceProvider::class,
 
+        /*
+         * Debugbar Service Provider...
+         */
+        Barryvdh\Debugbar\ServiceProvider::class,
+
     ],
 
     /*
@@ -251,6 +256,11 @@ return [
          * Webpatser Countries Aliases
          */
         'Countries' => Webpatser\Countries\CountriesFacade::class,
+
+        /*
+         * Debugbar Aliases
+         */
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
