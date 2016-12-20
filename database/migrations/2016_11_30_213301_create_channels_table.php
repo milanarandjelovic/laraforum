@@ -17,7 +17,7 @@ class CreateChannelsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('channel_url');
-            $table->string('color');
+            $table->string('channel_icon');
             $table->timestamps();
         });
     }

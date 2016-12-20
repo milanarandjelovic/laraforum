@@ -46,34 +46,38 @@
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <form class="form-horizontal">
-                    <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
-                      <label class="col-sm-2 control-label" for="channel_url">Url</label>
-                      <div class="col-sm-10">
-                        <input
-                                type="text"
-                                id="channel_url"
-                                name="channel_url"
-                                class="form-control"
-                                v-model="channelForm.channel_url"
-                        >
-                        <div v-if="errors.channel_url.length > 0" class="form-error-message">
-                          <p class="text-danger">{{ errors.channel_url }}</p>
-                        </div>
+                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                    <label class="col-sm-2 control-label" for="channel_url">Url</label>
+                    <div class="col-sm-10">
+                      <input
+                              type="text"
+                              id="channel_url"
+                              name="channel_url"
+                              class="form-control"
+                              v-model="channelForm.channel_url"
+                      >
+                      <div v-if="errors.channel_url.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.channel_url }}</p>
                       </div>
-                    </div> <!-- /.form-group -->
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label" for="channel_color">Color</label>
-                      <div class="col-sm-10">
-                        <input
-                                type="color"
-                                id="channel_color"
-                                name="color"
-                                v-model="channelForm.color"
-                        >
+                    </div>
+                  </div> <!-- /.form-group -->
+                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                    <label class="col-sm-2 control-label" for="channel_icon">Icon</label>
+                    <div class="col-sm-10">
+                      <input
+                              type="text"
+                              id="channel_icon"
+                              name="channel_icon"
+                              class="form-control"
+                              v-model="channelForm.channel_icon"
+                      >
+                      <p>Choose channel <a href="#">icon</a></p>
+                      <div v-if="errors.channel_icon.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.channel_icon }}</p>
                       </div>
-                    </div> <!-- /.form-group -->
-                  </form> <!-- /.form-horizontal -->
+                    </div>
+                  </div> <!-- /.form-group -->
+                </form> <!-- /.form-horizontal -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -110,34 +114,38 @@
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <form class="form-horizontal">
-                    <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
-                      <label class="col-sm-2 control-label" for="channel_url">Url</label>
-                      <div class="col-sm-10">
-                        <input
-                                type="text"
-                                id="channel_url"
-                                name="channel_url"
-                                class="form-control"
-                                v-model="channelForm.channel_url"
-                        >
-                        <div v-if="errors.channel_url.length > 0" class="form-error-message">
-                          <p class="text-danger">{{ errors.channel_url }}</p>
-                        </div>
+                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                    <label class="col-sm-2 control-label" for="channel_url">Url</label>
+                    <div class="col-sm-10">
+                      <input
+                              type="text"
+                              id="channel_url"
+                              name="channel_url"
+                              class="form-control"
+                              v-model="channelForm.channel_url"
+                      >
+                      <div v-if="errors.channel_url.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.channel_url }}</p>
                       </div>
-                    </div> <!-- /.form-group -->
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label" for="channel_color">Color</label>
-                      <div class="col-sm-10">
-                        <input
-                                type="color"
-                                id="channel_color"
-                                name="color"
-                                v-model="channelForm.color"
-                        >
+                    </div>
+                  </div> <!-- /.form-group -->
+                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                    <label class="col-sm-2 control-label" for="channel_icon">Icon</label>
+                    <div class="col-sm-10">
+                      <input
+                              type="text"
+                              id="channel_icon"
+                              name="channel_icon"
+                              class="form-control"
+                              v-model="channelForm.channel_icon"
+                      >
+                      <p>Choose channel <a href="#">icon</a></p>
+                      <div v-if="errors.channel_icon.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.channel_icon }}</p>
                       </div>
-                    </div> <!-- /.form-group -->
-                  </form> <!-- /.form-horizontal -->
+                    </div>
+                  </div> <!-- /.form-group -->
+                </form> <!-- /.form-horizontal -->
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -155,6 +163,7 @@
               <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>Channel icon</th>
                 <th>Created at</th>
                 <th>Updated at</th>
                 <th>Action</th>
@@ -164,6 +173,7 @@
               <tr v-for="channel in channels">
                 <td>{{ channel.id }}</td>
                 <td>{{ channel.name }}</td>
+                <td>{{ channel.channel_icon }}</td>
                 <td>{{ channel.created_at }}</td>
                 <td>{{ channel.updated_at }}</td>
                 <td>
@@ -211,10 +221,11 @@
         channelForm: {
            name: '',
            channel_url: '',
-           color: '#000000'
+           channel_icon: '',
         },
         errors: {
           name: '',
+          channel_icon: '',
           channel_url: ''
         },
         hasErrorName: false,
@@ -224,7 +235,7 @@
         channel: {},
         pagination: {}
       }
-    },
+    }, // data()
 
     components: {
         'scale-loader': ScaleLoader,
@@ -248,7 +259,7 @@
         this.hasErrorName = false
         this.hasErrorChannelUrl = false
         this.channelForm.channel_url = ''
-        this.channelForm.color = '#000000'
+        this.channelForm.channel_icon = ''
         $('#add-channel-modal').modal('show')
       }, // openChannelModal()
 
@@ -301,7 +312,7 @@
         this.$http.get('/api/admin/channels/' + id).then(res => {
           this.channel_id = res.data.id
           this.channelForm.name = res.data.name
-          this.channelForm.color = res.data.color
+          this.channelForm.channel_icon = res.data.channel_icon
           this.channelForm.channel_url = res.data.channel_url
         }).catch(err => {
           this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')

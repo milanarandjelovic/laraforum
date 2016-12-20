@@ -54,10 +54,10 @@ class ChannelController extends Controller
     public function store(Request $request)
     {
 
-        $validator = Validator::make($request->only(['name', 'color', 'channel_url']), [
-            'name'        => 'required|min:3|max:255',
-            'channel_url' => 'required',
-            'color'       => 'required',
+        $validator = Validator::make($request->only(['name', 'channel_icon', 'channel_url']), [
+            'name'         => 'required|min:3|max:255',
+            'channel_url'  => 'required',
+            'channel_icon' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -70,9 +70,9 @@ class ChannelController extends Controller
         }
 
         Channel::create([
-            'name'        => $request->input('name'),
-            'channel_url' => $request->input('channel_url'),
-            'color'       => $request->input('color'),
+            'name'         => $request->input('name'),
+            'channel_url'  => $request->input('channel_url'),
+            'channel_icon' => $request->input('channel_icon'),
         ]);
 
         return response()->json([
@@ -103,10 +103,10 @@ class ChannelController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->only(['name', 'color', 'channel_url']), [
-            'name'        => 'required|min:3|max:255',
-            'channel_url' => 'required',
-            'color'       => 'required',
+        $validator = Validator::make($request->only(['name', 'channel_icon', 'channel_url']), [
+            'name'         => 'required|min:3|max:255',
+            'channel_url'  => 'required',
+            'channel_icon' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -119,9 +119,9 @@ class ChannelController extends Controller
         }
 
         Channel::where('id', $id)->update([
-            'name'        => $request->input('name'),
-            'channel_url' => $request->input('channel_url'),
-            'color'       => $request->input('color'),
+            'name'         => $request->input('name'),
+            'channel_url'  => $request->input('channel_url'),
+            'channel_icon' => $request->input('channel_icon'),
         ]);
 
         return response()->json([

@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-md-9 col-sm-9 col-xs-9">
                             <div class="forum-icon">
-                                <i class="fa fa-bolt"></i>
+                                <i class="{{ $channel->channel_icon }}"></i>
                             </div> {{-- /.forum-icon --}}
                             <a href="discuss/channels/{{ $channel->channel_url }}" class="forum-item-title">{{ $channel->name }}</a>
                             <div class="forum-sub-title">
