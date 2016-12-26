@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Forum;
 
+use App\Models\Discussion;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DiscussionRequest;
 
 class DiscussionController extends Controller
 {
@@ -25,22 +28,32 @@ class DiscussionController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        return view('forum.discussion.create');
+        $channels = DB::table('channels')->select('id', 'name')->orderBy('name', 'asc')->get();
+
+        return view('forum.discussion.create')
+            ->with('channels', $channels);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param DiscussionRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiscussionRequest $request)
     {
-        //
+        Discussion::create([
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'channel_id'  => $request->input('channel_id'),
+            'user_id'     => $request->input('user_id'),
+        ]);
+
+        return redirect()->route('discussion.index');
     }
 
     /**

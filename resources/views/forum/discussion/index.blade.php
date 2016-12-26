@@ -5,13 +5,22 @@
 @section('content')
     <div class="container">
 
-        <div class="ibox-content m-b-sm border-bottom">
+        <div class="ibox-content m-b-sm border-bottom clearfix">
             <div class="p-xs">
                 <div class="pull-left m-r-md">
                     <i class="fa fa-globe text-navy mid-icon"></i>
                 </div>
-                <h2>Welcome in {{ config('app.name', 'LaraForum') }}</h2>
-                <span>Feel free to choose topic you're interested in.</span>
+                <div class="pull-left">
+                    <h2>Welcome in {{ config('app.name', 'LaraForum') }}</h2>
+                    <span>Feel free to choose topic you're interested in.</span>
+                </div>
+                <div class="pull-right mt-15">
+                    @if(!Auth::user())
+                        <a href="{{ route('auth.register') }}" class="btn btn-primary">Create Account</a>
+                    @else
+                        <a href="{{ route('discussion.create') }}" class="btn btn-primary">New Discussion</a>
+                    @endif
+                </div>
             </div> {{-- /.p-xs --}}
         </div> {{-- /.ibox-content --}}
 
@@ -23,27 +32,28 @@
                             <div class="forum-icon">
                                 <i class="{{ $channel->channel_icon }}"></i>
                             </div> {{-- /.forum-icon --}}
-                            <a href="discuss/channels/{{ $channel->channel_url }}" class="forum-item-title">{{ $channel->name }}</a>
+                            <a href="discuss/channels/{{ $channel->channel_url }}"
+                               class="forum-item-title">{{ $channel->name }}</a>
                             <div class="forum-sub-title">
                                 New to the community? Please stop by, say hi and tell us a bit about yourself.
                             </div> {{-- /.forum-sub-title --}}
                         </div> {{-- /.col-md-9 --}}
                         <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
-                            <span class="views-number">1216</span>
+                            <span class="views-number">140</span>
                             <div>
-                                <small>Views</small>
+                                <small>Posts</small>
                             </div>
                         </div> {{-- /.col-md-1 --}}
                         <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
                             <span class="views-number">368</span>
                             <div>
-                                <small>Topics</small>
+                                <small>Comments</small>
                             </div>
                         </div> {{-- /.col-md-1 --}}
                         <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
-                            <span class="views-number">140</span>
+                            <span class="views-number">1216</span>
                             <div>
-                                <small>Posts</small>
+                                <small>Views</small>
                             </div>
                         </div> {{-- /.col-md-1 --}}
                     </div> {{-- /.row --}}

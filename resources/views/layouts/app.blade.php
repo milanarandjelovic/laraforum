@@ -20,10 +20,10 @@
             ]); ?>
         </script>
     </head>
-    <body class="top-navigation pace-done public-layout">
+    <body class="top-navigation pace-done public-layout gray-bg">
 
-        <div id="app" class="white-bg">
-            <div id="wrapper">
+        <div id="app" class="gray-bg">
+            <div id="wrapper wrapper-content">
                 @include('layouts.partials.navigation')
                 <div class="container forum-content">
                     @yield('content')

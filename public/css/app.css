@@ -21698,6 +21698,10 @@ body.md-skin {
   margin-bottom: 1em !important;
 }
 
+.mt-15 {
+  margin-top: 15px !important;
+}
+
 /* Custom style */
 /* Your custom style to override base style */
 body.public-layout {

@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     /* Discussion routes */
     Route::group(['prefix' => 'discuss'], function () {
         Route::get('conversations/create', ['as' => 'discussion.create', 'uses' => 'Forum\DiscussionController@create']);
+        Route::post('conversations/store', ['as' => 'discussion.store', 'uses' => 'Forum\DiscussionController@store']);
     });
 });
 

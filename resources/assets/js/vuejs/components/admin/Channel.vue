@@ -163,6 +163,7 @@
               <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>Channel url</th>
                 <th>Channel icon</th>
                 <th>Created at</th>
                 <th>Updated at</th>
@@ -173,6 +174,7 @@
               <tr v-for="channel in channels">
                 <td>{{ channel.id }}</td>
                 <td>{{ channel.name }}</td>
+                <td>{{ channel.channel_url }}</td>
                 <td>{{ channel.channel_icon }}</td>
                 <td>{{ channel.created_at }}</td>
                 <td>{{ channel.updated_at }}</td>
