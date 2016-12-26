@@ -184,6 +184,11 @@ return [
         Laravel\Passport\PassportServiceProvider::class,
 
         /*
+         * Laravel Collective Service Provider...
+         */
+        Collective\Html\HtmlServiceProvider::class,
+
+        /*
          * Laravel Gravatar Service Provider...
          */
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
@@ -246,6 +251,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'HelpMenu' => App\LaraForum\Helpers\Menu::class,
+
+        /*
+         * Laravel Collective Aliases
+         */
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
         /*
          * Laravel Gravatar Aliases
