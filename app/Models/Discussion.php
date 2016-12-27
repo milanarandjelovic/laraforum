@@ -33,4 +33,14 @@ class Discussion extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
+
+    public function channel()
+    {
+        return $this->belongsTo('App\Models\Channel');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

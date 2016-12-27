@@ -20,7 +20,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'first_name'          => $faker->firstName,
         'last_name'           => $faker->lastName,
         'email'               => $faker->unique()->safeEmail,
-        'description'         => $faker->realText(),
+        'profile_description' => $faker->realText(),
         'personal_website'    => 'http//example.com',
         'twitter_username'    => $faker->userName,
         'github_username'     => $faker->userName,
@@ -29,5 +29,17 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'hometown'            => $faker->city,
         'password'            => $password ?: $password = bcrypt('secret'),
         'remember_token'      => str_random(10),
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Discussion::class, function (Faker\Generator $faker) {
+    return [
+        'title'       => $faker->text,
+        'description' => $faker->text(),
+        'channel_id'  => $faker->numberBetween(1, 10),
+        'user_id'     => function () {
+            return factory(App\Models\User::class)->create()->id;
+        },
     ];
 });

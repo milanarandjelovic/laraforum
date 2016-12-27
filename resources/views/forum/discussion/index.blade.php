@@ -32,7 +32,7 @@
                             <div class="forum-icon">
                                 <i class="{{ $channel->channel_icon }}"></i>
                             </div> {{-- /.forum-icon --}}
-                            <a href="discuss/channels/{{ $channel->channel_url }}"
+                            <a href="/discuss/channels/{{ $channel->channel_url }}"
                                class="forum-item-title">{{ $channel->name }}</a>
                             <div class="forum-sub-title">
                                 New to the community? Please stop by, say hi and tell us a bit about yourself.

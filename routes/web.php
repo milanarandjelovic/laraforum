@@ -24,6 +24,7 @@ Route::group(['prefix' => '/discuss'], function () {
     /* Channels routes */
     Route::group(['prefix' => '/channels'], function () {
         Route::get('/{channelName}', ['uses' => 'Forum\ChannelController@getChannelPosts']);
+        Route::get('/{channelName}/{slug}', ['uses' => 'Forum\DiscussionController@show']);
     });
 });
 

@@ -40,4 +40,9 @@ class Channel extends Model
     {
         return $this->asDateTime($date)->diffForHumans();
     }
+
+    public function discussions()
+    {
+        return $this->belongsTo('App\Models\Discussion');
+    }
 }

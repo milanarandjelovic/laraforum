@@ -21,7 +21,7 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
-        'description',
+        'profile_description',
         'personal_website',
         'twitter_username',
         'github_username',
@@ -100,5 +100,10 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function discussions()
+    {
+        return $this->hasMany('App\Models\Discussion');
     }
 }
