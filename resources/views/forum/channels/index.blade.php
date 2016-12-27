@@ -1,4 +1,4 @@
-@extends('forum.layouts.main')
+@extends('forum.layouts.app')
 
 @section('title', '| Discussion')
 
@@ -10,7 +10,6 @@
                 <div class="forum-post-info">
                     <h4>
                         <span class="text-navy">
-                            {{--{{ $channel->name }}--}}
                             @include('forum.channels.partials.page-heading')
                         </span>
                     </h4>
@@ -27,11 +26,11 @@
                                     </a>
                                 </div> {{-- /.col-md-1 --}}
                                 <div class="col-md-10 col-sm-10 col-xs-10">
-                                    <div class="form-discuss-links">
-                                        <a href="/discuss/channels/" class="forum-item-title">
+                                    <div class="forum-discuss-links">
+                                        <a href="{{ '/discuss/channels/' . $discussion->channel_url . '/'. $discussion->slug }}" class="forum-item-title">
                                             {{ $discussion->title }}
                                         </a>
-                                        <a href="{{ $discussion->channel_url }}" class="form-channel-name">
+                                        <a href="{{ $discussion->channel_url }}" class="forum-channel-name">
                                             {{ strtoupper($discussion->name) }}
                                         </a>
                                         <a href="{{ $discussion->channel_url }}" class="forum-channel-date">

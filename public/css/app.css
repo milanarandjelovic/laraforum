@@ -21702,6 +21702,11 @@ body.md-skin {
   margin-top: 15px !important;
 }
 
+.mr-10 {
+  margin-right: 10px !important;
+}
+
+/* Pagination */
 .pagination-holder {
   text-align: center !important;
 }
@@ -21946,6 +21951,26 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 .forum-discuss-container .forum-item .forum-info {
   text-align: center;
   padding: 2%;
+}
+
+.social-avatar .media-body .forum-item-title {
+  color: #4D545D;
+  pointer-events: none;
+  font-size: 25px !important;
+}
+
+.social-avatar .media-body .forum-discuss-links .forum-channel-date {
+  color: #CACACA;
+  font-weight: bold;
+}
+
+.social-avatar .media-body .forum-discuss-links .forum-channel-creator {
+  color: #00B1B3;
+  font-weight: bold;
+}
+
+.social-body .forum-discuss-description {
+  color: #818181;
 }
 
 /* Clear layout on print mode */

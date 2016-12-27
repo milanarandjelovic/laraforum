@@ -34,7 +34,7 @@ class UserController extends Controller
                 'first_name'          => $user->first_name,
                 'last_name'           => $user->last_name,
                 'email'               => $user->email,
-                'description'         => $user->description,
+                'profile_description' => $user->profile_description,
                 'personal_website'    => $user->personal_website,
                 'twitter_username'    => $user->twitter_username,
                 'github_username'     => $user->github_username,
@@ -51,6 +51,8 @@ class UserController extends Controller
                 'updated_at'          => $user->updated_at,
             ];
         }
+
+        dd($userData);
 
         $response = [
             'pagination' => [

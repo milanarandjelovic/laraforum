@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Forum;
 
 use App\Models\Discussion;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -59,12 +58,23 @@ class DiscussionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $channelSlug
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show($channelSlug, $slug)
     {
-        //
+
+        $discussion = DB::table('discussions')
+            ->where('slug', $slug)
+            ->leftJoin('channels', 'channel_id', '=', 'channels.id')
+            ->leftJoin('users', 'user_id', '=', 'users.id')
+            ->orderBy('discussions.created_at', 'desc')
+            ->select('discussions.*', 'channels.name', 'channels.channel_url', 'users.username')
+            ->first();
+
+        return view('forum.channels.show')
+            ->with('discussion', $discussion);
     }
 
     /**

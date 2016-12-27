@@ -185,3 +185,31 @@
     }
   }
 }
+
+.social-avatar {
+  .media-body {
+    .forum-item-title {
+      color: #4D545D;
+      pointer-events: none;
+      font-size: 25px !important;
+    }
+
+    .forum-discuss-links {
+      .forum-channel-date {
+        color: #CACACA;
+        font-weight: bold;
+      }
+
+      .forum-channel-creator {
+        color: #00B1B3;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.social-body {
+  .forum-discuss-description {
+    color: #818181;
+  }
+}

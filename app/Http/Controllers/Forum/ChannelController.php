@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Forum;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
@@ -30,7 +29,7 @@ class ChannelController extends Controller
                 ->select('discussions.*', 'channels.*', 'users.*')
                 ->paginate(20);
         }
-//        dd($discussions);
+
         return view('forum.channels.index')
             ->with('channel', $channel)
             ->with('discussions', $discussions);

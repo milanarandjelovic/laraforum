@@ -10,10 +10,12 @@
             <div class="ibox">
                 <div class="ibox-title">
                     <h3 class="pull-left">Profile Detail</h3>
-                    @if(Auth::user()->username === $user->username)
-                        <div class="pull-right">
-                            <a href="#edit-user" data-toggle="modal" class="btn btn-xs btn-primary">Edit Profile</a>
-                        </div>
+                    @if(Auth::user())
+                        @if(Auth::user()->username === $user->username)
+                            <div class="pull-right">
+                                <a href="#edit-user" data-toggle="modal" class="btn btn-xs btn-primary">Edit Profile</a>
+                            </div>
+                        @endif
                     @endif
                 </div> {{-- /.ibox-title --}}
                 <div class="ibox-content user-avatar">
@@ -101,5 +103,7 @@
         </div> {{-- /.col-lg-8 --}}
 
     </div> {{-- /.row --}}
-    <edit-user :username="'{{ $user->username }}'"></edit-user>
+    @if(Auth::user())
+        <edit-user :username="'{{ $user->username }}'"></edit-user>
+    @endif
 @endsection
