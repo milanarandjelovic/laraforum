@@ -21702,6 +21702,10 @@ body.md-skin {
   margin-top: 15px !important;
 }
 
+.pagination-holder {
+  text-align: center !important;
+}
+
 /* Custom style */
 /* Your custom style to override base style */
 body.public-layout {
@@ -21868,6 +21872,40 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 /* Page Heading */
 .page-heading .breadcrumb li:last-child {
   font-weight: bold;
+}
+
+/* Channel discussions */
+.forum-discuss-container .forum-item .forum-channel-creator-avatar {
+  text-align: center;
+  padding: 2%;
+}
+
+.forum-discuss-container .forum-item .form-discuss-links .forum-item-title {
+  color: #4D545D;
+}
+
+.forum-discuss-container .forum-item .form-discuss-links .form-channel-name {
+  color: #F9A97A;
+  font-weight: bold;
+}
+
+.forum-discuss-container .forum-item .form-discuss-links .forum-channel-date {
+  color: #CACACA;
+  font-weight: bold;
+}
+
+.forum-discuss-container .forum-item .form-discuss-links .forum-channel-creator {
+  color: #00B1B3;
+  font-weight: bold;
+}
+
+.forum-discuss-container .forum-item .forum-discuss-description {
+  color: #818181;
+}
+
+.forum-discuss-container .forum-item .forum-info {
+  text-align: center;
+  padding: 2%;
 }
 
 /* Clear layout on print mode */

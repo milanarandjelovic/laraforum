@@ -104,3 +104,43 @@
     }
   }
 }
+
+/* Channel discussions */
+.forum-discuss-container {
+  .forum-item {
+    .forum-channel-creator-avatar {
+      text-align: center;
+      padding: 2%;
+    }
+
+    .form-discuss-links {
+      .forum-item-title {
+        color: #4D545D;
+      }
+
+      .form-channel-name {
+        color: #F9A97A;
+        font-weight: bold;
+      }
+
+      .forum-channel-date {
+        color: #CACACA;
+        font-weight: bold;
+      }
+
+      .forum-channel-creator {
+        color: #00B1B3;
+        font-weight: bold;
+      }
+    }
+
+    .forum-discuss-description {
+      color: #818181;
+    }
+
+    .forum-info {
+      text-align: center;
+      padding: 2%;
+    }
+  }
+}
