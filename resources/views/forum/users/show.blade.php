@@ -55,9 +55,9 @@
                             <strong>{{ $user->job_title }} at, {{ $user->place_of_employment }}</strong>
                         </p>
                     @endif
-                    @if($user->description)
+                    @if($user->profile_description)
                         <h5>About me</h5>
-                        <p class="small">{{ $user->description }}</p>
+                        <p class="small">{{ $user->profile_description }}</p>
                     @endif
                     <div class="user-button">
                         <div class="row mb-5 ">

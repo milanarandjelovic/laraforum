@@ -38,18 +38,18 @@
             </div> <!-- /.form-group -->
 
             <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
-              <label class="control-label" for="description">Description</label>
+              <label class="control-label" for="profile_description">Description</label>
               <textarea
                       rows="6"
                       type="text"
-                      id="description"
-                      name="description"
+                      id="profile_description"
+                      name="profile_description"
                       class="form-control description"
-                      v-model="userForm.description"
+                      v-model="userForm.profile_description"
               >
               </textarea>
-              <div v-if="errors.description.length > 0" class="form-error-message">
-                <p class="text-danger">{{ errors.description }}</p>
+              <div v-if="errors.profile_description.length > 0" class="form-error-message">
+                <p class="text-danger">{{ errors.profile_description }}</p>
               </div>
             </div> <!-- /.form-group -->
 
@@ -186,7 +186,7 @@
         userForm: {
           first_name: '',
           last_name: '',
-          description: '',
+          profile_description: '',
           personal_website: '',
           twitter_username: '',
           github_username: '',
@@ -199,7 +199,7 @@
         errors: {
           first_name: '',
           last_name: '',
-          description: '',
+          profile_description: '',
           personal_website: '',
           twitter_username: '',
           github_username: '',

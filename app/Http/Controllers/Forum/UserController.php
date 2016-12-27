@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Forum;
 
+use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Validator;
 use Webpatser\Countries\Countries;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -56,7 +56,7 @@ class UserController extends Controller
                 'first_name',
                 'last_name',
                 'email',
-                'description',
+                'profile_description',
                 'personal_website',
                 'twitter_username',
                 'github_username',
@@ -89,7 +89,7 @@ class UserController extends Controller
                 'first_name',
                 'last_name',
                 'email',
-                'description',
+                'profile_description',
                 'personal_website',
                 'twitter_username',
                 'github_username',
@@ -134,7 +134,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name'          => 'min:3|max:255',
             'last_name'           => 'min:3|max:255',
-            'description'         => 'min:3',
+            'profile_description' => 'min:3',
             'personal_website'    => 'min:3|max:255|url',
             'twitter_username'    => 'min:3|max:255',
             'github_username'     => 'min:3|max:255',
@@ -150,7 +150,7 @@ class UserController extends Controller
                 'errors' => [
                     'first_name'          => $validator->errors()->first('first_name'),
                     'last_name'           => $validator->errors()->first('last_name'),
-                    'description'         => $validator->errors()->first('description'),
+                    'profile_description' => $validator->errors()->first('profile_description'),
                     'personal_website'    => $validator->errors()->first('personal_website'),
                     'twitter_username'    => $validator->errors()->first('twitter_username'),
                     'github_username'     => $validator->errors()->first('github_username'),
@@ -166,7 +166,7 @@ class UserController extends Controller
         User::where('username', $username)->update([
             'first_name'          => $request->input('first_name'),
             'last_name'           => $request->input('last_name'),
-            'description'         => $request->input('description'),
+            'profile_description' => $request->input('profile_description'),
             'personal_website'    => $request->input('personal_website'),
             'twitter_username'    => $request->input('twitter_username'),
             'github_username'     => $request->input('github_username'),
