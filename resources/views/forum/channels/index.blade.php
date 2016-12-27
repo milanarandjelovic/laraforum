@@ -10,7 +10,8 @@
                 <div class="forum-post-info">
                     <h4>
                         <span class="text-navy">
-                            {{ $channel->name }}
+                            {{--{{ $channel->name }}--}}
+                            @include('forum.channels.partials.page-heading')
                         </span>
                     </h4>
                 </div> {{-- /.forum-post-info --}}
