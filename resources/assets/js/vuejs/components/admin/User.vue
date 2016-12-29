@@ -41,7 +41,11 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.created_at }}</td>
                 <td>{{ user.updated_at }}</td>
-                <td><p class="label" :class="user.role.class">{{ user.role.name }}</p></td>
+                <td>
+                  <p class="label" :class="user.roles[0].name == 'admin' ? 'label-primary' : 'label-success'">
+                    {{ user.roles[0].name }}
+                  </p>
+                </td>
               </tr>
               </tbody>
             </table>
@@ -94,11 +98,12 @@
         let pg = page ? '/api/admin/users?page=' + page : '/api/admin/users'
         this.$http.get(pg).then(res => {
             this.pagination = res.data.pagination
-            this.users = res.data.users
+            this.users = res.data.users.data
           }).catch(err => {
             this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
           });
       }
     } // methods
   }
+
 </script>

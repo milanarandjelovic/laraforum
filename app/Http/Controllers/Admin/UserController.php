@@ -25,34 +25,7 @@ class UserController extends Controller
      */
     public function users()
     {
-        $users = User::paginate(10);
-
-        foreach ($users as $user) {
-            $userData[] = [
-                'id'                  => $user->id,
-                'username'            => $user->username,
-                'first_name'          => $user->first_name,
-                'last_name'           => $user->last_name,
-                'email'               => $user->email,
-                'profile_description' => $user->profile_description,
-                'personal_website'    => $user->personal_website,
-                'twitter_username'    => $user->twitter_username,
-                'github_username'     => $user->github_username,
-                'place_of_employment' => $user->place_of_employment,
-                'job_title'           => $user->job_title,
-                'hometown'            => $user->hometown,
-                'country_flag'        => $user->country_flag,
-                'for_hire'            => $user->for_hire,
-                'role'                => [
-                    'name'  => $user->roles()->first()->name,
-                    'class' => $user->roles()->first()->name == 'admin' ? 'label-primary' : 'label-success',
-                ],
-                'created_at'          => $user->created_at,
-                'updated_at'          => $user->updated_at,
-            ];
-        }
-
-        dd($userData);
+        $users = User::with('roles')->paginate(10);
 
         $response = [
             'pagination' => [
@@ -64,7 +37,7 @@ class UserController extends Controller
                 'to'           => $users->lastItem(),
 
             ],
-            'users'      => $userData,
+            'users'      => $users,
         ];
 
         return response()->json($response);
