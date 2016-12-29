@@ -11,6 +11,6 @@ class DiscussionsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Discussion::class, 30)->create();
+        factory(\App\Models\Discussion::class, 100)->create();
     }
 }

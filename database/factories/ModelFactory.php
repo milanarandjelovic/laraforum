@@ -35,11 +35,9 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\Discussion::class, function (Faker\Generator $faker) {
     return [
-        'title'       => $faker->text,
-        'description' => $faker->text(),
+        'title'       => $faker->sentence(5),
+        'description' => $faker->paragraph(10),
         'channel_id'  => $faker->numberBetween(1, 10),
-        'user_id'     => function () {
-            return factory(App\Models\User::class)->create()->id;
-        },
+        'user_id'     => $faker->numberBetween(1, 100),
     ];
 });
