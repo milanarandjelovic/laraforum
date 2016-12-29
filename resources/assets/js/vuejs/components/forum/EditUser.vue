@@ -228,7 +228,6 @@
       getUser () {
         this.$http.get('api/forum/' + this.username)
           .then(res => {
-            console.log(res)
             this.userForm = res.data.user
             this.countries = res.data.countries
           }).catch(err => {
