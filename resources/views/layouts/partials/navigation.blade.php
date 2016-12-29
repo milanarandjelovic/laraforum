@@ -42,7 +42,7 @@
                                 @if(Auth::user()->isAdmin())
                                     <li>
                                         <a href="{{ route('admin.dashboard')  }}">
-                                            <i class="fa fa-user" aria-hidden="true"></i>Dashboard
+                                            <i class="fa fa-dashboard" aria-hidden="true"></i>Dashboard
                                         </a>
                                     </li>
                                 @endif
