@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('conversations/create', ['as' => 'discussion.create', 'uses' => 'Forum\DiscussionController@create']);
         Route::post('conversations/store', ['as' => 'discussion.store', 'uses' => 'Forum\DiscussionController@store']);
     });
+
+    Route::post('comments/store', ['as' => 'comments.store', 'uses' => 'Forum\CommentController@store']);
 });
 
 /* Routes for admin user */

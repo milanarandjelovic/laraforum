@@ -65,13 +65,19 @@ class DiscussionController extends Controller
     public function show($channelSlug, $slug)
     {
 
-        $discussion = DB::table('discussions')
-            ->where('slug', $slug)
-            ->leftJoin('channels', 'channel_id', '=', 'channels.id')
-            ->leftJoin('users', 'user_id', '=', 'users.id')
-            ->orderBy('discussions.created_at', 'desc')
-            ->select('discussions.*', 'channels.name', 'channels.channel_url', 'users.username')
-            ->first();
+//        $discussion = DB::table('discussions')
+//            ->where('slug', $slug)
+//            ->leftJoin('channels', 'channel_id', '=', 'channels.id')
+//            ->leftJoin('users', 'user_id', '=', 'users.id')
+//            ->orderBy('discussions.created_at', 'desc')
+//            ->select('discussions.*', 'channels.name', 'channels.channel_url', 'users.username')
+//            ->first();
+
+        $discussion = Discussion::where('slug', $slug)
+            ->with('channel')
+            ->with('user')
+            ->with('comments')->first();
+//        dd($comments);
 
         return view('forum.channels.show')
             ->with('discussion', $discussion);
