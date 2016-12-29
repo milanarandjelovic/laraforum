@@ -47,7 +47,7 @@
                                     </li>
                                 @endif
                                 <li>
-                                    <a href="{{ '@' . Auth::user()->username }}">
+                                    <a href="{{ '/@' . Auth::user()->username }}">
                                         <i class="fa fa-user" aria-hidden="true"></i>Profile
                                     </a>
                                 </li>

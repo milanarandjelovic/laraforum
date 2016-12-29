@@ -1,4 +1,4 @@
-@extends('forum.layouts.main')
+@extends('forum.layouts.app')
 
 @section('title', '| Discussion')
 
