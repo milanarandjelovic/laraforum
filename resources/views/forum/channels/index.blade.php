@@ -29,7 +29,8 @@
                                 <div class="col-md-10 col-sm-10 col-xs-10">
                                     <div class="forum-discuss-links">
                                         <a href="{{ '/discuss/channels/' . $discussion->channel->channel_url . '/'. $discussion->slug }}"
-                                           class="forum-item-title">
+                                           class="forum-item-title"
+                                        >
                                             {{ $discussion->title }}
                                         </a>
                                         <a href="{{ $discussion->channel->channel_url }}" class="forum-channel-name">
@@ -45,7 +46,7 @@
                                         </a>
                                     </div> {{-- /.forum-discuss-links --}}
                                     <div class="forum-discuss-description">
-                                        {{ substr($discussion->description, 0, 160) . '...'}}
+                                        {{ substr($discussion->description, 0, 160) . '...' }}
                                     </div> {{-- /.forum-discuss-description --}}
                                 </div> {{-- /.col-md-10 --}}
                                 <div class="col-md-1 col-sm-1 col-xs-1 forum-info">

@@ -21702,6 +21702,10 @@ body.md-skin {
   margin-top: 15px !important;
 }
 
+.mr-5 {
+  margin-right: 5px !important;
+}
+
 .mr-10 {
   margin-right: 10px !important;
 }
@@ -21971,6 +21975,16 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 
 .social-body .forum-discuss-description {
   color: #818181;
+}
+
+.discussion-created-at {
+  color: #C2CAB9;
+  font-weight: bold;
+}
+
+.discussion-comment-creator {
+  color: #00B1B3;
+  font-weight: 700;
 }
 
 /* Clear layout on print mode */

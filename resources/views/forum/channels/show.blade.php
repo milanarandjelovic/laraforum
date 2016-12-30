@@ -15,10 +15,8 @@
                                 <a class="forum-item-title">{{ $discussion->title }}</a>
                             </h5>
                             <div class="forum-discuss-links">
-                                <a class="forum-channel-date pull-left mr-10">
-                                    PUBLISHED
-                                    {{ strtoupper(\Carbon\Carbon::createFromTimeStamp(strtotime($discussion->created_at))->diffForHumans()) }}
-                                    BY
+                                <a class="forum-channel-date pull-left mr-5">
+                                    PUBLISHED {{ strtoupper($discussion->created_at) }} BY
                                 </a>
                                 <a href="/{{ '@' . $discussion->user->username }}" class="forum-channel-creator">
                                     {{ strtoupper($discussion->user->username) }}
@@ -29,6 +27,10 @@
 
                     <div class="social-body">
                         <p class="forum-discuss-description">{{ $discussion->description }}</p>
+                        <div class="btn-group">
+                            <button class="btn btn-white btn-xs"><i class="fa fa-star"></i> Favorite this!</button>
+                            <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
+                        </div>
                     </div> {{-- /.social-body --}}
 
                     <div class="social-footer">
@@ -48,8 +50,10 @@
                                     >
                                 </a>
                                 <div class="media-body">
-                                    <a href="/{{ '@' . $comment->user->username }}">{{ $comment->user->username }}</a>
-                                    <span>{{ $comment->created_at }}</span>
+                                    <a href="/{{ '@' . $comment->user->username }}" class="discussion-comment-creator">
+                                        {{ $comment->user->username }}
+                                    </a>
+                                    <span class="discussion-created-at">{{ $comment->created_at }}</span>
                                     <div>{{$comment->description}}</div>
                                     @if(Auth::user())
                                         <a href="#" class=""><i class="fa fa-thumbs-up"></i> 11</a>
