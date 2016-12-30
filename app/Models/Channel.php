@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Channel extends Model
+class Channel extends BaseModel
 {
 
     /**
@@ -17,29 +15,6 @@ class Channel extends Model
         'channel_url',
         'channel_icon',
     ];
-
-
-    /**
-     * Return diffForHumans for created_at.
-     *
-     * @param $date
-     * @return string
-     */
-    public function getCreatedAtAttribute($date)
-    {
-        return $this->asDateTime($date)->diffForHumans();
-    }
-
-    /**
-     * Return diffForHumans for updated_at.
-     *
-     * @param $date
-     * @return string
-     */
-    public function getUpdatedAtAttribute($date)
-    {
-        return $this->asDateTime($date)->diffForHumans();
-    }
 
     public function discussions()
     {

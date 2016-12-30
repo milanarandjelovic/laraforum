@@ -49,7 +49,7 @@
                                 </a>
                                 <div class="media-body">
                                     <a href="/{{ '@' . $comment->user->username }}">{{ $comment->user->username }}</a>
-                                    <p>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($comment->created_at))->diffForHumans() }}</p>
+                                    <span>{{ $comment->created_at }}</span>
                                     <div>{{$comment->description}}</div>
                                     @if(Auth::user())
                                         <a href="#" class=""><i class="fa fa-thumbs-up"></i> 11</a>

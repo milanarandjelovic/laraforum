@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Illuminate\Database\Eloquent\Model;
 
-class Discussion extends Model
+class Discussion extends BaseModel
 {
 
     use HasSlug;
@@ -23,28 +22,6 @@ class Discussion extends Model
         'channel_id',
         'user_id',
     ];
-
-    /**
-     * Return diffForHumans for created_at.
-     *
-     * @param $date
-     * @return string
-     */
-    public function getCreatedAtAttribute($date)
-    {
-        return $this->asDateTime($date)->diffForHumans();
-    }
-
-    /**
-     * Return diffForHumans for updated_at.
-     *
-     * @param $date
-     * @return string
-     */
-    public function getUpdatedAtAttribute($date)
-    {
-        return $this->asDateTime($date)->diffForHumans();
-    }
 
     /**
      * Get the options for generating the slug.
