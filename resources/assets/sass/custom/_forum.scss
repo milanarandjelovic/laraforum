@@ -214,12 +214,22 @@
   }
 }
 
+.forum-info {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .discussion-created-at {
-  color: #C2CAB9;
+  color: #CACACA;
   font-weight: bold;
 }
 
 .discussion-comment-creator {
   color: #00B1B3;
+  font-weight: 700;
+}
+
+.views-number, .comment-num {
+  color: #CACACA;
   font-weight: 700;
 }

@@ -17,12 +17,14 @@ class ChannelController extends Controller
             $discussions = Discussion::orderBy('created_at', 'desc')
                 ->with('channel')
                 ->with('user')
+                ->with('comments')
                 ->paginate(20);
         } else {
             $discussions = Discussion::where('channel_id', $channel->id)
                 ->orderBy('created_at', 'desc')
                 ->with('channel')
                 ->with('user')
+                ->with('comments')
                 ->paginate(20);
         }
 

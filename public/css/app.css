@@ -21710,6 +21710,10 @@ body.md-skin {
   margin-right: 10px !important;
 }
 
+.mr-25 {
+  margin-right: 25px !important;
+}
+
 /* Pagination */
 .pagination-holder {
   text-align: center !important;
@@ -21977,13 +21981,23 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   color: #818181;
 }
 
+.forum-info {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .discussion-created-at {
-  color: #C2CAB9;
+  color: #CACACA;
   font-weight: bold;
 }
 
 .discussion-comment-creator {
   color: #00B1B3;
+  font-weight: 700;
+}
+
+.views-number, .comment-num {
+  color: #CACACA;
   font-weight: 700;
 }
 

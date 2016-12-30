@@ -26,7 +26,7 @@
                                              class="img img-circle">
                                     </a>
                                 </div> {{-- /.col-md-1 --}}
-                                <div class="col-md-10 col-sm-10 col-xs-10">
+                                <div class="col-md-9 col-sm-9 col-xs-9">
                                     <div class="forum-discuss-links">
                                         <a href="{{ '/discuss/channels/' . $discussion->channel->channel_url . '/'. $discussion->slug }}"
                                            class="forum-item-title"
@@ -49,10 +49,14 @@
                                         {{ substr($discussion->description, 0, 160) . '...' }}
                                     </div> {{-- /.forum-discuss-description --}}
                                 </div> {{-- /.col-md-10 --}}
-                                <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
-                                    <span class="views-number">368</span>
-                                    <div>
-                                        <small>Comments</small>
+                                <div class="col-md-1 col-sm-1 col-xs-1 forum-info pull-right mr-25">
+                                    <span class="views-number">
+                                        {{ $discussion->comments->count() }}
+                                    </span>
+                                    <div class="text-center">
+                                        <small class="comment-num">
+                                            {{ str_plural('Comment', $discussion->comments->count()) }}
+                                        </small>
                                     </div>
                                 </div> {{-- /.col-md-1 --}}
                             </div> {{-- /.row --}}
