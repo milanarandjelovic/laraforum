@@ -18,47 +18,73 @@
                     @if(!Auth::user())
                         <a href="{{ route('auth.register') }}" class="btn btn-primary">Create Account</a>
                     @else
-                        <a href="{{ route('discussion.create') }}" class="btn btn-primary">New Discussion</a>
+                        <a href="{{ route('discussion.create') }}" class="btn btn-primary new-discussions">
+                            New Discussion
+                        </a>
                     @endif
                 </div>
             </div> {{-- /.p-xs --}}
         </div> {{-- /.ibox-content --}}
 
         <div class="ibox-content forum-container">
-            @foreach($channels as $channel)
+            @if($channels->count() > 0)
+
                 <div class="forum-item">
                     <div class="row">
-                        <div class="col-md-9 col-sm-9 col-xs-9">
+                        <div class="col-md-10 col-sm-10 col-xs-10">
                             <div class="forum-icon">
-                                <i class="{{ $channel->channel_icon }}"></i>
+                                <i class="fa fa-bolt"></i>
                             </div> {{-- /.forum-icon --}}
-                            <a href="/discuss/channels/{{ $channel->channel_url }}"
-                               class="forum-item-title">{{ $channel->name }}</a>
+                            <a href="/discuss/channels/all"
+                               class="forum-item-title">All</a>
                             <div class="forum-sub-title">
                                 New to the community? Please stop by, say hi and tell us a bit about yourself.
                             </div> {{-- /.forum-sub-title --}}
-                        </div> {{-- /.col-md-9 --}}
-                        <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
-                            <span class="views-number">140</span>
+                        </div> {{-- /.col-md-10 --}}
+                        <div class="col-md-2 col-sm-2 col-xs-2 forum-info">
+                            <span class="views-number">
+                                {{ $allDiscussions }}
+                            </span>
                             <div>
-                                <small>Posts</small>
+                                <small class="comment-num">
+                                    {{ str_plural('Post', $allDiscussions) }}
+                                </small>
                             </div>
-                        </div> {{-- /.col-md-1 --}}
-                        <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
-                            <span class="views-number">368</span>
-                            <div>
-                                <small>Comments</small>
-                            </div>
-                        </div> {{-- /.col-md-1 --}}
-                        <div class="col-md-1 col-sm-1 col-xs-1 forum-info">
-                            <span class="views-number">1216</span>
-                            <div>
-                                <small>Views</small>
-                            </div>
-                        </div> {{-- /.col-md-1 --}}
+                        </div> {{-- /.col-md-2 --}}
                     </div> {{-- /.row --}}
                 </div> {{-- /.forum-item --}}
-            @endforeach
+
+                @foreach($channels as $channel)
+                    <div class="forum-item">
+                        <div class="row">
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <div class="forum-icon">
+                                    <i class="{{ $channel->channel_icon }}"></i>
+                                </div> {{-- /.forum-icon --}}
+                                <a href="/discuss/channels/{{ $channel->channel_url }}"
+                                   class="forum-item-title">{{ $channel->name }}</a>
+                                <div class="forum-sub-title">
+                                    New to the community? Please stop by, say hi and tell us a bit about yourself.
+                                </div> {{-- /.forum-sub-title --}}
+                            </div> {{-- /.col-md-10 --}}
+                            <div class="col-md-2 col-sm-2 col-xs-2 forum-info">
+                            <span class="views-number">
+                                {{ $channel->discussions->count() }}
+                            </span>
+                                <div>
+                                    <small class="comment-num">
+                                        {{ str_plural('Post', $channel->discussions->count()) }}
+                                    </small>
+                                </div>
+                            </div> {{-- /.col-md-2 --}}
+                        </div> {{-- /.row --}}
+                    </div> {{-- /.forum-item --}}
+                @endforeach
+            @else
+                <div class="alert alert-info">
+                    <strong>No channels for this forum.</strong>
+                </div>
+            @endif
         </div> {{-- /.ibox-content --}}
 
     </div> {{-- /.row --}}

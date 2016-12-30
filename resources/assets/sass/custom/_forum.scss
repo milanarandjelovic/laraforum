@@ -22,7 +22,7 @@
 
   .navbar-top-links {
     li, li.open {
-      padding-top: 10px;
+      //padding-top: 10px;
       &.divider, &.profile-img-holder {
         padding-top: 0;
       }
@@ -231,5 +231,10 @@
 
 .views-number, .comment-num {
   color: #CACACA;
+  font-weight: 700;
+}
+
+.new-discussions, .create-account {
+  text-transform: uppercase;
   font-weight: 700;
 }

@@ -18,9 +18,11 @@ class DiscussionController extends Controller
      */
     public function index()
     {
-        $channels = Channel::orderBy('name', 'asc')->get();
+        $channels = Channel::orderBy('name', 'asc')->with('discussions')->get();
+        $allDiscussions = Discussion::all()->count();
 
         return view('forum.discussion.index')
+            ->with('allDiscussions', $allDiscussions)
             ->with('channels', $channels);
     }
 

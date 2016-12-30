@@ -16,7 +16,6 @@
                 </div> {{-- /.forum-post-info --}}
 
                 @if(!($discussions->isEmpty()))
-
                     @foreach($discussions as $discussion)
                         <div class="forum-item">
                             <div class="row">

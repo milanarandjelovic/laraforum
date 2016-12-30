@@ -18,6 +18,6 @@ class Channel extends BaseModel
 
     public function discussions()
     {
-        return $this->belongsTo('App\Models\Discussion');
+        return $this->hasMany('App\Models\Discussion');
     }
 }

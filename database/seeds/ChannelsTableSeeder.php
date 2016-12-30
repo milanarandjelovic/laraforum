@@ -14,7 +14,6 @@ class ChannelsTableSeeder extends Seeder
     public function run()
     {
         $channels = [
-            0  => ['name' => 'All', 'channel_url' => 'all', 'channel_icon' => 'fa fa-bolt'],
             1  => ['name' => 'Code Review', 'channel_url' => 'code-review', 'channel_icon' => 'fa fa-bolt'],
             2  => ['name' => 'Elixir', 'channel_url' => 'elixir', 'channel_icon' => 'fa fa-bolt'],
             3  => ['name' => 'Eloquent', 'channel_url' => 'eloquent', 'channel_icon' => 'fa fa-bolt'],

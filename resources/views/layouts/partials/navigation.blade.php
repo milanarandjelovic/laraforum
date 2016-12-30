@@ -20,15 +20,22 @@
             <div class="navbar-collapse collapse" id="navbar">
                 {{-- Left Side Of Navbar --}}
                 <ul class="nav navbar-nav">
-                    &nbsp;
+
                 </ul>
 
                 {{-- Right Side Of Navbar --}}
                 <ul class="nav navbar-top-links navbar-right">
+                    <li>
+                        <a href="{{ route('discussion.index') }}">Forum</a>
+                    </li>
                     {{-- Authentication Links --}}
                     @if (Auth::guest())
-                        <li><a href="{{ route('auth.login') }}">Login</a></li>
-                        <li><a href="{{ route('auth.register') }}">Register</a></li>
+                        <li>
+                            <a href="{{ route('auth.login') }}">Login</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('auth.register') }}">Register</a>
+                        </li>
                     @else
                         <li class="dropdown profile-img-holder">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
