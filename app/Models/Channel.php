@@ -12,6 +12,7 @@ class Channel extends BaseModel
      */
     protected $fillable = [
         'name',
+        'description',
         'channel_url',
         'channel_icon',
     ];

@@ -21820,6 +21820,10 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   font-size: 30px;
 }
 
+.forum-navigation .navbar-top-links li, .forum-navigation .navbar-top-links li.open {
+  padding-top: 10px;
+}
+
 .forum-navigation .navbar-top-links li.divider, .forum-navigation .navbar-top-links li.profile-img-holder, .forum-navigation .navbar-top-links li.open.divider, .forum-navigation .navbar-top-links li.open.profile-img-holder {
   padding-top: 0;
 }

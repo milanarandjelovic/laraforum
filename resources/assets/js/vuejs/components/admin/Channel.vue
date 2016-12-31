@@ -46,6 +46,22 @@
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
+                  <div class="form-group" :class="{ 'has-error' : hasErrorDescription }">
+                    <label class="col-sm-2 control-label" for="description">Description</label>
+                    <div class="col-sm-10">
+                      <textarea
+                              type="text"
+                              id="description"
+                              name="description"
+                              class="form-control description"
+                              v-model="channelForm.description"
+                              rows="6"
+                      ></textarea>
+                      <div v-if="errors.description.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.description }}</p>
+                      </div>
+                    </div>
+                  </div> <!-- /.form-group -->
                   <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
                     <label class="col-sm-2 control-label" for="channel_url">Url</label>
                     <div class="col-sm-10">
@@ -71,7 +87,9 @@
                               class="form-control"
                               v-model="channelForm.channel_icon"
                       >
-                      <p>Choose channel <a href="#">icon</a></p>
+                      <p>Choose channel
+                        <a href="http://fontawesome.io/icons/" target="_blank">icon</a>.
+                      </p>
                       <div v-if="errors.channel_icon.length > 0" class="form-error-message">
                         <p class="text-danger">{{ errors.channel_icon }}</p>
                       </div>
@@ -114,6 +132,22 @@
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
+                  <div class="form-group" :class="{ 'has-error' : hasErrorDescription }">
+                    <label class="col-sm-2 control-label" for="description">Description</label>
+                    <div class="col-sm-10">
+                      <textarea
+                              type="text"
+                              id="description"
+                              name="description"
+                              class="form-control description"
+                              v-model="channelForm.description"
+                              rows="6"
+                      ></textarea>
+                      <div v-if="errors.description.length > 0" class="form-error-message">
+                        <p class="text-danger">{{ errors.description }}</p>
+                      </div>
+                    </div>
+                  </div> <!-- /.form-group -->
                   <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
                     <label class="col-sm-2 control-label" for="channel_url">Url</label>
                     <div class="col-sm-10">
@@ -139,7 +173,9 @@
                               class="form-control"
                               v-model="channelForm.channel_icon"
                       >
-                      <p>Choose channel <a href="#">icon</a></p>
+                      <p>Choose channel
+                        <a href="http://fontawesome.io/icons/" target="_blank">icon</a>.
+                      </p>
                       <div v-if="errors.channel_icon.length > 0" class="form-error-message">
                         <p class="text-danger">{{ errors.channel_icon }}</p>
                       </div>
@@ -163,6 +199,7 @@
               <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>Description</th>
                 <th>Channel url</th>
                 <th>Channel icon</th>
                 <th>Created at</th>
@@ -174,6 +211,7 @@
               <tr v-for="channel in channels">
                 <td>{{ channel.id }}</td>
                 <td>{{ channel.name }}</td>
+                <td>{{ channel.description }}</td>
                 <td>{{ channel.channel_url }}</td>
                 <td>{{ channel.channel_icon }}</td>
                 <td>{{ channel.created_at }}</td>
@@ -222,15 +260,18 @@
         height: '60px',
         channelForm: {
            name: '',
+           description: '',
            channel_url: '',
            channel_icon: '',
         },
         errors: {
           name: '',
+          description: '',
           channel_icon: '',
           channel_url: ''
         },
         hasErrorName: false,
+        hasErrorDescription: false,
         hasErrorChannelUrl: false,
         channel_id: '',
         channels: {},
@@ -258,7 +299,9 @@
         this.channelForm.name = ''
         this.errors.channel_url = ''
         this.errors.name = ''
+        this.errors.description = ''
         this.hasErrorName = false
+        this.hasErrorDescription = false
         this.hasErrorChannelUrl = false
         this.channelForm.channel_url = ''
         this.channelForm.channel_icon = ''
@@ -269,7 +312,9 @@
         this.channelForm.name = ''
         this.errors.channel_url = ''
         this.errors.name = ''
+        this.errors.description = ''
         this.hasErrorName = false
+        this.hasErrorDescription = false
         this.hasErrorChannelUrl = false
         this.getChannel(id)
         $('#update-channel-modal').modal('show')
@@ -277,6 +322,7 @@
 
       createChannel () {
         this.hasErrorName = false
+        this.hasErrorDescription = false
         this.hasErrorChannelUrl = false
         this.$http.post('/api/admin/channels/store', this.channelForm).then(res => {
           if(res.data.message) {
@@ -290,6 +336,9 @@
             this.errors = res.data.errors
             if(res.data.errors.name) {
               this.hasErrorName = true
+            }
+             if(res.data.errors.description) {
+              this.hasErrorDescription = true
             }
             if(res.data.errors.channel_url) {
               this.hasErrorChannelUrl = true
@@ -314,6 +363,7 @@
         this.$http.get('/api/admin/channels/' + id).then(res => {
           this.channel_id = res.data.id
           this.channelForm.name = res.data.name
+          this.channelForm.description = res.data.description
           this.channelForm.channel_icon = res.data.channel_icon
           this.channelForm.channel_url = res.data.channel_url
         }).catch(err => {
@@ -327,6 +377,7 @@
         this.$http.put('/api/admin/channels/' + this.channel_id + '/update', this.channelForm).then(res => {
           if(res.data.message) {
             this.channelForm.name = ''
+            this.channelForm.description = ''
             this.channelForm.channel_url = ''
             this.$root.$refs.toastr.s(res.data.message, 'Success')
             this.getAllChannels()
@@ -336,6 +387,9 @@
             this.errors = res.data.errors
             if(res.data.errors.name) {
               this.hasErrorName = true
+            }
+            if(res.data.errors.description) {
+              this.hasErrorDescription = true
             }
             if(res.data.errors.channel_url) {
               this.hasErrorChannelUrl = true
@@ -376,3 +430,9 @@
     } // methods
   }
 </script>
+
+<style lang="css">
+  textarea.description {
+    resize: none;
+  }
+</style>

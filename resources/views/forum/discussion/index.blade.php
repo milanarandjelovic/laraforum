@@ -38,7 +38,7 @@
                             <a href="/discuss/channels/all"
                                class="forum-item-title">All</a>
                             <div class="forum-sub-title">
-                                New to the community? Please stop by, say hi and tell us a bit about yourself.
+                                Discussions for all channels.
                             </div> {{-- /.forum-sub-title --}}
                         </div> {{-- /.col-md-10 --}}
                         <div class="col-md-2 col-sm-2 col-xs-2 forum-info">
@@ -63,9 +63,11 @@
                                 </div> {{-- /.forum-icon --}}
                                 <a href="/discuss/channels/{{ $channel->channel_url }}"
                                    class="forum-item-title">{{ $channel->name }}</a>
-                                <div class="forum-sub-title">
-                                    New to the community? Please stop by, say hi and tell us a bit about yourself.
-                                </div> {{-- /.forum-sub-title --}}
+                                @if($channel->description)
+                                    <div class="forum-sub-title">
+                                        {{ $channel->description }}
+                                    </div> {{-- /.forum-sub-title --}}
+                                @endif
                             </div> {{-- /.col-md-10 --}}
                             <div class="col-md-2 col-sm-2 col-xs-2 forum-info">
                             <span class="views-number">
