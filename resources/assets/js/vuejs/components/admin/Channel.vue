@@ -217,7 +217,7 @@
                 <td>{{ channel.created_at }}</td>
                 <td>{{ channel.updated_at }}</td>
                 <td>
-                  <button class="btn btn-white btn-xs" @click.prevent="openUpdateChannelModal(channel.id)">
+                  <button class="btn btn-white btn-xs mb-5" @click.prevent="openUpdateChannelModal(channel.id)">
                     <i class="fa fa-pencil"></i> Edit
                   </button>
                   <button class="btn btn-danger btn-xs" @click.prevent="deleteChannel(channel.id)">
