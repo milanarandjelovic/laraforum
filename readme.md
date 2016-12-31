@@ -11,7 +11,14 @@
 
 `npm install` or `yarn`
 
-###### 3. Run the server
+###### 3. Running Migrations
+`php artisan migrate`
+
+`php artisan db:seed`
+
+`php artisan passport:install`
+
+###### 4. Run the server
 `php artisan serve`
 
 ## License
