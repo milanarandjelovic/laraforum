@@ -12,26 +12,6 @@ class CommentController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
@@ -58,47 +38,47 @@ class CommentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show Like / Dislike for comment.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show($id)
+    public function showLikeDislike($id)
     {
-        //
+        $comment = Comment::where('id', $id)->first();
+
+        return response()->json([
+            'comment' => $comment,
+        ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Add like for comment.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param $id
      */
-    public function edit($id)
+    public function postLike($id)
     {
-        //
+        $comment = Comment::where('id', $id)->first();
+        $like = $comment->like + 1;
+
+        Comment::where('id', $id)->update([
+            'like' => $like,
+        ]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Add dislike for comment.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
-     * @return \Illuminate\Http\Response
+     * @param $id
      */
-    public function update(Request $request, $id)
+    public function postDislike($id)
     {
-        //
-    }
+        $comment = Comment::where('id', $id)->first();
+        $dislike = $comment->dislike + 1;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Comment::where('id', $id)->update([
+            'dislike' => $dislike,
+        ]);
     }
 }

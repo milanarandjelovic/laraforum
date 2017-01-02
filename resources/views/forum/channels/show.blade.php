@@ -55,10 +55,24 @@
                                     </a>
                                     <span class="discussion-created-at">{{ $comment->created_at }}</span>
                                     <div>{{$comment->description}}</div>
-                                    @if(Auth::user())
-                                        <a href="#" class=""><i class="fa fa-thumbs-up"></i> 11</a>
-                                        <a href="#" class=""><i class="fa fa-thumbs-down"></i> 15 </a>
-                                    @endif
+                                    {{--@if(Auth::user())--}}
+                                    <like-dislike
+                                            :id="{{ $comment->id }}"
+                                            :type="'like'"
+                                            :icon="'fa fa-thumbs-up'"
+                                            :url="'/api/forum/postLike/'"
+                                            :get-url="'/api/forum/likeDislike/'"
+                                    >
+                                    </like-dislike>
+                                    <like-dislike
+                                            :id="{{ $comment->id }}"
+                                            :type="'dislike'"
+                                            :icon="'fa fa-thumbs-down'"
+                                            :url="'/api/forum/postDislike/'"
+                                            :get-url="'/api/forum/likeDislike/'"
+                                    >
+                                    </like-dislike>
+                                    {{--@endif--}}
                                 </div> {{-- /.media-body --}}
                             </div> {{-- /.social-comment --}}
                         @endforeach

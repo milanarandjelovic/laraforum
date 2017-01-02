@@ -31,6 +31,9 @@ import EditUser from './vuejs/components/forum/EditUser.vue';
 /* Role component */
 import AdminRole from './vuejs/components/admin/Role.vue';
 
+/* Like/Dislike component */
+import LikeDislike from './vuejs/components/common/LikeDislike.vue';
+
 const app = new Vue({
   el: '#app',
   components: {
@@ -43,6 +46,7 @@ const app = new Vue({
     Channel,
     User,
     EditUser,
-    AdminRole
+    AdminRole,
+    LikeDislike
   }
 });

@@ -22010,6 +22010,10 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   font-weight: 700;
 }
 
+.social-comment {
+  margin-bottom: 30px;
+}
+
 /* Clear layout on print mode */
 @media print {
   nav.navbar-static-side {
