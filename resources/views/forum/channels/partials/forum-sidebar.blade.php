@@ -21,12 +21,14 @@
             <li>
                 <a href="/discuss/channels/all">
                     All
+                    <span class="label label-plain pull-right">{{ $allDiscussions }}</span>
                 </a>
             </li>
             @foreach($forumChannels as $channel)
                 <li>
                     <a href="/discuss/channels/{{ $channel->channel_url }}">
                         {{ $channel->name }}
+                        <span class="label label-plain pull-right">{{ $channel->discussions->count() }}</span>
                     </a>
                 </li>
             @endforeach
