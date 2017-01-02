@@ -31,7 +31,7 @@ import EditUser from './vuejs/components/forum/EditUser.vue';
 /* Role component */
 import AdminRole from './vuejs/components/admin/Role.vue';
 
-/* Like/Dislike component */
+/* Like / Dislike component */
 import LikeDislike from './vuejs/components/common/LikeDislike.vue';
 
 const app = new Vue({

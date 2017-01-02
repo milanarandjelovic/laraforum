@@ -27,10 +27,6 @@
 
                     <div class="social-body">
                         <p class="forum-discuss-description">{{ $discussion->description }}</p>
-                        <div class="btn-group">
-                            <button class="btn btn-white btn-xs"><i class="fa fa-star"></i> Favorite this!</button>
-                            <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button>
-                        </div>
                     </div> {{-- /.social-body --}}
 
                     <div class="social-footer">
