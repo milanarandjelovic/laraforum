@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\User;
+
 class Comment extends BaseModel
 {
 
@@ -12,8 +14,6 @@ class Comment extends BaseModel
      */
     protected $fillable = [
         'description',
-        'like',
-        'dislike',
         'user_id',
         'discussion_id',
     ];
@@ -26,5 +26,25 @@ class Comment extends BaseModel
     public function discussion()
     {
         return $this->belongsTo('App\Models\Discussion');
+    }
+
+    public function votes()
+    {
+        return $this->morphMany('App\Models\Vote', 'voteable');
+    }
+
+    public function upVotes()
+    {
+        return $this->votes->where('type', 'up');
+    }
+
+    public function downVotes()
+    {
+        return $this->votes->where('type', 'down');
+    }
+
+    public function voteFromUser(User $user)
+    {
+        return $this->votes()->where('user_id', $user->id);
     }
 }

@@ -23,9 +23,9 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'forum'], function () {
     /* Users routes */
     Route::get('/{username}', 'Forum\UserController@showUser');
     Route::put('/{username}/update', 'Forum\UserController@update');
-
-    /* Like/Dislike routes */
-    Route::get('/likeDislike/{id}', 'Forum\CommentController@showLikeDislike');
-    Route::put('/postLike/{id}', 'Forum\CommentController@postLike');
-    Route::put('/postDislike/{id}', 'Forum\CommentController@postDislike');
+    
+    /* Comment Vote routes */
+    Route::get('/comments/{comment}/votes', 'Forum\CommentController@show');
+    Route::post('/comments/{comment}/votes', 'Forum\CommentController@create');
+    Route::delete('/comments/{comment}/votes', 'Forum\CommentController@remove');
 });

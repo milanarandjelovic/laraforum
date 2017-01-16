@@ -47,4 +47,9 @@ class Discussion extends BaseModel
     {
         return $this->hasMany('App\Models\Comment');
     }
+
+    public function votes()
+    {
+        return $this->morphMany('App\Models\Vote', 'voteable');
+    }
 }

@@ -31,8 +31,8 @@ import EditUser from './vuejs/components/forum/EditUser.vue';
 /* Role component */
 import AdminRole from './vuejs/components/admin/Role.vue';
 
-/* Like / Dislike component */
-import LikeDislike from './vuejs/components/common/LikeDislike.vue';
+/* CommentVote component */
+import CommentVote from './vuejs/components/common/CommentVote.vue';
 
 const app = new Vue({
   el: '#app',
@@ -47,6 +47,6 @@ const app = new Vue({
     User,
     EditUser,
     AdminRole,
-    LikeDislike
+    CommentVote
   }
 });

@@ -53,22 +53,10 @@
                                     <div>{{$comment->description}}</div>
                                     @if(Auth::user())
                                         @if(Auth::id() != $comment->user->id)
-                                            <like-dislike
-                                                    :id="{{ $comment->id }}"
-                                                    :type="'like'"
-                                                    :icon="'fa fa-thumbs-up'"
-                                                    :url="'/api/forum/postLike/'"
-                                                    :get-url="'/api/forum/likeDislike/'"
+                                            <comment-vote
+                                                discussion-id="{{ $comment->id }}"
                                             >
-                                            </like-dislike>
-                                            <like-dislike
-                                                    :id="{{ $comment->id }}"
-                                                    :type="'dislike'"
-                                                    :icon="'fa fa-thumbs-down'"
-                                                    :url="'/api/forum/postDislike/'"
-                                                    :get-url="'/api/forum/likeDislike/'"
-                                            >
-                                            </like-dislike>
+                                            </comment-vote>
                                         @endif
                                     @endif
                                 </div> {{-- /.media-body --}}

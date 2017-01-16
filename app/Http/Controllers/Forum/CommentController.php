@@ -7,6 +7,7 @@ use Validator;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateVoteRequest;
 
 class CommentController extends Controller
 {
@@ -38,47 +39,58 @@ class CommentController extends Controller
     }
 
     /**
-     * Show Like / Dislike for comment.
+     * Show vote up/down for comment.
      *
-     * @param $id
+     * @param Request $request
+     * @param Comment $comment
      * @return \Illuminate\Http\JsonResponse
      */
-    public function showLikeDislike($id)
+    public function show(Request $request, Comment $comment)
     {
-        $comment = Comment::where('id', $id)->first();
+        $response['up'] = $comment->upVotes()->count();
+        $response['down'] = $comment->downVotes()->count();
+
+        // Check user vote
+        if ($request->user()) {
+            $voteFromUser = $comment->voteFromUser($request->user())->first();
+            $response['user_vote'] = $voteFromUser ? $voteFromUser->type : null;
+        }
 
         return response()->json([
-            'comment' => $comment,
-        ]);
+            'data' => $response,
+        ], 200);
     }
 
     /**
-     * Add like for comment.
+     * Create new vote up/down for comment.
      *
-     * @param $id
+     * @param CreateVoteRequest $request
+     * @param Comment           $comment
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function postLike($id)
+    public function create(CreateVoteRequest $request, Comment $comment)
     {
-        $comment = Comment::where('id', $id)->first();
-        $like = $comment->like + 1;
+        $comment->voteFromUser($request->user())->delete();
 
-        Comment::where('id', $id)->update([
-            'like' => $like,
+        $comment->votes()->create([
+            'type'    => $request->type,
+            'user_id' => $request->user()->id,
         ]);
+
+        return response()->json(null, 200);
     }
 
     /**
-     * Add dislike for comment.
+     * Delete vote for comment.
      *
-     * @param $id
+     * @param Request $request
+     * @param Comment $comment
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function postDislike($id)
+    public function remove(Request $request, Comment $comment)
     {
-        $comment = Comment::where('id', $id)->first();
-        $dislike = $comment->dislike + 1;
+        $comment->voteFromUser($request->user())->delete();
 
-        Comment::where('id', $id)->update([
-            'dislike' => $dislike,
-        ]);
+        return response()->json(null, 200);
     }
 }

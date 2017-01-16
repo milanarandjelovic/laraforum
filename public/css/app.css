@@ -22014,6 +22014,22 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   margin-bottom: 30px;
 }
 
+.discussion__voting {
+  font-size: 14px;
+}
+
+.discussion__voting-button {
+  color: #636B6F;
+}
+
+.discussion__voting-button:hover, .discussion__voting-button:focus {
+  text-decoration: none;
+}
+
+.discussion__voting-button--voted {
+  color: #3097D1;
+}
+
 /* Clear layout on print mode */
 @media print {
   nav.navbar-static-side {

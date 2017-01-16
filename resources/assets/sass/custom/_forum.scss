@@ -242,3 +242,19 @@
 .social-comment {
   margin-bottom: 30px;
 }
+
+.discussion__voting {
+  font-size: 14px;
+}
+
+.discussion__voting-button {
+  color: #636B6F;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+.discussion__voting-button--voted {
+  color: #3097D1;
+}
