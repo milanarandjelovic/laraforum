@@ -6,6 +6,18 @@
     <div class="middle-box text-center animated fadeInDown">
         <div class="col-md-8 col-md-offset-2">
 
+            <div>
+                <h1 class="logo-name text-center">LF</h1>
+            </div>
+
+            <div>
+                <h3 class="text-center">Welcome to Laravel Forum</h3>
+            </div>
+
+            <div class="text-center">
+                <p>Please enter your email and new password.</p>
+            </div>
+
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                 {{ csrf_field() }}
 
