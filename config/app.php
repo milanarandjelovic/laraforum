@@ -167,17 +167,6 @@ return [
          * Package Service Providers...
          */
 
-        //
-
-        /*
-         * Application Service Providers...
-         */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-
         /*
          * Laravel Passport Service Provider...
          */
@@ -202,6 +191,22 @@ return [
          * Debugbar Service Provider...
          */
         Barryvdh\Debugbar\ServiceProvider::class,
+
+        /*
+         * Laravel Scout Service Provider...
+         */
+        Laravel\Scout\ScoutServiceProvider::class,
+
+
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
+
 
     ],
 

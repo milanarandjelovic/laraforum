@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
 class Discussion extends BaseModel
 {
 
-    use HasSlug;
+    use HasSlug, Searchable;
 
     /**
      * The attributes that are mass assignable.
