@@ -5,6 +5,7 @@
     "dev": "gulp watch"
   },
   "devDependencies": {
+    "algoliasearch": "^3.20.4",
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
