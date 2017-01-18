@@ -190,7 +190,7 @@ return [
         /*
          * Debugbar Service Provider...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
+//        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Laravel Scout Service Provider...
