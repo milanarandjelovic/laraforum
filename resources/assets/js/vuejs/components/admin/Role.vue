@@ -203,7 +203,7 @@
           if(res.data.message) {
             this.roleForm.name = ''
             this.$root.$refs.toastr.s(res.data.message, 'Success')
-            this.getAllRoles()
+            this.roles.push(res.data.role)
             $('#add-role-modal').modal('hide')
           }
           if(res.data.errors) {

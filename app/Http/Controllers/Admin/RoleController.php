@@ -66,12 +66,13 @@ class RoleController extends Controller
             ]);
         }
 
-        Role::create([
+        $role = Role::create([
             'name' => $request->input('name'),
         ]);
 
         return response()->json([
             'message' => 'Role has been successfully created.',
+            'role'    => $role,
         ]);
     }
 
