@@ -1,7 +1,7 @@
 <?php
 
 /* Search routes */
-Route::get('/search/{search}', 'SearchController@index');
+//Route::get('/search/{search}', 'SearchController@index');
 
 Route::group(['middleware' => 'auth:api', 'prefix' => 'admin'], function () {
     /* Channels routes */

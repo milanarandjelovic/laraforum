@@ -22079,6 +22079,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   height: initial;
   z-index: 100;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1);
+  -webkit-transition: width .3s ease;
+  transition: width .3s ease;
 }
 
 .query-results .query-results-holder .results-list {
@@ -22105,11 +22107,16 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 }
 
 .query-results .query-results-holder .results-list .result-f:hover {
-  background-color: #A1A1A1;
+  background-color: #E6E6E6;
+}
+
+.query-results .query-results-holder .results-list .result-f .search-highlight {
+  color: #00B1B2;
 }
 
 .query-results .query-results-holder .results-list .result-f a {
-  color: #636B6F;
+  color: #4D545D;
+  display: block;
 }
 
 /* Clear layout on print mode */

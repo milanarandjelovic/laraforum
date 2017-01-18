@@ -91,6 +91,7 @@
         &:hover {
           background-color: #F5F7FA;
           padding-left: 10px;
+          -webkit-transition: padding-left .4s;
           transition: padding-left .4s;
         }
 
@@ -267,7 +268,9 @@
   height: 46px;
   width: 500px;
   background: #F6F6F6;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: 1px solid #D7D7D7;
   border-radius: 4px;
 
@@ -307,6 +310,8 @@
   height: initial;
   z-index: 100;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, .1);
+  -webkit-transition: width .3s ease;
+  transition: width .3s ease;
 
   .query-results-holder {
 
@@ -332,11 +337,16 @@
         font-weight: 900;
 
         &:hover {
-          background-color: #A1A1A1;
+          background-color: #E6E6E6;
+        }
+
+        .search-highlight {
+          color: #00B1B2;
         }
 
         a {
-          color: #636B6F;
+          color: #4D545D;
+          display: block;
         }
       }
     }
