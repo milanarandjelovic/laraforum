@@ -20,8 +20,9 @@
             <div class="navbar-collapse collapse" id="navbar">
                 {{-- Left Side Of Navbar --}}
                 <ul class="nav navbar-nav">
-
                 </ul>
+
+                <forum-search></forum-search>
 
                 {{-- Right Side Of Navbar --}}
                 <ul class="nav navbar-top-links navbar-right">

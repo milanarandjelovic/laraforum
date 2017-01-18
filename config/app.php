@@ -197,6 +197,8 @@ return [
          */
         Laravel\Scout\ScoutServiceProvider::class,
 
+        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
+
 
         /*
          * Application Service Providers...

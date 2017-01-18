@@ -34,6 +34,9 @@ import AdminRole from './vuejs/components/admin/Role.vue';
 /* CommentVote component */
 import CommentVote from './vuejs/components/common/CommentVote.vue';
 
+/* Search component */
+import ForumSearch from './vuejs/components/forum/ForumSearch.vue';
+
 const app = new Vue({
   el: '#app',
   components: {
@@ -47,6 +50,7 @@ const app = new Vue({
     User,
     EditUser,
     AdminRole,
-    CommentVote
+    CommentVote,
+    ForumSearch
   }
 });

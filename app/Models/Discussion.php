@@ -5,11 +5,12 @@ namespace App\Models;
 use Laravel\Scout\Searchable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 
 class Discussion extends BaseModel
 {
 
-    use HasSlug, Searchable;
+    use HasSlug, Searchable, AlgoliaEloquentTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -52,5 +53,27 @@ class Discussion extends BaseModel
     public function votes()
     {
         return $this->morphMany('App\Models\Vote', 'voteable');
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'id'          => $this->id,
+            'title'       => $this->title,
+            'slug'        => $this->slug,
+            'description' => $this->description,
+            'channel'     => $this->channel,
+        ];
+    }
+
+    public function getAlgoliaRecord()
+    {
+        return [
+            'id'          => $this->id,
+            'title'       => $this->title,
+            'slug'        => $this->slug,
+            'description' => $this->description,
+            'channel'     => $this->channel,
+        ];
     }
 }

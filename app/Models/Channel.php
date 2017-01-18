@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Laravel\Scout\Searchable;
+
 class Channel extends BaseModel
 {
+
+    use Searchable;
 
     /**
      * The attributes that are mass assignable.
