@@ -197,7 +197,15 @@ return [
          */
         Laravel\Scout\ScoutServiceProvider::class,
 
+        /*
+         * AlgoliaSearch Service Provider...
+         */
         AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
+
+        /*
+         * Spatie Fractal Service Provider...
+         */
+        Spatie\Fractal\FractalServiceProvider::class,
 
 
         /*
@@ -279,6 +287,11 @@ return [
          * Debugbar Aliases
          */
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+        /*
+        * Spatie Fractal Aliases
+        */
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
     ],
 
 ];

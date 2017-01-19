@@ -14,7 +14,8 @@
         "spatie/laravel-sluggable": "^1.3",
         "laravel/scout": "^2.0",
         "elasticsearch/elasticsearch": "^5.1",
-        "algolia/algoliasearch-laravel": "^1.7"
+        "algolia/algoliasearch-laravel": "^1.7",
+        "spatie/laravel-fractal": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.3",
