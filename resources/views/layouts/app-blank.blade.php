@@ -17,7 +17,11 @@
         <script>
           window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
-            ]); ?>
+            ]); ?>;
+          window.LaraForum = <?php echo json_encode([
+              'id' => Auth::check() ? Auth::user()->id : null,
+              'authenticated' => Auth::check() ? 'true' : 'false'
+          ]); ?>;
         </script>
     </head>
     <body class="gray-bg">
