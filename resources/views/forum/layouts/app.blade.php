@@ -20,7 +20,9 @@
         ]); ?>;
         window.LaraForum = <?php echo json_encode([
             'id' => Auth::check() ? Auth::user()->id : null,
-            'authenticated' => Auth::check() ? 'true' : 'false'
+            'authenticated' => Auth::check() ? 'true' : 'false',
+            'username' => Auth::check() ? Auth::user()->username : null,
+            'avatar' => Gravatar::src(Auth::user()->email, 60)
         ]); ?>;
     </script>
 </head>
