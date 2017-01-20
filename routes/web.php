@@ -19,7 +19,6 @@ Route::post('password/reset', ['as' => 'auth.password.reset', 'uses' => 'Auth\Re
 /* Discussion routes */
 Route::group(['prefix' => '/discuss'], function () {
     Route::get('/', ['as' => 'discussion.index', 'uses' => 'Forum\DiscussionController@index']);
-    Route::get('/leaderboard', ['as' => 'discussion.leaderboard', 'uses' => 'Forum\DiscussionController@leaderboard']);
 
     /* Channels routes */
     Route::group(['prefix' => '/channels'], function () {
@@ -38,8 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('conversations/create', ['as' => 'discussion.create', 'uses' => 'Forum\DiscussionController@create']);
         Route::post('conversations/store', ['as' => 'discussion.store', 'uses' => 'Forum\DiscussionController@store']);
     });
-
-    Route::post('comments/store', ['as' => 'comments.store', 'uses' => 'Forum\CommentController@store']);
 });
 
 /* Routes for admin user */

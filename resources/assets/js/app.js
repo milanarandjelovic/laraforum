@@ -34,11 +34,19 @@ import AdminRole from './vuejs/components/admin/Role.vue';
 /* CommentVote component */
 import CommentVote from './vuejs/components/common/CommentVote.vue';
 
+/* Discussion Comments component */
+import DiscussionComments from './vuejs/components/forum/DiscussionComments.vue';
+
 /* Search component */
 import ForumSearch from './vuejs/components/forum/ForumSearch.vue';
 
 const app = new Vue({
   el: '#app',
+
+  data: {
+    laraForum: window.LaraForum
+  },
+
   components: {
     PassportClients,
     PassportAuthorizedClients,
@@ -51,6 +59,7 @@ const app = new Vue({
     EditUser,
     AdminRole,
     CommentVote,
-    ForumSearch
+    ForumSearch,
+    DiscussionComments
   }
 });

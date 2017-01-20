@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\LaraForum\Traits\Orderable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends BaseModel
 {
+
+    use SoftDeletes, Orderable;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +18,7 @@ class Comment extends BaseModel
     protected $fillable = [
         'description',
         'user_id',
-        'discussion_id',
+        'reply_id',
     ];
 
     public function user()
@@ -23,11 +26,16 @@ class Comment extends BaseModel
         return $this->belongsTo('App\Models\User');
     }
 
-    public function discussion()
+    public function commentable()
     {
-        return $this->belongsTo('App\Models\Discussion');
+        return $this->morphTo();
     }
 
+    public function replies()
+    {
+        return $this->hasMany('App\Models\Comment', 'reply_id', 'id');
+    }
+    
     public function votes()
     {
         return $this->morphMany('App\Models\Vote', 'voteable');

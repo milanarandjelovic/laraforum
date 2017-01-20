@@ -11,10 +11,6 @@ class SearchController extends Controller
 
     public function index(Request $request)
     {
-        // Algolia Search
-//        $discussions = Discussion::search($request->search)->take(6)->get();
-//        $users = User::search($request->search)->take(6)->get();
-
         $discussions = Discussion::with('channel')
             ->where('title', 'like', "%$request->search%")
             ->orWhere('description', 'like', "%$request->search%")
