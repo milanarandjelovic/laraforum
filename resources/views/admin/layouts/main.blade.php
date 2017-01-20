@@ -25,10 +25,10 @@
                 'csrfToken' => csrf_token(),
             ]); ?>;
           window.LaraForum = <?php echo json_encode([
-              'id' => Auth::check() ? Auth::user()->id : null,
+              'id' => Auth::check() ? Auth::user()->id : 'null',
               'authenticated' => Auth::check() ? 'true' : 'false',
-              'username' => Auth::check() ? Auth::user()->username : null,
-              'avatar' => Gravatar::src(Auth::user()->email, 60)
+              'username' => Auth::check() ? Auth::user()->username : 'null',
+              'avatar' => Auth::check() ? Gravatar::src(Auth::user()->email, 60) : 'null'
           ]); ?>;
         </script>
     </head>
