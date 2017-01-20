@@ -29,27 +29,9 @@
                         <p class="forum-discuss-description">{{ $discussion->description }}</p>
                     </div> {{-- /.social-body --}}
 
-                    <div class="social-footer">
-
-                        @if($discussion->comments->count() == 0)
-                            <div class="alert alert-info mt-15">
-                                <strong>No comment for this discussion.</strong>
-                            </div>
-                        @endif
-
-                        <discussion-comments discussion-id="{{ $discussion->id }}"></discussion-comments>
-
-                    </div> {{-- /.social-footer --}}
+                    <discussion-comments discussion-id="{{ $discussion->id }}"></discussion-comments>
 
                 </div> {{-- /.social-feed-box --}}
-
-                @if(!Auth::user())
-                    <p class="text-center">
-                        <a href="{{ route('auth.login') }}">Sign in</a> or
-                        <a href="{{ route('auth.register') }}">create a forum account to participate in this
-                            discussion.</a>
-                    </p>
-                @endif
 
             </div> {{-- /.ibox --}}
         </div> {{-- /.col-lg-12 --}}
