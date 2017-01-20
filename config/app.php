@@ -200,7 +200,7 @@ return [
         /*
          * AlgoliaSearch Service Provider...
          */
-        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
+//        AlgoliaSearch\Laravel\AlgoliaServiceProvider::class,
 
         /*
          * Spatie Fractal Service Provider...
