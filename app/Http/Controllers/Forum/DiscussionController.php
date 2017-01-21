@@ -47,14 +47,16 @@ class DiscussionController extends Controller
      */
     public function store(DiscussionRequest $request)
     {
-        Discussion::create([
+        $discussion = Discussion::create([
             'title'       => $request->input('title'),
             'description' => $request->input('description'),
             'channel_id'  => $request->input('channel_id'),
             'user_id'     => $request->input('user_id'),
         ]);
 
-        return redirect()->route('discussion.index');
+        $channel = Channel::where('id', $discussion->channel_id)->first();
+
+        return redirect('discuss/channels/' . $channel->channel_url . '/' . $discussion->slug);
     }
 
     /**
