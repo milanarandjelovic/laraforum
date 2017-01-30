@@ -12,8 +12,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./vuejs/components/Example.vue'));
-
 /* Passport component */
 import PassportClients from "./vuejs/components/passport/Clients.vue";
 import PassportAuthorizedClients from "./vuejs/components/passport/AuthorizedClients.vue";
