@@ -54,17 +54,9 @@ class RoleController extends Controller
     public function store(Request $request)
     {
 
-        $validator = Validator::make($request->only('name'), [
+        $this->validate($request, [
             'name' => 'required|min:3|max:255',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'errors' => [
-                    'name' => $validator->errors()->first('name'),
-                ],
-            ]);
-        }
 
         $role = Role::create([
             'name' => $request->input('name'),
@@ -99,17 +91,9 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->only('name'), [
+        $this->validate($request, [
             'name' => 'required|min:3|max:255',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'errors' => [
-                    'name' => $validator->errors()->first('name'),
-                ],
-            ]);
-        }
 
         Role::where('id', $id)->update([
             'name' => $request->input('name'),

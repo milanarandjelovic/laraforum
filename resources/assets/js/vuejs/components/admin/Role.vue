@@ -1,5 +1,6 @@
 <template>
   <div id="role">
+
     <scale-loader
             class="admin-scale-loader"
             :loading="loading"
@@ -10,13 +11,15 @@
     >
     </scale-loader>
 
-    <div class="ibox" v-if="roles.length > 0">
+    <div class="ibox" v-show="!loading">
+
       <div class="ibox-title">
         <h5>All roles in forum</h5>
         <div class="ibox-tools">
           <a class="btn btn-primary btn-xs" @click.prevent="openRoleModal">Create new role</a>
         </div> <!-- /.ibox-tools -->
       </div> <!-- /.ibox-title -->
+
       <div class="ibox-content">
 
         <!-- NEW ROLE MODAL -->
@@ -28,8 +31,8 @@
                 <h4 class="modal-title">Create New Role</h4>
               </div>
               <div class="modal-body">
-                <form class="form-horizontal">
-                  <div class="form-group" :class="{ 'has-error' : hasErrorName }">
+                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
                     <label class="col-sm-2 control-label" for="name">Name</label>
                     <div class="col-sm-10">
                       <input
@@ -37,11 +40,11 @@
                               id="name"
                               name="name"
                               class="form-control"
-                              v-model="roleForm.name"
+                              v-model="form.name"
                               autofocus
                       >
-                      <div v-if="errors.name.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.name }}</p>
+                      <div v-if="form.errors.has('name')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('name') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
@@ -65,8 +68,8 @@
                 <h4 class="modal-title">Update Role</h4>
               </div>
               <div class="modal-body">
-                <form class="form-horizontal">
-                  <div class="form-group" :class="{ 'has-error' : hasErrorName }">
+                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
                     <label class="col-sm-2 control-label" for="name">Name</label>
                     <div class="col-sm-10">
                       <input
@@ -74,11 +77,11 @@
                               id="name"
                               name="name"
                               class="form-control"
-                              v-model="roleForm.name"
+                              v-model="form.name"
                               autofocus
                       >
-                      <div v-if="errors.name.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.name }}</p>
+                      <div v-if="form.errors.has('name')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('name') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
@@ -94,7 +97,7 @@
         <!-- /UPDATE ROLE MODAL -->
 
         <!-- ROLES TABLE -->
-        <div class="table-responsive">
+        <div class="table-responsive" v-if="roles.length > 0">
           <div class="dataTables_wrapper form-inline dt-bootstrap">
             <table class="table table-striped table-bordered table-hover dataTable dtr-inline">
               <thead>
@@ -147,6 +150,7 @@
 </template>
 
 <script>
+  import Form from '../helpers/Form';
   import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue';
   import Pagination from '../common/Pagination.vue';
 
@@ -155,13 +159,9 @@
     data () {
       return {
         height: '60px',
-        roleForm: {
-           name: ''
-        },
-        errors: {
+        form: new Form({
           name: ''
-        },
-        hasErrorName: false,
+        }),
         roles: {},
         pagination: {}
       }
@@ -183,80 +183,65 @@
 
     methods: {
       openRoleModal () {
-        this.roleForm.name = ''
-        this.errors.name = ''
-        this.hasErrorName = false
+        this.form.clear()
+        this.form.errors.clear()
         $('#add-role-modal').modal('show')
       }, // openRoleModal()
 
       openUpdateRoleModal (id) {
-        this.roleForm.name = ''
-        this.errors.name = ''
-        this.hasErrorName = false
+        this.form.errors.clear()
         this.getRole(id)
         $('#update-role-modal').modal('show')
       }, // openUpdateRoleModal()
 
-       createRole () {
-        this.hasErrorName = false
-        this.$http.post('/api/admin/roles/store', this.roleForm).then(res => {
-          if(res.data.message) {
-            this.roleForm.name = ''
-            this.$root.$refs.toastr.s(res.data.message, 'Success')
-            this.roles.push(res.data.role)
+      createRole () {
+        this.form.post('/api/admin/roles/store')
+          .then((response) => {
+            this.$root.$refs.toastr.s(response.message, 'Success')
+            this.roles.push(response.role)
             $('#add-role-modal').modal('hide')
-          }
-          if(res.data.errors) {
-            this.errors = res.data.errors
-            if(res.data.errors.name) {
-              this.hasErrorName = true
+          })
+          .catch((error) => {
+            if(error) {
+              this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
             }
-          }
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+          })
       }, // createRole()
 
       getAllRoles (page) {
-         let pg = page ? '/api/admin/roles?page=' + page : '/api/admin/roles'
-        this.$http.get(pg).then(res => {
-          this.pagination = res.data.pagination
-          this.roles = res.data.roles.data
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+        let pg = page ? '/api/admin/roles?page=' + page : '/api/admin/roles'
+        axios.get(pg)
+          .then((response) => {
+            this.pagination = response.data.pagination
+            this.roles = response.data.roles.data
+          }).catch((error) => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          });
       }, // getAllRoles()
 
       getRole (id) {
-        this.$http.get('/api/admin/roles/' + id).then(res => {
-          this.role_id = res.data.id
-          this.roleForm.name = res.data.name
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+        axios.get('/api/admin/roles/' + id)
+          .then((response) => {
+            this.role_id = response.data.id
+            this.form.name = response.data.name
+          }).catch((error) => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          });
       }, // getRole()
 
       updateRole () {
-        this.hasErrorName = false
-        this.$http.put('/api/admin/roles/' + this.role_id + '/update', this.roleForm).then(res => {
-          if(res.data.message) {
-            this.roleForm.name = ''
-            this.$root.$refs.toastr.s(res.data.message, 'Success')
+        this.form.put('/api/admin/roles/' + this.role_id + '/update')
+          .then((response) => {
+            this.$root.$refs.toastr.s(response.message, 'Success')
             this.getAllRoles()
             $('#update-role-modal').modal('hide')
-          }
-          if(res.data.errors) {
-            this.errors = res.data.errors
-            if(res.data.errors.name) {
-              this.hasErrorName = true
-            }
-          }
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+          })
+          .catch((error) => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          })
       }, // updateRole()
 
-       deleteRole (id) {
+      deleteRole (id) {
         let vm = this
         swal({
           title: "Are you sure?",
@@ -272,12 +257,14 @@
         function(isConfirm){
           if (isConfirm) {
             swal("Deleted!", "Your role has been deleted.", "success");
-            vm.$http.delete('/api/admin/roles/' + id).then(res => {
-              vm.getAllRoles()
-              vm.$root.$refs.toastr.s(res.data.message, 'Success')
-            }).catch(err => {
-              vm.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-            });
+            vm.form.delete('/api/admin/roles/' + id)
+              .then((response) => {
+                vm.getAllRoles()
+                vm.$root.$refs.toastr.s(response.message, 'Success')
+              })
+              .catch((error) => {
+                vm.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+              })
           } else {
             swal("Cancelled", "Your role is safe :)", "error");
           }
