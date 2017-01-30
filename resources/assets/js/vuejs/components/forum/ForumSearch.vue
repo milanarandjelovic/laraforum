@@ -39,10 +39,8 @@
 </template>
 
 <script>
-  import { ENV } from '../../../../../../.env.js'
-
   let algoliasearch = require('algoliasearch')
-  let client = algoliasearch(ENV.ALGOLIA_APP_ID, ENV.ALGOLIA_SECRET)
+  let client = algoliasearch('4T9BZBHR3X', 'adc1093490db75bfaa263c99b104a245')
 
   let discussions = client.initIndex('discussions')
   let users = client.initIndex('users')
