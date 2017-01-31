@@ -4,7 +4,7 @@
 
 <!-- Main Content -->
 @section('content')
-    <div class="middle-box text-center animated fadeInDown">
+    <div class="middle-box text-center">
 
         <div>
             <h1 class="logo-name text-center">LF</h1>

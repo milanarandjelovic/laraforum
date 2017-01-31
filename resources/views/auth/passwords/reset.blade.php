@@ -3,7 +3,7 @@
 @section('title', '| Reset')
 
 @section('content')
-    <div class="middle-box text-center animated fadeInDown">
+    <div class="middle-box text-center">
         <div class="col-md-8 col-md-offset-2">
 
             <div>
@@ -25,7 +25,7 @@
 
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <input id="email" type="email" class="form-control" name="email"
-                           value="{{ $email or old('email') }}" placeholder="E-Mail Address" autofocus>
+                           value="{{ $email or old('email') }}" placeholder="E-Mail Address">
                     @if ($errors->has('email'))
                         <span class="help-block">
                             <strong>{{ $errors->first('email') }}</strong>

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div class="middle-box text-center loginscreen">
             <div class="col-md-12 register">
 
                 <div>
@@ -24,7 +24,7 @@
 
                     <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                         <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}"
-                               placeholder="Username" autofocus>
+                               placeholder="Username">
                         @if ($errors->has('username'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('username') }}</strong>
