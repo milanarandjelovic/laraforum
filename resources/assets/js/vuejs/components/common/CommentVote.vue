@@ -41,9 +41,9 @@ export default {
 
   methods: {
     getVotes () {
-      this.$http.get('/api/forum/comments/' + this.discussionId + '/votes')
+      axios.get('/api/forum/comments/' + this.discussionId + '/votes')
         .then((response) => {
-          console.log(response)
+          //console.log(response)
           this.up = response.data.data.up
           this.down = response.data.data.down
           this.userVote = response.data.data.user_vote
@@ -70,18 +70,16 @@ export default {
     }, // vote()
 
     deleteVote (type) {
-      console.log('delete ' + type)
-      this.$http.delete('/api/forum/comments/' + this.discussionId + '/votes')
+      axios.delete('/api/forum/comments/' + this.discussionId + '/votes')
         .then((response) => {
-          console.log(response)
+          //console.log(response)
         })
     }, // deleteVote()
 
     createVote (type) {
-      console.log('create ' + type)
-      this.$http.post('/api/forum/comments/' + this.discussionId + '/votes', { type: type})
+      axios.post('/api/forum/comments/' + this.discussionId + '/votes', { type: type})
         .then((response) => {
-          console.log(response)
+          //console.log(response)
         })
     } // createVote()
   } // methods

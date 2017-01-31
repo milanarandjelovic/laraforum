@@ -62,15 +62,6 @@
     methods: {
       search () {
         if (this.search_query != '') {
-          //this.$http.get('/api/search/' + this.search_query)
-          //  .then(res => {
-          //    this.results.users = res.data.users
-          //    this.usersCount = res.data.users.length ? res.data.users.length : ''
-          //    this.results.discussions = res.data.discussions
-          //    this.discussionsCount = res.data.discussions.length ? res.data.discussions.length : ''
-          //  }).catch(err => {
-          //    console.log(err)
-          // })
           discussions.search(this.search_query, (err, results) => {
             this.results.discussions = results.hits
             this.discussionsCount = this.results.discussions.length ? this.results.discussions.length : ''
