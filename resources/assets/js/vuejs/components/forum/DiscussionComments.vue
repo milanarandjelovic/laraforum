@@ -13,7 +13,7 @@
             <span class="discussion-created-at">{{ comment.created_at }}</span>
             <div>{{ comment.description }}</div>
             <div v-if="$root.laraForum.authenticated == 'true'">
-              <div v-if="$root.laraForum.id != comment.user_id">
+              <div :style="$root.laraForum.id != comment.user_id ? '' : 'pointer-events: none;'">
                 <comment-vote :discussion-id="comment.id"></comment-vote>
               </div>
             </div>
