@@ -11,13 +11,15 @@
     >
     </scale-loader>
 
-    <div class="ibox" v-if="channels.length > 0">
+    <div class="ibox" v-show="!loading">
+
       <div class="ibox-title">
         <h5>All channel assigned for this forum</h5>
         <div class="ibox-tools">
           <a class="btn btn-primary btn-xs" @click.prevent="openChannelModal">Create new channel</a>
         </div> <!-- /.ibox-tools -->
       </div> <!-- /.ibox-title -->
+
       <div class="ibox-content">
 
         <!-- NEW CHANNEL MODAL -->
@@ -29,8 +31,8 @@
                 <h4 class="modal-title">Create New Channel</h4>
               </div>
               <div class="modal-body">
-                <form class="form-horizontal">
-                  <div class="form-group" :class="{ 'has-error' : hasErrorName }">
+                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
                     <label class="col-sm-2 control-label" for="name">Name</label>
                     <div class="col-sm-10">
                       <input
@@ -38,15 +40,15 @@
                               id="name"
                               name="name"
                               class="form-control"
-                              v-model="channelForm.name"
+                              v-model="form.name"
                               autofocus
                       >
-                      <div v-if="errors.name.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.name }}</p>
+                      <div v-if="form.errors.has('name')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('name') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <div class="form-group" :class="{ 'has-error' : hasErrorDescription }">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('description') }">
                     <label class="col-sm-2 control-label" for="description">Description</label>
                     <div class="col-sm-10">
                       <textarea
@@ -54,15 +56,15 @@
                               id="description"
                               name="description"
                               class="form-control description"
-                              v-model="channelForm.description"
+                              v-model="form.description"
                               rows="6"
                       ></textarea>
-                      <div v-if="errors.description.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.description }}</p>
+                      <div v-if="form.errors.has('description')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('description') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('channel_url') }">
                     <label class="col-sm-2 control-label" for="channel_url">Url</label>
                     <div class="col-sm-10">
                       <input
@@ -70,14 +72,14 @@
                               id="channel_url"
                               name="channel_url"
                               class="form-control"
-                              v-model="channelForm.channel_url"
+                              v-model="form.channel_url"
                       >
-                      <div v-if="errors.channel_url.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.channel_url }}</p>
+                      <div v-if="form.errors.has('channel_url')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('channel_url') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('channel_icon') }">
                     <label class="col-sm-2 control-label" for="channel_icon">Icon</label>
                     <div class="col-sm-10">
                       <input
@@ -85,13 +87,13 @@
                               id="channel_icon"
                               name="channel_icon"
                               class="form-control"
-                              v-model="channelForm.channel_icon"
+                              v-model="form.channel_icon"
                       >
                       <p>Choose channel
                         <a href="http://fontawesome.io/icons/" target="_blank">icon</a>.
                       </p>
-                      <div v-if="errors.channel_icon.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.channel_icon }}</p>
+                      <div v-if="form.errors.has('channel_icon')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('channel_icon') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
@@ -115,8 +117,8 @@
                 <h4 class="modal-title">Update Channel</h4>
               </div>
               <div class="modal-body">
-                <form class="form-horizontal">
-                  <div class="form-group" :class="{ 'has-error' : hasErrorName }">
+                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
                     <label class="col-sm-2 control-label" for="name">Name</label>
                     <div class="col-sm-10">
                       <input
@@ -124,15 +126,15 @@
                               id="name"
                               name="name"
                               class="form-control"
-                              v-model="channelForm.name"
+                              v-model="form.name"
                               autofocus
                       >
-                      <div v-if="errors.name.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.name }}</p>
+                      <div v-if="form.errors.has('name')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('name') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <div class="form-group" :class="{ 'has-error' : hasErrorDescription }">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('description') }">
                     <label class="col-sm-2 control-label" for="description">Description</label>
                     <div class="col-sm-10">
                       <textarea
@@ -140,15 +142,15 @@
                               id="description"
                               name="description"
                               class="form-control description"
-                              v-model="channelForm.description"
+                              v-model="form.description"
                               rows="6"
                       ></textarea>
-                      <div v-if="errors.description.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.description }}</p>
+                      <div v-if="form.errors.has('description')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('description') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('channel_url') }">
                     <label class="col-sm-2 control-label" for="channel_url">Url</label>
                     <div class="col-sm-10">
                       <input
@@ -156,14 +158,14 @@
                               id="channel_url"
                               name="channel_url"
                               class="form-control"
-                              v-model="channelForm.channel_url"
+                              v-model="form.channel_url"
                       >
-                      <div v-if="errors.channel_url.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.channel_url }}</p>
+                      <div v-if="form.errors.has('channel_url')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('channel_url') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
-                  <div class="form-group" :class="{ 'has-error' : hasErrorChannelUrl }">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('channel_icon') }">
                     <label class="col-sm-2 control-label" for="channel_icon">Icon</label>
                     <div class="col-sm-10">
                       <input
@@ -171,13 +173,13 @@
                               id="channel_icon"
                               name="channel_icon"
                               class="form-control"
-                              v-model="channelForm.channel_icon"
+                              v-model="form.channel_icon"
                       >
                       <p>Choose channel
                         <a href="http://fontawesome.io/icons/" target="_blank">icon</a>.
                       </p>
-                      <div v-if="errors.channel_icon.length > 0" class="form-error-message">
-                        <p class="text-danger">{{ errors.channel_icon }}</p>
+                      <div v-if="form.errors.has('channel_icon')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('channel_icon') }}</p>
                       </div>
                     </div>
                   </div> <!-- /.form-group -->
@@ -192,7 +194,8 @@
         </div> <!-- /.modal -->
         <!-- /UPDATE CHANNEL MODAL -->
 
-        <div class="table-responsive">
+        <!-- CHANNELS TABLE -->
+        <div class="table-responsive" v-if="channels.length > 0">
           <div class="dataTables_wrapper form-inline dt-bootstrap">
             <table class="table table-striped table-bordered table-hover dataTable dtr-inline">
               <thead>
@@ -235,8 +238,9 @@
               <pagination :pagination="pagination" :callback="getAllChannels" navClass="pull-right"></pagination>
             </div>
 
-          </div>
-        </div>
+          </div> <!-- /.dataTables_wrapper-->
+        </div> <!-- /.table-responsive -->
+        <!-- /CHANNELS TABLE -->
 
         <div class="text-center" v-if="channels.length == 0">
           <h3>You have no channel, begin by creating a
@@ -250,6 +254,7 @@
 </template>
 
 <script>
+  import Form from '../helpers/Form';
   import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue';
   import Pagination from '../common/Pagination.vue';
 
@@ -258,21 +263,12 @@
     data () {
       return {
         height: '60px',
-        channelForm: {
-           name: '',
-           description: '',
-           channel_url: '',
-           channel_icon: '',
-        },
-        errors: {
+        form: new Form({
           name: '',
           description: '',
-          channel_icon: '',
-          channel_url: ''
-        },
-        hasErrorName: false,
-        hasErrorDescription: false,
-        hasErrorChannelUrl: false,
+          channel_url: '',
+          channel_icon: ''
+        }),
         channel_id: '',
         channels: {},
         channel: {},
@@ -283,121 +279,78 @@
     components: {
         'scale-loader': ScaleLoader,
         Pagination
-    },
+    }, // components
 
     beforeMount () {
       this.loading = true
-    },
+    }, // beforeMount()
 
     mounted () {
       this.loading = false
       this.getAllChannels()
-    },
+    }, // mounted()
 
     methods: {
       openChannelModal () {
-        this.channelForm.name = ''
-        this.errors.channel_url = ''
-        this.errors.name = ''
-        this.errors.description = ''
-        this.hasErrorName = false
-        this.hasErrorDescription = false
-        this.hasErrorChannelUrl = false
-        this.channelForm.channel_url = ''
-        this.channelForm.channel_icon = ''
+        this.form.clear()
+        this.form.errors.clear()
         $('#add-channel-modal').modal('show')
       }, // openChannelModal()
 
       openUpdateChannelModal (id) {
-        this.channelForm.name = ''
-        this.errors.channel_url = ''
-        this.errors.name = ''
-        this.errors.description = ''
-        this.hasErrorName = false
-        this.hasErrorDescription = false
-        this.hasErrorChannelUrl = false
+        this.form.errors.clear()
         this.getChannel(id)
         $('#update-channel-modal').modal('show')
       }, // openUpdateChannelModal()
 
       createChannel () {
-        this.hasErrorName = false
-        this.hasErrorDescription = false
-        this.hasErrorChannelUrl = false
-        this.$http.post('/api/admin/channels/store', this.channelForm).then(res => {
-          if(res.data.message) {
-            this.channelForm.name = ''
-            this.channelForm.channel_url = ''
-            this.$root.$refs.toastr.s(res.data.message, 'Success')
+        this.form.post('/api/admin/channels/store')
+          .then((response) => {
+            this.$root.$refs.toastr.s(response.message, 'Success')
             this.getAllChannels()
             $('#add-channel-modal').modal('hide')
-          }
-          if(res.data.errors) {
-            this.errors = res.data.errors
-            if(res.data.errors.name) {
-              this.hasErrorName = true
+          })
+          .catch((error) => {
+            if(error) {
+              this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
             }
-             if(res.data.errors.description) {
-              this.hasErrorDescription = true
-            }
-            if(res.data.errors.channel_url) {
-              this.hasErrorChannelUrl = true
-            }
-          }
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+          })
       }, // createChannel()
 
       getAllChannels (page) {
         let pg = page ? '/api/admin/channels?page=' + page : '/api/admin/channels'
-        this.$http.get(pg).then(res => {
-          this.pagination = res.data.pagination
-          this.channels = res.data.channels.data
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+        axios.get(pg)
+          .then((response) => {
+            this.pagination = response.data.pagination
+            this.channels = response.data.channels.data
+          }).catch((error) => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          });
        }, // getAllChannel()
 
       getChannel (id) {
-        this.$http.get('/api/admin/channels/' + id).then(res => {
-          this.channel_id = res.data.id
-          this.channelForm.name = res.data.name
-          this.channelForm.description = res.data.description
-          this.channelForm.channel_icon = res.data.channel_icon
-          this.channelForm.channel_url = res.data.channel_url
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+        axios.get('/api/admin/channels/' + id)
+          .then((response) => {
+            this.channel_id = response.data.id
+            this.form.name = response.data.name
+            this.form.description = response.data.description
+            this.form.channel_icon = response.data.channel_icon
+            this.form.channel_url = response.data.channel_url
+          }).catch((error) => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          });
       }, // getChannel()
 
       updateChannel () {
-        this.hasErrorName = false
-        this.hasErrorChannelUrl = false
-        this.$http.put('/api/admin/channels/' + this.channel_id + '/update', this.channelForm).then(res => {
-          if(res.data.message) {
-            this.channelForm.name = ''
-            this.channelForm.description = ''
-            this.channelForm.channel_url = ''
-            this.$root.$refs.toastr.s(res.data.message, 'Success')
+        this.form.put('/api/admin/channels/' + this.channel_id + '/update')
+          .then((response) => {
+            this.$root.$refs.toastr.s(response.message, 'Success')
             this.getAllChannels()
             $('#update-channel-modal').modal('hide')
-          }
-          if(res.data.errors) {
-            this.errors = res.data.errors
-            if(res.data.errors.name) {
-              this.hasErrorName = true
-            }
-            if(res.data.errors.description) {
-              this.hasErrorDescription = true
-            }
-            if(res.data.errors.channel_url) {
-              this.hasErrorChannelUrl = true
-            }
-          }
-        }).catch(err => {
-          this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-        });
+          })
+          .catch((error) => {
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+          })
       }, // updateChannel()
 
       deleteChannel (id) {
@@ -416,12 +369,14 @@
         function(isConfirm){
           if (isConfirm) {
             swal("Deleted!", "Your channel has been deleted.", "success");
-            vm.$http.delete('/api/admin/channels/' + id).then(res => {
-              vm.getAllChannels()
-              vm.$root.$refs.toastr.s(res.data.message, 'Success')
-            }).catch(err => {
-              vm.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
-            });
+            vm.form.delete('/api/admin/channels/' + id)
+              .then((response) => {
+                vm.getAllChannels()
+                vm.$root.$refs.toastr.s(response.message, 'Success')
+              })
+              .catch((error) => {
+                vm.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
+              })
           } else {
             swal("Cancelled", "Your channel is safe :)", "error");
           }

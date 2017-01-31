@@ -54,22 +54,12 @@ class ChannelController extends Controller
     public function store(Request $request)
     {
 
-        $validator = Validator::make($request->only(['name', 'description', 'channel_icon', 'channel_url']), [
+        $this->validate($request, [
             'name'         => 'required|min:3|max:255',
             'description'  => 'required|min:3|max:255',
             'channel_url'  => 'required',
             'channel_icon' => 'required',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'errors' => [
-                    'name'        => $validator->errors()->first('name'),
-                    'description' => $validator->errors()->first('description'),
-                    'channel_url' => $validator->errors()->first('channel_url'),
-                ],
-            ]);
-        }
 
         Channel::create([
             'name'         => $request->input('name'),
@@ -106,22 +96,12 @@ class ChannelController extends Controller
     public function update(Request $request, $id)
     {
 
-        $validator = Validator::make($request->only(['name', 'description', 'channel_icon', 'channel_url']), [
+        $this->validate($request, [
             'name'         => 'required|min:3|max:255',
             'description'  => 'required|min:3|max:255',
             'channel_url'  => 'required',
             'channel_icon' => 'required',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'errors' => [
-                    'name'        => $validator->errors()->first('name'),
-                    'description' => $validator->errors()->first('description'),
-                    'channel_url' => $validator->errors()->first('channel_url'),
-                ],
-            ]);
-        }
 
         Channel::where('id', $id)->update([
             'name'         => $request->input('name'),
