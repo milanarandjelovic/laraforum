@@ -11,12 +11,16 @@
     >
     </scale-loader>
 
-    <div class="ibox" v-if="users.length > 0">
+    <div class="ibox" v-show="!loading">
+
       <div class="ibox-title">
         <h5>All users in forum</h5>
       </div> <!-- /.ibox-title -->
+
       <div class="ibox-content">
-        <div class="table-responsive">
+
+        <!-- USERS TABLE -->
+        <div class="table-responsive" v-if="users.length > 0">
           <div class="dataTables_wrapper form-inline dt-bootstrap">
 
             <table class="table table-striped table-bordered table-hover dataTable dtr-inline">
@@ -60,6 +64,12 @@
           </div>
 
         </div> <!-- /.table-responsive -->
+        <!-- /USERS TABLE -->
+
+        <div class="text-center" v-if="users.length == 0">
+          <h3>You have no user in forum.</h3>
+        </div>
+
       </div> <!-- /.ibox-content -->
     </div> <!-- /.ibox -->
   </div>
@@ -77,32 +87,32 @@
         pagination: {},
         users: {}
       }
-    }, // data
+    }, // data()
 
     components: {
         'scale-loader': ScaleLoader,
         Pagination
-    },
+    }, // components
 
     beforeMount () {
       this.loading = true
-    },
+    }, // beforeMount()
 
     mounted () {
       this.loading = false
       this.getAllUsers ()
-    },
+    }, // mounted()
 
     methods: {
       getAllUsers (page) {
         let pg = page ? '/api/admin/users?page=' + page : '/api/admin/users'
-        this.$http.get(pg).then(res => {
-            this.pagination = res.data.pagination
-            this.users = res.data.users.data
-          }).catch(err => {
+        axios.get(pg).then((response) => {
+            this.pagination = response.data.pagination
+            this.users = response.data.users.data
+          }).catch((error) => {
             this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
           });
-      }
+      } // getAllUsers()
     } // methods
   }
 </script>
