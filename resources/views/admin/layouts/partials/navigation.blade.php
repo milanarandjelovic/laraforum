@@ -12,7 +12,7 @@
         {{-- Collect the nav links, forms, and other content for toggling --}}
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-
+                <forum-search></forum-search>
             </ul>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
