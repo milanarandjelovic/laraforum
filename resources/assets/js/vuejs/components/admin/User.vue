@@ -107,7 +107,6 @@
       getAllUsers (page) {
         let pg = page ? '/api/admin/users?page=' + page : '/api/admin/users'
         axios.get(pg).then((response) => {
-            console.log(response)
             this.pagination = response.data.pagination
             this.users = response.data.users.data
           }).catch((error) => {
