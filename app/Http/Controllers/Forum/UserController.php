@@ -131,7 +131,7 @@ class UserController extends Controller
     public function update(Request $request, $username)
     {
 
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             'first_name'          => 'min:3|max:255',
             'last_name'           => 'min:3|max:255',
             'profile_description' => 'min:3',
@@ -144,24 +144,6 @@ class UserController extends Controller
             'country_flag'        => 'numeric',
             'for_hire'            => 'boolean',
         ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'errors' => [
-                    'first_name'          => $validator->errors()->first('first_name'),
-                    'last_name'           => $validator->errors()->first('last_name'),
-                    'profile_description' => $validator->errors()->first('profile_description'),
-                    'personal_website'    => $validator->errors()->first('personal_website'),
-                    'twitter_username'    => $validator->errors()->first('twitter_username'),
-                    'github_username'     => $validator->errors()->first('github_username'),
-                    'place_of_employment' => $validator->errors()->first('place_of_employment'),
-                    'job_title'           => $validator->errors()->first('job_title'),
-                    'hometown'            => $validator->errors()->first('hometown'),
-                    'country_flag'        => $validator->errors()->first('country_flag'),
-                    'for_hire'            => $validator->errors()->first('for_hire'),
-                ],
-            ]);
-        }
 
         User::where('username', $username)->update([
             'first_name'          => $request->input('first_name'),

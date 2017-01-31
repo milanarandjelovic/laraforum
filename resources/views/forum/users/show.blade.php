@@ -22,7 +22,7 @@
                     <img src="{{ Gravatar::src($user->email, 360) }}"
                          class="img-responsive center-block" alt="profile">
                 </div>
-                <div class="ibox-content">
+                <div class="ibox-content profile-content">
                     <div class="clearfix user-username">
                         <h4 class="pull-left">
                             <strong>{{ $user->getNameOrUsername() }}</strong>
@@ -62,7 +62,7 @@
                         <p class="small">{{ $user->profile_description }}</p>
                     @endif
                     <div class="user-button">
-                        <div class="row mb-5 ">
+                        <div class="row mb-5">
                             <div class="col-md-6 col-sm-6">
                                 <button type="button" class="btn btn-primary btn-sm btn-block">
                                     <i class="fa fa-envelope"></i> Send Message
