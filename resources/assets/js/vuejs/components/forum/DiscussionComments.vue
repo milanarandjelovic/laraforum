@@ -85,17 +85,17 @@
 
     methods: {
       getComments () {
-        this.$http.get('/api/discussions/' + this.discussionId + '/comments')
-          .then(res => {
-            this.comments = res.data.data
+        axios.get('/api/discussions/' + this.discussionId + '/comments')
+          .then((response) => {
+            this.comments = response.data.data
           })
       }, // getComments()
 
       createComment () {
-        this.$http.post('/api/forum/discussions/' + this.discussionId + '/comments', {
+        axios.post('/api/forum/discussions/' + this.discussionId + '/comments', {
           description: this.description
-          }).then(res => {
-            this.comments.push(res.data.data)
+          }).then((response) => {
+            this.comments.push(response.data.data)
             this.description = ''
           })
       }
