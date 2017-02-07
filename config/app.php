@@ -188,6 +188,11 @@ return [
         Webpatser\Countries\CountriesServiceProvider::class,
 
         /*
+         * Spatie Activitylog Service Provider...
+         */
+        Spatie\Activitylog\ActivitylogServiceProvider::class,
+
+        /*
          * Debugbar Service Provider...
          */
 //        Barryvdh\Debugbar\ServiceProvider::class,
