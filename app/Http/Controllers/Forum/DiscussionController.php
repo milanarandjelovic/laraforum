@@ -56,6 +56,15 @@ class DiscussionController extends Controller
 
         $channel = Channel::where('id', $discussion->channel_id)->first();
 
+        activity()->by($request->input('user_id'))
+            ->performedOn($channel)
+            ->withProperties([
+                'type' => 'discussion',
+                'title' => $discussion->title,
+                'link'  => 'discuss/channels/' . $channel->channel_url . '/' . $discussion->slug,
+            ])
+            ->log('Create discussion');
+
         return redirect('discuss/channels/' . $channel->channel_url . '/' . $discussion->slug);
     }
 

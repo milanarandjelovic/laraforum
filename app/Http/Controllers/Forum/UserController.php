@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Forum;
 
+use Spatie\Activitylog\Models\Activity;
 use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -68,11 +69,15 @@ class UserController extends Controller
             )
             ->first();
 
+        $u = User::where('username', $username)->first();
+        $userActivities = Activity::all()->where('causer_id', $u->id);
+
         $country = Countries::all()->where('id', $user->country_flag)->first();
 
         return view('forum.users.show')
             ->with('user', $user)
-            ->with('country', $country);
+            ->with('country', $country)
+            ->with('userActivities', $userActivities);
     }
 
     /**

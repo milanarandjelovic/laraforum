@@ -97,7 +97,7 @@
                     <h5>Activites</h5>
                 </div> {{-- /.ibox-title --}}
                 <div class="ibox-content">
-                    <p>Add activates</p>
+                    @include('forum.users.partials.activity')
                 </div> {{-- /.ibox-content --}}
             </div> {{-- /.ibox --}}
         </div> {{-- /.col-lg-8 --}}
