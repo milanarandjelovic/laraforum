@@ -8,6 +8,7 @@ window._ = require('lodash');
 
 window.$ = window.jQuery = require('jquery');
 window.axios = require('axios');
+window.moment = require('moment')
 require('bootstrap-sass');
 require('metismenu');
 require('jquery-slimscroll');
@@ -24,6 +25,10 @@ require('./plugins/main');
 
 window.Vue = require('vue');
 require('vue-resource');
+
+Vue.filter('timeago', function(value) {
+  return moment.utc(value).local().fromNow();
+});
 
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of

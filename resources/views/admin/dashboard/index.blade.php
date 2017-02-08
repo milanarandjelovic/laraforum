@@ -3,5 +3,5 @@
 @section('title', '| Dashboard')
 
 @section('content')
-
+    <activity-log></activity-log>
 @endsection

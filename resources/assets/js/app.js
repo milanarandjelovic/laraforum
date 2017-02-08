@@ -38,6 +38,10 @@ import DiscussionComments from './vuejs/components/forum/DiscussionComments.vue'
 /* Search component */
 import ForumSearch from './vuejs/components/forum/ForumSearch.vue';
 
+/* Dashboard component */
+import ActivityLog from './vuejs/components/admin/dashboard/Activitylog.vue';
+
+
 const app = new Vue({
   el: '#app',
 
@@ -58,6 +62,7 @@ const app = new Vue({
     AdminRole,
     CommentVote,
     ForumSearch,
-    DiscussionComments
+    DiscussionComments,
+    ActivityLog
   }
 });

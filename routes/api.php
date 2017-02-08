@@ -4,6 +4,9 @@
 Route::get('/discussions/{discussion}/comments', 'Forum\DiscussionCommentController@index');
 
 Route::group(['middleware' => 'auth:api', 'prefix' => 'admin'], function () {
+    /* Dashboard routes */
+    Route::get('/activities', 'Admin\ActivityController@activities');
+
     /* Channels routes */
     Route::post('channels/store', 'Admin\ChannelController@store');
     Route::get('channels', 'Admin\ChannelController@channels');

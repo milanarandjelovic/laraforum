@@ -61,7 +61,7 @@ class DiscussionController extends Controller
             ->withProperties([
                 'type' => 'discussion',
                 'title' => $discussion->title,
-                'link'  => 'discuss/channels/' . $channel->channel_url . '/' . $discussion->slug,
+                'link'  => '/discuss/channels/' . $channel->channel_url . '/' . $discussion->slug,
             ])
             ->log('Create discussion');
 

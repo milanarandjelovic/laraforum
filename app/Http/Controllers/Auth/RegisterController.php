@@ -71,6 +71,14 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
+        activity()->by($user->id)
+            ->performedOn($user)
+            ->withProperties([
+                'type'  => 'user',
+                'title' => $user->username,
+            ])
+            ->log('New user has been registered.');
+
         $user_id = $user->id;
         $roles = Role::all()->where('name', 'user')->first();
         $role_id = $roles->id;
