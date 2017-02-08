@@ -116,12 +116,14 @@
                 <td>{{ role.created_at }}</td>
                 <td>{{ role.updated_at }}</td>
                 <td>
-                  <button class="btn btn-white btn-xs" @click.prevent="openUpdateRoleModal(role.id)">
-                    <i class="fa fa-pencil"></i> Edit
-                  </button>
-                  <button class="btn btn-danger btn-xs" @click.prevent="deleteRole(role.id)">
-                    <i class="fa fa-trash-o"></i> Deleted
-                  </button>
+                  <div class="btn-group">
+                    <button class="btn btn-white btn-xs" @click.prevent="openUpdateRoleModal(role.id)">
+                      <i class="fa fa-pencil"></i> Edit
+                    </button>
+                    <button class="btn btn-danger btn-xs" @click.prevent="deleteRole(role.id)">
+                      <i class="fa fa-trash-o"></i> Deleted
+                    </button>
+                  </div>
                 </td>
               </tr>
               </tbody>
@@ -272,4 +274,5 @@
       } // deleteRole()
     } // methods
   }
+
 </script>
