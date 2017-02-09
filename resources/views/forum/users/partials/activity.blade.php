@@ -1,6 +1,6 @@
 @foreach($userActivities as $activity)
     @if($activity->getExtraProperty('type') === 'discussion')
-        <div class="stream-small">
+        <div class="stream-small mb-5">
             <span class="label label-success"> Discussion</span>
             <span class="text-muted">{{ $activity->created_at->diffForHumans() }}</span>
             /

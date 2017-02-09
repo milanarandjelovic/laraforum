@@ -25,6 +25,11 @@ class DiscussionCommentController extends Controller
         );
     }
 
+    /**
+     * @param CreateDiscussionCommentRequest $request
+     * @param Discussion                     $discussion
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function create(CreateDiscussionCommentRequest $request, Discussion $discussion)
     {
         $comment = $discussion->comments()->create([
@@ -39,5 +44,6 @@ class DiscussionCommentController extends Controller
                 ->transformWith(new CommentTransformer())
                 ->toArray()
         );
+
     }
 }

@@ -35,7 +35,7 @@ class Comment extends BaseModel
     {
         return $this->hasMany('App\Models\Comment', 'reply_id', 'id');
     }
-    
+
     public function votes()
     {
         return $this->morphMany('App\Models\Vote', 'voteable');
