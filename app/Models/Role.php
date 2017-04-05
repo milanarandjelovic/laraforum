@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-class Role extends BaseModel
+use App\LaraForum\Traits\Dateable;
+use Illuminate\Database\Eloquent\Model;
+
+class Role extends Model
 {
+
+    use Dateable;
 
     /**
      * The attributes that are mass assignable.

@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use Laravel\Scout\Searchable;
+use App\LaraForum\Traits\Dateable;
+use Illuminate\Database\Eloquent\Model;
 
-class Channel extends BaseModel
+class Channel extends Model
 {
 
-    use Searchable;
+    use Dateable, Searchable;
 
     /**
      * The attributes that are mass assignable.

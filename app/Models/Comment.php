@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\LaraForum\Traits\Dateable;
 use App\LaraForum\Traits\Orderable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Comment extends BaseModel
+class Comment extends Model
 {
 
-    use SoftDeletes, Orderable;
+    use Dateable, SoftDeletes, Orderable;
 
     /**
      * The attributes that are mass assignable.

@@ -5,12 +5,14 @@ namespace App\Models;
 use Laravel\Scout\Searchable;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use App\LaraForum\Traits\Dateable;
+use Illuminate\Database\Eloquent\Model;
 use AlgoliaSearch\Laravel\AlgoliaEloquentTrait;
 
-class Discussion extends BaseModel
+class Discussion extends Model
 {
 
-    use HasSlug, Searchable, AlgoliaEloquentTrait;
+    use Dateable, HasSlug, Searchable, AlgoliaEloquentTrait;
 
     /**
      * The attributes that are mass assignable.

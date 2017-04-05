@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Laravel\Scout\Searchable;
 use Laravel\Passport\HasApiTokens;
+use App\LaraForum\Traits\Dateable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
 
-    use HasApiTokens, Notifiable, Searchable;
+    use Dateable, HasApiTokens, Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -43,28 +44,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    /**
-     * Return diffForHumans for created_at.
-     *
-     * @param $date
-     * @return string
-     */
-    public function getCreatedAtAttribute($date)
-    {
-        return $this->asDateTime($date)->diffForHumans();
-    }
-
-    /**
-     * Return diffForHumans for updated_at.
-     *
-     * @param $date
-     * @return string
-     */
-    public function getUpdatedAtAttribute($date)
-    {
-        return $this->asDateTime($date)->diffForHumans();
-    }
 
     public function getName()
     {
