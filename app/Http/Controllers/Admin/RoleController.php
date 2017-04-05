@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Role;
 use App\Http\Requests\RoleRequest;
 use App\Http\Controllers\Controller;
 use App\LaraForum\Repositories\RoleRepository;
