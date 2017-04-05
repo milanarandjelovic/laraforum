@@ -1,6 +1,6 @@
 <?php
 
-namespace App\LaraForum\Repositories\Contracts\Eloquent;
+namespace App\LaraForum\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
