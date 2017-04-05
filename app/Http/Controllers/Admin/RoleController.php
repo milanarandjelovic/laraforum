@@ -2,13 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Validator;
 use App\Models\Role;
-use Illuminate\Http\Request;
+use App\Http\Requests\RoleRequest;
 use App\Http\Controllers\Controller;
+use App\LaraForum\Repositories\RoleRepository;
 
 class RoleController extends Controller
 {
+
+    /**
+     * @var RoleRepository
+     */
+    private $roleRepository;
+
+    /**
+     * RoleController constructor.
+     *
+     * @param RoleRepository $roleRepository
+     */
+    public function __construct(RoleRepository $roleRepository)
+    {
+        $this->roleRepository = $roleRepository;
+    }
 
     /**
      * Display a listing of the resource.
@@ -27,7 +42,7 @@ class RoleController extends Controller
      */
     public function roles()
     {
-        $roles = Role::paginate(10);
+        $roles = $this->roleRepository->paginate(10);
 
         $response = [
             'pagination' => [
@@ -48,19 +63,12 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param \App\Http\Requests\RoleRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-
-        $this->validate($request, [
-            'name' => 'required|min:3|max:255',
-        ]);
-
-        $role = Role::create([
-            'name' => $request->input('name'),
-        ]);
+        $role = $this->roleRepository->create($request->all());
 
         return response()->json([
             'message' => 'Role has been successfully created.',
@@ -76,7 +84,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $channel = Role::all()->where('id', $id)->first();
+        $channel = $this->roleRepository->findBy('id', $id);
 
         return response()->json($channel);
     }
@@ -84,20 +92,13 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
+     * @param  \App\Http\Requests\RoleRequest $request
+     * @param  int                            $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RoleRequest $request, $id)
     {
-
-        $this->validate($request, [
-            'name' => 'required|min:3|max:255',
-        ]);
-
-        Role::where('id', $id)->update([
-            'name' => $request->input('name'),
-        ]);
+        $this->roleRepository->update($request->all(), $id);
 
         return response()->json([
             'message' => 'Role has been successfully updated.',
@@ -112,11 +113,10 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $channel = Role::find($id);
-        $channel->delete();
+        $this->roleRepository->delete($id);
 
         return response()->json([
-            'message' => 'Role has been deleted.',
+            'message' => 'Role has been successfully deleted.',
         ]);
     }
 }
