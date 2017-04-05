@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\LaraForum\Traits;
 
-use Illuminate\Database\Eloquent\Model;
-
-class BaseModel extends Model
+trait Dateable
 {
 
     /**
