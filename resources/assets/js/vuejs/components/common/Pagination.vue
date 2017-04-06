@@ -9,8 +9,8 @@
         <a data-page="prev" @click.prevent="changePage(pagination.current_page - 1)">‹</a>
       </li>
       <li v-for="page in pagination.last_page"
-          class="paginate_button"
-          :class="page == pagination.current_page ? 'active': ''"
+        class="paginate_button"
+        :class="page == pagination.current_page ? 'active': ''"
       >
         <a @click.prevent="changePage(page)">{{ page }}</a>
       </li>
@@ -22,41 +22,47 @@
       </li>
     </ul>
 
-  </div>
+  </div> <!-- /#pagination -->
 </template>
+
 <script>
   export default{
     name: 'pagination',
     data(){
       return{
       }
-    },
+    }, // data()
 
-     props: {
-        pagination: {
-          type: Object,
-          required: true
-        },
-        callback: {
-          type: Function,
-          required: true
-        },
-        size: {
-          type: String,
-          default: ""
-        },
-        navClass: {
-          type: String,
-          default: ""
-        },
-        offset: {
-          type: Number,
-          default: 4
-        },
-        visible: {
-          type: Number,
-          default: 1
-        }
+    props: {
+      pagination: {
+        type: Object,
+        required: true
+      },
+
+      callback: {
+        type: Function,
+        required: true
+      },
+
+      size: {
+        type: String,
+        default: ""
+      },
+
+      navClass: {
+        type: String,
+        default: ""
+      },
+
+      offset: {
+        type: Number,
+        default: 4
+      },
+
+      visible: {
+        type: Number,
+        default: 1
+      }
     }, // props
 
     computed: {

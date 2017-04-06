@@ -1,18 +1,18 @@
 <template>
   <div id="forum-search">
     <form class="navbar-form navbar-left search-forum"
-          autocomplete="off"
-          @submit.prevent="search"
+      autocomplete="off"
+      @submit.prevent="search"
     >
       <div class="input-group">
         <span class="search-icon-holder pull-left">
           <i class="fa fa-search fa-lg" aria-hidden="true"></i>
         </span>
         <input type="text" placeholder="Search for something..."
-               class="form-control" name="search-query"
-               id="top-search-forum"
-               v-model="search_query"
-               @keyup.prevent="search"
+          class="form-control" name="search-query"
+          id="top-search-forum"
+          v-model="search_query"
+          @keyup.prevent="search"
         >
       </div>
       <div class="query-results" v-if="search_query != ''">

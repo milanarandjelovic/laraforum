@@ -22,22 +22,24 @@
         <div v-if="$root.laraForum.authenticated == 'true'">
           <div class="social-comment">
             <a :href="'/@' + $root.laraForum.username" class="pull-left">
-              <img :src="$root.laraForum.avatar" alt="$root.laraForum.username + 'avatar'"
-                   class="img-responsive"
+              <img
+                :src="$root.laraForum.avatar"
+                alt="$root.laraForum.username + 'avatar'"
+                class="img-responsive"
               >
             </a>
             <div class="media-body">
               <div class="form-group">
-            <textarea class="form-control comment"
-                      rows="8"
-                      placeholder="Write comment..."
-                      name="description"
-                      v-model="description"
-            ></textarea>
+                <textarea class="form-control comment"
+                  rows="8"
+                  placeholder="Write comment..."
+                  name="description"
+                  v-model="description"
+                ></textarea>
               </div> <!-- /.form-group -->
               <div class="form-group">
                 <a class="btn btn-primary pull-right"
-                   @click.prevent="createComment"
+                  @click.prevent="createComment"
                 >
                   Post Your Reply
                 </a>
@@ -62,6 +64,7 @@
 
   export default {
     name: 'discussion-comments',
+
     data () {
       return {
         comments: [],

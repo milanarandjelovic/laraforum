@@ -61,8 +61,7 @@
                             class="form-control description"
                             v-model="form.description"
                             rows="6"
-                          >
-                          </textarea>
+                          ></textarea>
                           <div v-if="form.errors.has('description')" class="form-error-message">
                             <p class="text-danger">{{ form.errors.get('description') }}</p>
                           </div>
@@ -159,8 +158,7 @@
                         class="form-control description"
                         v-model="form.description"
                         rows="6"
-                      >
-                      </textarea>
+                      ></textarea>
                         <div v-if="form.errors.has('description')" class="form-error-message">
                           <p class="text-danger">{{ form.errors.get('description') }}</p>
                         </div>

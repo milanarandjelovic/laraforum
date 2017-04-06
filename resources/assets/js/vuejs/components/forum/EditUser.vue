@@ -12,11 +12,11 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('first_name') }">
               <label class="control-label" for="first_name">First Name</label>
               <input
-                      type="text"
-                      id="first_name"
-                      name="first_name"
-                      class="form-control"
-                      v-model="form.first_name"
+                type="text"
+                id="first_name"
+                name="first_name"
+                class="form-control"
+                v-model="form.first_name"
               >
               <div v-if="form.errors.has('first_name')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('first_name') }}</p>
@@ -26,11 +26,11 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('last_name') }">
               <label class="control-label" for="last_name">Last Name</label>
               <input
-                      type="text"
-                      id="last_name"
-                      name="last_name"
-                      class="form-control"
-                      v-model="form.last_name"
+                type="text"
+                id="last_name"
+                name="last_name"
+                class="form-control"
+                v-model="form.last_name"
               >
               <div v-if="form.errors.has('last_name')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('last_name') }}</p>
@@ -40,12 +40,12 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('profile_description') }">
               <label class="control-label" for="profile_description">Description</label>
               <textarea
-                      rows="6"
-                      type="text"
-                      id="profile_description"
-                      name="profile_description"
-                      class="form-control description"
-                      v-model="form.profile_description"
+                rows="6"
+                type="text"
+                id="profile_description"
+                name="profile_description"
+                class="form-control description"
+                v-model="form.profile_description"
               >
               </textarea>
               <div v-if="form.errors.has('profile_description')" class="form-error-message">
@@ -56,12 +56,12 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('personal_website') }">
               <label class="control-label" for="personal_website">Personal Website</label>
               <input
-                      type="text"
-                      id="personal_website"
-                      name="personal_website"
-                      class="form-control"
-                      placeholder="http://example.com"
-                      v-model="form.personal_website"
+                type="text"
+                id="personal_website"
+                name="personal_website"
+                class="form-control"
+                placeholder="http://example.com"
+                v-model="form.personal_website"
               >
               <div v-if="form.errors.has('personal_website')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('personal_website') }}</p>
@@ -71,11 +71,11 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('twitter_username') }">
               <label class="control-label" for="twitter_username">Twitter Username</label>
               <input
-                      type="text"
-                      id="twitter_username"
-                      name="twitter_username"
-                      class="form-control"
-                      v-model="form.twitter_username"
+                type="text"
+                id="twitter_username"
+                name="twitter_username"
+                class="form-control"
+                v-model="form.twitter_username"
               >
               <div v-if="form.errors.has('twitter_username')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('twitter_username') }}</p>
@@ -85,11 +85,11 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('github_username') }">
               <label class="control-label" for="github_username">Github Username</label>
               <input
-                      type="text"
-                      id="github_username"
-                      name="github_username"
-                      class="form-control"
-                      v-model="form.github_username"
+                type="text"
+                id="github_username"
+                name="github_username"
+                class="form-control"
+                v-model="form.github_username"
               >
               <div v-if="form.errors.has('github_username')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('github_username') }}</p>
@@ -99,11 +99,11 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('place_of_employment') }">
               <label class="control-label" for="place_of_employment">Place Of Employment</label>
               <input
-                      type="text"
-                      id="place_of_employment"
-                      name="place_of_employment"
-                      class="form-control"
-                      v-model="form.place_of_employment"
+                type="text"
+                id="place_of_employment"
+                name="place_of_employment"
+                class="form-control"
+                v-model="form.place_of_employment"
               >
               <div v-if="form.errors.has('place_of_employment')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('place_of_employment') }}</p>
@@ -113,11 +113,11 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('job_title') }">
               <label class="control-label" for="job_title">Job Title</label>
               <input
-                      type="text"
-                      id="job_title"
-                      name="job_title"
-                      class="form-control"
-                      v-model="form.job_title"
+                type="text"
+                id="job_title"
+                name="job_title"
+                class="form-control"
+                v-model="form.job_title"
               >
               <div v-if="form.errors.has('job_title')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('job_title') }}</p>
@@ -127,11 +127,11 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('hometown') }">
               <label class="control-label" for="hometown">Hometown</label>
               <input
-                      type="text"
-                      id="hometown"
-                      name="hometown"
-                      class="form-control"
-                      v-model="form.hometown"
+                type="text"
+                id="hometown"
+                name="hometown"
+                class="form-control"
+                v-model="form.hometown"
               >
               <div v-if="form.errors.has('hometown')" class="form-error-message">
                 <p class="text-danger">{{ form.errors.get('hometown') }}</p>
@@ -141,9 +141,9 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('country_flag') }">
               <label class="control-label" for="country_flag">Country Flag</label>
               <select id="country_flag"
-                      name="country_flag"
-                      class="form-control"
-                      v-model="form.country_flag"
+                name="country_flag"
+                class="form-control"
+                v-model="form.country_flag"
               >
                 <option v-for="country in countries" :value="country.id">{{ country.name }}</option>
               </select>
@@ -155,10 +155,10 @@
             <div class="form-group" :class="{ 'has-error' : form.errors.has('for_hire') }">
               <div class="checkbox i-checks pull-left">
                 <input type="checkbox"
-                       name="remember"
-                       id="for_hire"
-                       class="filled-in"
-                       v-model="form.for_hire"
+                  name="remember"
+                  id="for_hire"
+                  class="filled-in"
+                  v-model="form.for_hire"
                 >
                 <label for="for_hire">Available For Hire?</label>
               </div>
@@ -170,13 +170,17 @@
             <div class="form-group">
               <p>Want to change your profile photo? We pull from
                 <a href="https://gravatar.com">gravatar.com</a>.</p>
-            </div>
+            </div> <!-- /.form-group -->
 
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @click.prevent="updateUserProfile">Update profile</button>
+          <button type="button" class="btn btn-primary"
+            @click.prevent="updateUserProfile"
+          >
+            Update profile
+          </button>
         </div>
       </div> <!-- /.modal-content -->
     </div> <!-- /.modal-dialog -->
@@ -188,6 +192,7 @@
 
   export default {
     name: 'edit-user',
+
     data () {
       return {
         form: new Form({
@@ -217,7 +222,7 @@
     mounted () {
       this.getUser()
     }, // mounted ()
-    
+
     methods: {
       getUser () {
         axios.get('api/forum/' + this.username)

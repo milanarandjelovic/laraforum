@@ -1,8 +1,8 @@
 <template>
     <div id="spinner" v-show="loading">
-        <div class="center-block" :style="spinnerStyle">
-            <i class="fa fa-cog fa-spin fa-5x fa-fw"></i>
-        </div>
+      <div class="center-block" :style="spinnerStyle">
+        <i class="fa fa-cog fa-spin fa-5x fa-fw"></i>
+      </div>
     </div>
 </template>
 

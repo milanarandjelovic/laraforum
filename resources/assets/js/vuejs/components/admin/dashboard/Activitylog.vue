@@ -60,7 +60,7 @@
 </template>
 
 <script>
-  import Spinner  from './../common/Spinner.vue'
+  import Spinner  from './../../common/Spinner.vue'
 
   export default {
     name: 'activity-log',
@@ -89,7 +89,6 @@
       getAllActivities () {
         axios.get('/api/admin/activities')
           .then((response) => {
-            console.log(response)
             this.activities = response.data
           })
           .catch((error) => {
