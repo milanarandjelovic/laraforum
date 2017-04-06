@@ -2,13 +2,29 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Validator;
 use App\Models\Channel;
 use Illuminate\Http\Request;
+use App\Http\Requests\ChannelRequest;
 use App\Http\Controllers\Controller;
+use App\LaraForum\Repositories\ChannelRepository;
 
 class ChannelController extends Controller
 {
+
+    /**
+     * @var ChannelRepository
+     */
+    private $channelRepository;
+
+    /**
+     * ChannelController constructor.
+     *
+     * @param ChannelRepository $channelRepository
+     */
+    public function __construct(ChannelRepository $channelRepository)
+    {
+        $this->channelRepository = $channelRepository;
+    }
 
     /**
      * Display a listing of the resource.
@@ -27,7 +43,7 @@ class ChannelController extends Controller
      */
     public function channels()
     {
-        $channels = Channel::paginate(10);
+        $channels = $this->channelRepository->paginate(10);
 
         $response = [
             'pagination' => [
@@ -48,25 +64,12 @@ class ChannelController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param \App\Http\Requests\ChannelRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(ChannelRequest $request)
     {
-
-        $this->validate($request, [
-            'name'         => 'required|min:3|max:255',
-            'description'  => 'required|min:3|max:255',
-            'channel_url'  => 'required',
-            'channel_icon' => 'required',
-        ]);
-
-        Channel::create([
-            'name'         => $request->input('name'),
-            'description'  => $request->input('description'),
-            'channel_url'  => $request->input('channel_url'),
-            'channel_icon' => $request->input('channel_icon'),
-        ]);
+        $this->channelRepository->create($request->all());
 
         return response()->json([
             'message' => 'Channel has been successfully created.',
@@ -81,7 +84,7 @@ class ChannelController extends Controller
      */
     public function show($id)
     {
-        $channel = Channel::all()->where('id', $id)->first();
+        $channel = $this->channelRepository->findBy('id', $id);
 
         return response()->json($channel);
     }
@@ -89,26 +92,13 @@ class ChannelController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
+     * @param  \App\Http\Requests\ChannelRequest $request
+     * @param  int                               $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ChannelRequest $request, $id)
     {
-
-        $this->validate($request, [
-            'name'         => 'required|min:3|max:255',
-            'description'  => 'required|min:3|max:255',
-            'channel_url'  => 'required',
-            'channel_icon' => 'required',
-        ]);
-
-        Channel::where('id', $id)->update([
-            'name'         => $request->input('name'),
-            'description'  => $request->input('description'),
-            'channel_url'  => $request->input('channel_url'),
-            'channel_icon' => $request->input('channel_icon'),
-        ]);
+        $this->channelRepository->update($request->all(), $id);
 
         return response()->json([
             'message' => 'Channel has been successfully updated.',
@@ -123,11 +113,10 @@ class ChannelController extends Controller
      */
     public function destroy($id)
     {
-        $channel = Channel::find($id);
-        $channel->delete();
+        $this->channelRepository->delete($id);
 
         return response()->json([
-            'message' => 'Channel has been deleted.',
+            'message' => 'Channel has been successfully deleted.',
         ]);
     }
 }
