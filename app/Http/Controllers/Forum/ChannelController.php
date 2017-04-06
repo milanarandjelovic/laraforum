@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Forum;
 
-use App\Models\Channel;
-use App\Models\Discussion;
 use App\Http\Controllers\Controller;
 use App\LaraForum\Repositories\ChannelRepository;
 use App\LaraForum\Repositories\DiscussionRepository;
