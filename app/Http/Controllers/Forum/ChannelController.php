@@ -5,27 +5,48 @@ namespace App\Http\Controllers\Forum;
 use App\Models\Channel;
 use App\Models\Discussion;
 use App\Http\Controllers\Controller;
+use App\LaraForum\Repositories\ChannelRepository;
+use App\LaraForum\Repositories\DiscussionRepository;
 
 class ChannelController extends Controller
 {
 
+    /**
+     * @var ChannelRepository
+     */
+    private $channelRepository;
+
+    /**
+     * @var DiscussionRepository
+     */
+    private $discussionRepository;
+
+    /**
+     * ChannelController constructor.
+     *
+     * @param ChannelRepository    $channelRepository
+     * @param DiscussionRepository $discussionRepository
+     */
+    public function __construct(ChannelRepository $channelRepository, DiscussionRepository $discussionRepository)
+    {
+        $this->channelRepository = $channelRepository;
+        $this->discussionRepository = $discussionRepository;
+    }
+
+    /**
+     * Return all post for given channel.
+     *
+     * @param $channelName
+     * @return \Illuminate\View\View
+     */
     public function getChannelPosts($channelName)
     {
-        $channel = Channel::where('channel_url', $channelName)->select('id', 'name')->first();
+        $channel = $this->channelRepository->findBy('channel_url', $channelName, ['id', 'name']);
 
         if ($channelName === 'all') {
-            $discussions = Discussion::orderBy('created_at', 'desc')
-                ->with('channel')
-                ->with('user')
-                ->with('comments')
-                ->paginate(20);
+            $discussions = $this->discussionRepository->getDiscussionWithAll(20, 'all');
         } else {
-            $discussions = Discussion::where('channel_id', $channel->id)
-                ->orderBy('created_at', 'desc')
-                ->with('channel')
-                ->with('user')
-                ->with('comments')
-                ->paginate(20);
+            $discussions = $this->discussionRepository->getDiscussionWithAll(20, $channel->id);
         }
 
         return view('forum.channels.index')

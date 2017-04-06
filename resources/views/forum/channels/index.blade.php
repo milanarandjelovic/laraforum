@@ -20,28 +20,28 @@
                         <div class="forum-item">
                             <div class="row">
                                 <div class="col-md-1 col-sm-1 col-xs-1 forum-channel-creator-avatar">
-                                    <a href="/{{ '@' . $discussion->user->username }}">
-                                        <img src="{{ Gravatar::src($discussion->user->email, 38) }}"
+                                    <a href="/{{ '@' . $discussion->user_username }}">
+                                        <img src="{{ Gravatar::src($discussion->user_email, 38) }}"
                                              class="img img-circle">
                                     </a>
                                 </div> {{-- /.col-md-1 --}}
                                 <div class="col-md-9 col-sm-9 col-xs-9">
                                     <div class="forum-discuss-links">
-                                        <a href="{{ '/discuss/channels/' . $discussion->channel->channel_url . '/'. $discussion->slug }}"
+                                        <a href="{{ '/discuss/channels/' . $discussion->channel_channel_url . '/'. $discussion->slug }}"
                                            class="forum-item-title"
                                         >
                                             {{ $discussion->title }}
                                         </a>
-                                        <a href="{{ $discussion->channel->channel_url }}" class="forum-channel-name">
-                                            {{ strtoupper($discussion->channel->name) }}
+                                        <a href="{{ $discussion->channel_channel_url }}" class="forum-channel-name">
+                                            {{ strtoupper($discussion->channel_name) }}
                                         </a>
                                         <a href="{{ $discussion->channel_url }}" class="forum-channel-date">
                                             <span>•</span> {{ strtoupper($discussion->created_at) }}
                                             BY
                                         </a>
-                                        <a href="/{{ '@' . $discussion->user->username }}"
+                                        <a href="/{{ '@' . $discussion->user_username }}"
                                            class="forum-channel-creator">
-                                            {{ strtoupper($discussion->user->username) }}
+                                            {{ strtoupper($discussion->user_username) }}
                                         </a>
                                     </div> {{-- /.forum-discuss-links --}}
                                     <div class="forum-discuss-description">
