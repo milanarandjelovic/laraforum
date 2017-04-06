@@ -18,6 +18,13 @@ class DiscussionRepository extends Repository
         return Discussion::class;
     }
 
+    /**
+     * Return discussion with channels and user.
+     *
+     * @param int    $perPage
+     * @param string $channelId
+     * @return mixed
+     */
     public function getDiscussionWithAll($perPage = 20, $channelId = 'all')
     {
         if ($channelId == 'all') {
@@ -44,5 +51,10 @@ class DiscussionRepository extends Repository
                 ->orderBy('updated_at', 'desc')
                 ->paginate($perPage);
         }
+    }
+
+    public function getDiscussionBySlug($slug)
+    {
+        return $this->findBy('slug', $slug);
     }
 }
