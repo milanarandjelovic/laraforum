@@ -40,7 +40,7 @@
 
 <script>
   let algoliasearch = require('algoliasearch')
-  let client = algoliasearch('4T9BZBHR3X', 'adc1093490db75bfaa263c99b104a245')
+  let client = algoliasearch('MIRCEN643S', 'dce67af06bb8e12b716a7db8927fa79d')
 
   let discussions = client.initIndex('discussions')
   let users = client.initIndex('users')
