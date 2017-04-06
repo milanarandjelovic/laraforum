@@ -2,14 +2,35 @@
 
 namespace App\Http\Controllers\Forum;
 
-use App\Models\Channel;
-use App\Models\Discussion;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DiscussionRequest;
+use App\LaraForum\Repositories\ChannelRepository;
+use App\LaraForum\Repositories\DiscussionRepository;
 
 class DiscussionController extends Controller
 {
+
+    /**
+     * @var ChannelRepository
+     */
+    private $channelRepository;
+
+    /**
+     * @var DiscussionRepository
+     */
+    private $discussionRepository;
+
+    /**
+     * DiscussionController constructor.
+     *
+     * @param ChannelRepository    $channelRepository
+     * @param DiscussionRepository $discussionRepository
+     */
+    public function __construct(ChannelRepository $channelRepository, DiscussionRepository $discussionRepository)
+    {
+        $this->channelRepository = $channelRepository;
+        $this->discussionRepository = $discussionRepository;
+    }
 
     /**
      * Display a listing of the resource.
@@ -18,8 +39,8 @@ class DiscussionController extends Controller
      */
     public function index()
     {
-        $channels = Channel::orderBy('name', 'asc')->with('discussions')->get();
-        $allDiscussions = Discussion::all()->count();
+        $channels = $this->channelRepository->getAllChannelsWithDiscussions();
+        $allDiscussions = $this->discussionRepository->all()->count();
 
         return view('forum.discussion.index')
             ->with('allDiscussions', $allDiscussions)
@@ -27,13 +48,13 @@ class DiscussionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     *  Show the form for creating a new resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        $channels = Channel::orderBy('name', 'asc')->select('id', 'name')->get();
+        $channels = $this->channelRepository->all(['id', 'name']);
 
         return view('forum.discussion.create')
             ->with('channels', $channels);
@@ -42,24 +63,18 @@ class DiscussionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param DiscussionRequest|Request $request
-     * @return \Illuminate\Http\Response
+     * @param \App\Http\Requests\DiscussionRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(DiscussionRequest $request)
     {
-        $discussion = Discussion::create([
-            'title'       => $request->input('title'),
-            'description' => $request->input('description'),
-            'channel_id'  => $request->input('channel_id'),
-            'user_id'     => $request->input('user_id'),
-        ]);
-
-        $channel = Channel::where('id', $discussion->channel_id)->first();
+        $discussion = $this->discussionRepository->create($request->all());
+        $channel = $this->channelRepository->findBy('id', $discussion->channel_id);
 
         activity()->by($request->input('user_id'))
             ->performedOn($channel)
             ->withProperties([
-                'type' => 'discussion',
+                'type'  => 'discussion',
                 'title' => $discussion->title,
                 'link'  => '/discuss/channels/' . $channel->channel_url . '/' . $discussion->slug,
             ])
@@ -77,11 +92,7 @@ class DiscussionController extends Controller
      */
     public function show($channelSlug, $slug)
     {
-        $discussion = Discussion::where('slug', $slug)
-            ->with('channel')
-            ->with('user')
-            ->with('comments')
-            ->first();
+        $discussion = $this->discussionRepository->getDiscussionBySlug($slug);
 
         return view('forum.channels.show')
             ->with('discussion', $discussion);
