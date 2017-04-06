@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Channel;
-use Illuminate\Http\Request;
 use App\Http\Requests\ChannelRequest;
 use App\Http\Controllers\Controller;
 use App\LaraForum\Repositories\ChannelRepository;
