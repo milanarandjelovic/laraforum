@@ -3,10 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\LaraForum\Repositories\UserRepository;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
+
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
+
+    /**
+     * UserController constructor.
+     *
+     * @param UserRepository $userRepository
+     */
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
 
     /**
      * Display a listing of the resource.
@@ -25,7 +41,7 @@ class UserController extends Controller
      */
     public function users()
     {
-        $users = User::with('roles')->paginate(10);
+        $users = $this->userRepository->getUserWithRoles();
 
         $response = [
             'pagination' => [
