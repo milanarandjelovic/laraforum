@@ -1,15 +1,13 @@
 <template>
   <div id="activity-log">
 
-    <scale-loader
-            class="admin-scale-loader"
-            :loading="loading"
-            :color="color"
-            :height="height"
-            :width="width"
-            :margin="margin"
+   <spinner
+      class="admin-scale-loader"
+      :loading="loading"
+      :height="height"
+      :width="width"
     >
-    </scale-loader>
+    </spinner>
 
     <div class="ibox" v-show="!loading">
 
@@ -24,30 +22,30 @@
           <div class="dataTables_wrapper form-inline dt-bootstrap">
             <table class="table table-striped table-bordered table-hover dataTable dtr-inline">
               <thead>
-              <tr>
-                <th>#</th>
-                <th>Time</th>
-                <th>Description</th>
-                <th>User</th>
-              </tr>
+                <tr>
+                  <th>#</th>
+                  <th>Time</th>
+                  <th>Description</th>
+                  <th>User</th>
+                </tr>
               </thead>
               <tbody>
-              <tr v-for="activity in activities">
-                <td>{{ activity.id }}</td>
-                <td>{{ activity.created_at | timeago }}</td>
-                <td>
-                  <span v-if="activity.properties.type == 'user'">
-                    {{ activity.description }}
-                  </span>
-                  <span v-else>
-                    {{ activity.description }}
-                    <a :href="activity.properties.link">"{{ activity.properties.title }}"</a>
-                  </span>
-                </td>
-                <td>
-                  <a :href="'/@' + activity.causer.username">{{ activity.causer.username }}</a>
-                </td>
-              </tr>
+                <tr v-for="activity in activities">
+                  <td>{{ activity.id }}</td>
+                  <td>{{ activity.created_at | timeago }}</td>
+                  <td>
+                    <span v-if="activity.properties.type == 'user'">
+                      {{ activity.description }}
+                    </span>
+                    <span v-else>
+                      {{ activity.description }}
+                      <a :href="activity.properties.link">"{{ activity.properties.title }}"</a>
+                    </span>
+                  </td>
+                  <td>
+                    <a :href="'/@' + activity.causer.username">{{ activity.causer.username }}</a>
+                  </td>
+                </tr>
               </tbody>
             </table>
 
@@ -58,23 +56,24 @@
       </div> <!-- /.ibox-content -->
     </div> <!-- /.ibox -->
 
-  </div>
+  </div> <!-- /#activity-log -->
 </template>
 
 <script>
-  import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
+  import Spinner  from './../common/Spinner.vue'
 
   export default {
     name: 'activity-log',
     data () {
       return {
         height: '60px',
+        width: '60px',
         activities: []
       }
     }, // data()
 
     components: {
-        'scale-loader': ScaleLoader
+      'spinner': Spinner,
     }, // components
 
     beforeMount () {

@@ -1,181 +1,186 @@
 <template>
-    <div id="role">
+  <div id="role">
 
-        <scale-loader
-                class="admin-scale-loader"
-                :loading="loading"
-                :color="color"
-                :height="height"
-                :width="width"
-                :margin="margin"
-        >
-        </scale-loader>
+    <spinner
+      class="admin-scale-loader"
+      :loading="loading"
+      :height="height"
+      :width="width"
+    >
+    </spinner>
 
-        <div class="ibox" v-show="!loading">
+    <div class="ibox" v-show="!loading">
 
-            <div class="ibox-title">
-                <h5>All roles in forum</h5>
-                <div class="ibox-tools">
-                    <a class="btn btn-primary btn-xs" @click.prevent="openRoleModal">Create new role</a>
-                </div> <!-- /.ibox-tools -->
-            </div> <!-- /.ibox-title -->
+      <div class="ibox-title">
+        <h5>All roles in forum</h5>
+        <div class="ibox-tools">
+          <a class="btn btn-primary btn-xs" @click.prevent="openRoleModal">Create new role</a>
+        </div> <!-- /.ibox-tools -->
+      </div> <!-- /.ibox-title -->
 
-            <div class="ibox-content">
+      <div class="ibox-content">
 
-                <!-- NEW ROLE MODAL -->
-                <div class="modal fade" id="add-role-modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
-                                </button>
-                                <h4 class="modal-title">Create New Role</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
-                                    <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
-                                        <label class="col-sm-2 control-label" for="name">Name</label>
-                                        <div class="col-sm-10">
-                                            <input
-                                                    type="text"
-                                                    id="name"
-                                                    name="name"
-                                                    class="form-control"
-                                                    v-model="form.name"
-                                                    autofocus
-                                            >
-                                            <div v-if="form.errors.has('name')" class="form-error-message">
-                                                <p class="text-danger">{{ form.errors.get('name') }}</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- /.form-group -->
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" @click.prevent="createRole">Save role
+        <!-- NEW ROLE MODAL -->
+        <div class="modal fade" id="add-role-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title">Create New Role</h4>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
+                    <label class="col-sm-2 control-label" for="name">Name</label>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-control"
+                        v-model="form.name"
+                        autofocus
+                      >
+                      <div v-if="form.errors.has('name')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('name') }}</p>
+                      </div>
+                    </div>
+                  </div> <!-- /.form-group -->
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary" @click.prevent="createRole">
+                  Save role
+                </button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div> <!-- /.modal-dialog -->
+        </div> <!-- /.modal -->
+        <!-- /NEW ROLE MODAL -->
 
-                                </button>
-                            </div>
-                        </div> <!-- /.modal-content -->
-                    </div> <!-- /.modal-dialog -->
-                </div> <!-- /.modal -->
-                <!-- /NEW ROLE MODAL -->
+        <!-- UPDATE ROLE MODAL -->
+        <div class="modal fade" id="update-role-modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title">Update Role</h4>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
+                  <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
+                    <label class="col-sm-2 control-label" for="name">Name</label>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-control"
+                        v-model="form.name"
+                        autofocus
+                      >
+                      <div v-if="form.errors.has('name')" class="form-error-message">
+                        <p class="text-danger">{{ form.errors.get('name') }}</p>
+                      </div>
+                    </div>
+                  </div> <!-- /.form-group -->
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary" @click.prevent="updateRole">
+                  Update role
+                </button>
+              </div>
+            </div> <!-- /.modal-content -->
+          </div> <!-- /.modal-dialog -->
+        </div> <!-- /.modal -->
+        <!-- /UPDATE ROLE MODAL -->
 
-                <!-- UPDATE ROLE MODAL -->
-                <div class="modal fade" id="update-role-modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
-                                </button>
-                                <h4 class="modal-title">Update Role</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal" @keydown="form.errors.clear($event.target.name)">
-                                    <div class="form-group" :class="{ 'has-error' : form.errors.has('name') }">
-                                        <label class="col-sm-2 control-label" for="name">Name</label>
-                                        <div class="col-sm-10">
-                                            <input
-                                                    type="text"
-                                                    id="name"
-                                                    name="name"
-                                                    class="form-control"
-                                                    v-model="form.name"
-                                                    autofocus
-                                            >
-                                            <div v-if="form.errors.has('name')" class="form-error-message">
-                                                <p class="text-danger">{{ form.errors.get('name') }}</p>
-                                            </div>
-                                        </div>
-                                    </div> <!-- /.form-group -->
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" @click.prevent="updateRole">Update role
+        <!-- ROLES TABLE -->
+        <div class="table-responsive" v-if="roles.length > 0">
+          <div class="dataTables_wrapper form-inline dt-bootstrap">
+            <table class="table table-striped table-bordered table-hover dataTable dtr-inline">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Created at</th>
+                    <th>Updated at</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr v-for="role in roles">
+                  <td>{{ role.id }}</td>
+                  <td>{{ role.name }}</td>
+                  <td>{{ role.created_at }}</td>
+                  <td>{{ role.updated_at }}</td>
+                  <td>
+                    <div class="btn-group">
+                      <button
+                        class="btn btn-white btn-xs"
+                        @click.prevent="openUpdateRoleModal(role.id)"
+                      >
+                        <i class="fa fa-pencil"></i> Edit
+                      </button>
+                      <button
+                        class="btn btn-danger btn-xs"
+                        @click.prevent="deleteRole(role.id)"
+                      >
+                        <i class="fa fa-trash-o"></i> Deleted
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+            </table>
 
-                                </button>
-                            </div>
-                        </div> <!-- /.modal-content -->
-                    </div> <!-- /.modal-dialog -->
-                </div> <!-- /.modal -->
-                <!-- /UPDATE ROLE MODAL -->
+            <div class="dataTables_paginate paging_simple_numbers">
+              <div class="pull-left">
+                Showing {{ pagination.from }} to {{ pagination.to }} of {{ pagination.total }} entries
+              </div>
+              <pagination
+                :pagination="pagination"
+                :callback="getAllRoles"
+                navClass="pull-right"
+              >
+              </pagination>
+            </div>
 
-                <!-- ROLES TABLE -->
-                <div class="table-responsive" v-if="roles.length > 0">
-                    <div class="dataTables_wrapper form-inline dt-bootstrap">
-                        <table class="table table-striped table-bordered table-hover dataTable dtr-inline">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Created at</th>
-                                <th>Updated at</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr v-for="role in roles">
-                                <td>{{ role.id }}</td>
-                                <td>{{ role.name }}</td>
-                                <td>{{ role.created_at }}</td>
-                                <td>{{ role.updated_at }}</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <button class="btn btn-white btn-xs"
-                                                @click.prevent="openUpdateRoleModal(role.id)"
-                                        >
-                                            <i class="fa fa-pencil"></i> Edit
+          </div> <!-- /.dataTables_wrapper-->
+        </div> <!-- /.teble-responsive -->
+        <!-- /ROLES TABLE -->
 
-                                        </button>
-                                        <button class="btn btn-danger btn-xs"
-                                                @click.prevent="deleteRole(role.id)"
-                                        >
-                                            <i class="fa fa-trash-o"></i> Deleted
+        <div class="text-center" v-if="roles.length == 0">
+          <h3>You have no role, begin by creating a
+            <a @click.prevent="openRoleModal">new role</a>
+          </h3>
+        </div>
 
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="dataTables_paginate paging_simple_numbers">
-                            <div class="pull-left">
-                                Showing {{ pagination.from }} to {{ pagination.to }} of {{ pagination.total }} entries
-                            </div>
-                            <pagination :pagination="pagination" :callback="getAllRoles"
-                                        navClass="pull-right"
-                            >
-                            </pagination>
-                        </div>
-
-                    </div> <!-- /.dataTables_wrapper-->
-                </div> <!-- /.teble-responsive -->
-                <!-- /ROLES TABLE -->
-
-                <div class="text-center" v-if="roles.length == 0">
-                    <h3>You have no role, begin by creating a
-                        <a @click.prevent="openRoleModal">new role</a>
-                    </h3>
-                </div>
-
-            </div> <!-- /.ibox-content -->
-        </div> <!-- /.ibox -->
-    </div>
+      </div> <!-- /.ibox-content -->
+    </div> <!-- /.ibox -->
+  </div> <!-- /#role -->
 </template>
 
 <script>
-  import Form from '../helpers/Form';
-  import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue';
-  import Pagination from '../common/Pagination.vue';
+  import Form from '../helpers/Form'
+  import Spinner  from './../common/Spinner.vue'
+  import Pagination from '../common/Pagination.vue'
 
   export default {
     name: 'role',
     data () {
       return {
         height: '60px',
+        width: '60px',
         form: new Form({
           name: ''
         }),
@@ -185,7 +190,7 @@
     }, // data()
 
     components: {
-      'scale-loader': ScaleLoader,
+      'spinner': Spinner,
       Pagination
     }, // components
 
@@ -260,7 +265,8 @@
 
       deleteRole (id) {
         let vm = this
-        swal({
+        swal(
+          {
             title: "Are you sure?",
             text: "You will not be able to recover this role!",
             type: "warning",
@@ -285,7 +291,8 @@
             } else {
               swal("Cancelled", "Your role is safe :)", "error");
             }
-          });
+          }
+        ); // swal()
       } // deleteRole()
     } // methods
   }
