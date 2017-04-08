@@ -1,9 +1,9 @@
 @extends('admin.layouts.main')
 
 @section('title')
-    | Dashboard
+    | Activities
 @endsection
 
 @section('content')
-
+    <activity-log></activity-log>
 @endsection

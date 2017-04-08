@@ -42,7 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
 /* Routes for admin user */
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
     /* Dashboard routes */
-    Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
+    Route::get('/dashboard/main', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
+    Route::get('/dashboard/activities', ['as' => 'admin.activities', 'uses' => 'Admin\DashboardController@activities']);
 
     /* Channels routes */
     Route::get('/channels', ['as' => 'channel.index', 'uses' => 'Admin\ChannelController@index']);

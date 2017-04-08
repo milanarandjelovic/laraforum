@@ -44,10 +44,19 @@
                 <div class="logo-element">LF</div>
             </li>
 
-            <li class="{{ HelpMenu::activeAdminMenu('admin/dashboard') }}">
-                <a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i>
+            <li class="{{ HelpMenu::activeAdminMenu('admin/dashboard/*') }}">
+                <a href="#"><i class="fa fa-dashboard"></i>
                     <span class="nav-label">Dashboard</span>
+                    <span class="fa arrow"></span>
                 </a>
+                <ul class="nav nav-second-level">
+                    <li class="{{ HelpMenu::activeAdminMenu('admin/dashboard/main') }}">
+                        <a href="{{ route('admin.dashboard') }}">Main</a>
+                    </li>
+                    <li class="{{ HelpMenu::activeAdminMenu('admin/dashboard/activities') }}">
+                        <a href="{{ route('admin.activities') }}">Activity Log</a>
+                    </li>
+                </ul>
             </li> {{-- /dashboard --}}
 
             <li class="{{ HelpMenu::activeAdminMenu('admin/channels') }}">
