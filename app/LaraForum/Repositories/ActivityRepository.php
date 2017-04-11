@@ -28,4 +28,19 @@ class ActivityRepository extends Repository
     {
         return $this->model->all()->where('causer_id', $userId);
     }
+
+    /**
+     * Return all user activities on forum.
+     *
+     * @param int $perPage
+     * @return mixed
+     */
+    public function getAllLatestActivity($perPage = 10)
+    {
+        return $this->model
+            ->join('users', 'activity_log.causer_id', '=', 'users.id')
+            ->select('users.username as user_username', 'activity_log.*')
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+    }
 }

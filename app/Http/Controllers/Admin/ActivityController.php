@@ -2,35 +2,70 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
 use App\Http\Controllers\Controller;
-use Spatie\Activitylog\Models\Activity;
+use App\LaraForum\Repositories\UserRepository;
+use App\LaraForum\Repositories\ActivityRepository;
 
 class ActivityController extends Controller
 {
 
     /**
+     * @var UserRepository
+     */
+    private $userRepository;
+
+    /**
+     * @var ActivityRepository
+     */
+    private $activityRepository;
+
+    /**
+     * DashboardController constructor.
+     *
+     * @param \App\LaraForum\Repositories\UserRepository     $userRepository
+     * @param \App\LaraForum\Repositories\ActivityRepository $activityRepository
+     */
+    public function __construct(UserRepository $userRepository, ActivityRepository $activityRepository)
+    {
+        $this->userRepository = $userRepository;
+        $this->activityRepository = $activityRepository;
+    }
+
+    /**
+     * Return all activities on forum.
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function activities()
     {
-        $activities = $this->getLatestActivityItems();
+        $activities = $this->activityRepository->getAllLatestActivity();
 
-        return response()->json($activities);
+        $response = [
+            'pagination' => [
+                'total'        => $activities->total(),
+                'per_page'     => $activities->perPage(),
+                'current_page' => $activities->currentPage(),
+                'last_page'    => $activities->lastPage(),
+                'from'         => $activities->firstItem(),
+                'to'           => $activities->lastItem(),
+
+            ],
+            'activities' => $activities,
+        ];
+
+        return response()->json($response);
     }
 
-
     /**
-     * Get all activity for admin dashboard.
+     * Return activity for register user on forum.
      *
-     * @return Collection
+     * @param $option
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function getLatestActivityItems(): Collection
+    public function getRegisterUsers($option)
     {
-        return Activity::with('causer')
-            ->latest()
-            ->limit(30)
-            ->get();
+        $users = $this->userRepository->countRegisterUsers($option);
+
+        return response()->json($users);
     }
 }

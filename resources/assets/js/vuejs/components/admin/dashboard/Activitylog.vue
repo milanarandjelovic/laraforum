@@ -1,7 +1,7 @@
 <template>
   <div id="activity-log">
 
-   <spinner
+    <spinner
       class="admin-scale-loader"
       :loading="loading"
       :height="height"
@@ -43,11 +43,23 @@
                     </span>
                   </td>
                   <td>
-                    <a :href="'/@' + activity.causer.username">{{ activity.causer.username }}</a>
+                    <a :href="'/@' + activity.user_username">{{ activity.user_username }}</a>
                   </td>
                 </tr>
               </tbody>
             </table>
+
+             <div class="dataTables_paginate paging_simple_numbers">
+              <div class="pull-left">
+                  Showing {{ pagination.from }} to {{ pagination.to }} of {{ pagination.total }} entries
+              </div>
+              <pagination
+                :pagination="pagination"
+                :callback="getAllActivities"
+                navClass="pull-right"
+              >
+              </pagination>
+            </div>
 
           </div> <!-- /.dataTables_wrapper-->
         </div> <!-- /.table-responsive -->
@@ -61,6 +73,7 @@
 
 <script>
   import Spinner  from './../../common/Spinner.vue'
+  import Pagination from './../../common/Pagination.vue'
 
   export default {
     name: 'activity-log',
@@ -68,12 +81,14 @@
       return {
         height: '60px',
         width: '60px',
-        activities: []
+        activities: [],
+        pagination: {}
       }
     }, // data()
 
     components: {
       'spinner': Spinner,
+      Pagination
     }, // components
 
     beforeMount () {
@@ -86,13 +101,15 @@
     }, // mounted()
 
     methods: {
-      getAllActivities () {
-        axios.get('/api/admin/activities')
+      getAllActivities (page) {
+        let pg = page ? '/api/admin/activities?page=' + page : '/api/admin/activities'
+        axios.get(pg)
           .then((response) => {
-            this.activities = response.data
+            this.pagination = response.data.pagination
+            this.activities = response.data.activities.data
           })
           .catch((error) => {
-
+            this.$root.$refs.toastr.e('An error unfortunately occurred.', 'Error')
           })
       } // getAllActivities()
     } // methods
