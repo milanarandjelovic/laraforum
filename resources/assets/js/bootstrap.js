@@ -13,6 +13,7 @@ require('bootstrap-sass');
 require('metismenu');
 require('jquery-slimscroll');
 require('sweetalert');
+require('bootstrap-select');
 
 /* Puglins */
 require('./plugins/main');
