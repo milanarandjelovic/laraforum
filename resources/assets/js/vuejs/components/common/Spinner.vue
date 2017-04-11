@@ -18,7 +18,7 @@
 
       color: {
         type: String,
-        default: '#000000'
+        default: '#2F4050'
       },
 
       size: {
