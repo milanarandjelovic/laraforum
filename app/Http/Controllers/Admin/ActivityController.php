@@ -55,17 +55,4 @@ class ActivityController extends Controller
 
         return response()->json($response);
     }
-
-    /**
-     * Return activity for register user on forum.
-     *
-     * @param $option
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getRegisterUsers($option)
-    {
-        $users = $this->userRepository->countRegisterUsers($option);
-
-        return response()->json($users);
-    }
 }

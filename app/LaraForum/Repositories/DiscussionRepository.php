@@ -53,6 +53,12 @@ class DiscussionRepository extends Repository
         }
     }
 
+    /**
+     * Return discussion by slug.
+     *
+     * @param   string $slug
+     * @return mixed
+     */
     public function getDiscussionBySlug($slug)
     {
         return $this->findBy('slug', $slug);
