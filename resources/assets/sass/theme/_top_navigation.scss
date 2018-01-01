@@ -1,3 +1,6 @@
+/*********************************************************************************
+* TOP NAVIGATION
+*********************************************************************************/
 .top-navigation #page-wrapper {
   margin-left: 0;
 }
@@ -8,7 +11,8 @@
   font-weight: bold;
 }
 
-.white-bg .navbar-fixed-top, .white-bg .navbar-static-top {
+.white-bg .navbar-fixed-top,
+.white-bg .navbar-static-top {
   background: #fff;
 }
 
@@ -21,7 +25,8 @@
   color: #676a6c;
 }
 
-.top-navigation .nav > li a:hover, .top-navigation .nav > li a:focus {
+.top-navigation .nav > li a:hover,
+.top-navigation .nav > li a:focus {
   background: #fff;
   color: $navy;
 }
@@ -83,7 +88,8 @@
   padding: 40px;
 }
 
-.top-navigation.body-small .wrapper.wrapper-content, .body-small .top-navigation .wrapper.wrapper-content {
+.top-navigation.body-small .wrapper.wrapper-content,
+.body-small .top-navigation .wrapper.wrapper-content {
   padding: 40px 0 40px 0;
 }
 
@@ -94,7 +100,8 @@
   font-size: 14px;
 }
 
-.top-navigation .navbar-nav .open .dropdown-menu > li > a, .top-navigation .navbar-nav .open .dropdown-menu .dropdown-header {
+.top-navigation .navbar-nav .open .dropdown-menu > li > a,
+.top-navigation .navbar-nav .open .dropdown-menu .dropdown-header {
   padding: 10px 15px 10px 20px;
 }
 

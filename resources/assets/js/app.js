@@ -36,7 +36,7 @@ import CommentVote from './vuejs/components/common/CommentVote.vue';
 import DiscussionComments from './vuejs/components/forum/DiscussionComments.vue';
 
 /* Search component */
-import ForumSearch from './vuejs/components/forum/ForumSearch.vue';
+// import ForumSearch from './vuejs/components/forum/ForumSearch.vue';
 
 /* Dashboard component */
 import ActivityLog from './vuejs/components/admin/dashboard/Activitylog.vue';
@@ -61,7 +61,7 @@ const app = new Vue({
     EditUser,
     AdminRole,
     CommentVote,
-    ForumSearch,
+    // ForumSearch,
     DiscussionComments,
     ActivityLog
   }

@@ -25,7 +25,6 @@ require('./plugins/main');
  */
 
 window.Vue = require('vue');
-require('vue-resource');
 
 Vue.filter('timeago', function(value) {
   return moment.utc(value).local().fromNow();

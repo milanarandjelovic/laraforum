@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Laravel\Scout\Searchable;
 use Laravel\Passport\HasApiTokens;
 use App\LaraForum\Traits\Dateable;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
 
-    use Dateable, HasApiTokens, Notifiable, Searchable;
+    use Dateable, HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.

@@ -1,56 +1,76 @@
-/* Bootstrap */
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+/*********************************************************************************
+* Bootstrap
+*********************************************************************************/
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-/* Bootstrap Select */
-@import "node_modules/bootstrap-select/sass/bootstrap-select";
+/*********************************************************************************
+* Bootstrap Select
+*********************************************************************************/
+@import '~bootstrap-select/sass/bootstrap-select';
 
 @import url('https://fonts.googleapis.com/css?family=Molle:400i');
 
-@import "plugins/animated";
+/*********************************************************************************
+* Plugins
+*********************************************************************************/
+@import 'plugins/animated';
 
-/* Variables, Mixins */
-@import "theme/variables";
-@import "theme/mixins";
+/*********************************************************************************
+* Variables and Mixins
+*********************************************************************************/
+@import 'theme/variables';
+@import 'theme/mixins';
 
-/* Theme Elements */
-@import "theme/typography";
-@import "theme/navigation";
-@import "theme/top_navigation";
-@import "theme/buttons";
-@import "theme/badgets_labels";
-@import "theme/elements";
-@import "theme/sidebar";
-@import "theme/base";
-@import "theme/pages";
-@import "theme/chat";
-@import "theme/metismenu";
-@import "theme/spinners";
-@import "theme/checkboxes";
+/*********************************************************************************
+* Theme elements
+*********************************************************************************/
+@import 'theme/typography';
+@import 'theme/navigation';
+@import 'theme/top_navigation';
+@import 'theme/buttons';
+@import 'theme/badgets_labels';
+@import 'theme/elements';
+@import 'theme/sidebar';
+@import 'theme/base';
+@import 'theme/pages';
+@import 'theme/chat';
+@import 'theme/metismenu';
+@import 'theme/spinners';
+@import 'theme/checkboxes';
 
-/* Landing page styles */
-@import "theme/landing";
+/*********************************************************************************
+* Landing page styles
+*********************************************************************************/
+@import 'theme/landing';
 
 /* RTL Support */
-@import "theme/rtl";
 
-/* For demo only - config box style */
-@import "theme/theme-config";
-
-/* Skins */
-@import "theme/skins";
-@import "theme/md-skin";
+/*********************************************************************************
+* RTL Support
+*********************************************************************************/
+@import 'theme/rtl';
 
 /* Media query style */
-@import "theme/media";
+/*********************************************************************************
+* Media query style
+*********************************************************************************/
 
-/* Helpers */
-@import "theme/helpers";
+@import 'theme/media';
 
-/* Custom style */
-/* Your custom style to override base style */
-@import "theme/custom";
-@import "custom/admin";
-@import "custom/forum";
+/*********************************************************************************
+* Helpers
+*********************************************************************************/
+@import 'theme/helpers';
+
+/*********************************************************************************
+* Custom style
+* Your custom style to override base style
+*********************************************************************************/
+@import 'theme/custom';
+@import 'custom/admin';
+@import 'custom/forum';
+
+@import 'toastr';
 
 /* Clear layout on print mode */
 @media print {

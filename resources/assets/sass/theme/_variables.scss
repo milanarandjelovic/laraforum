@@ -1,4 +1,6 @@
-// Basic Colors
+/*********************************************************************************
+* BASIC COLORS
+*********************************************************************************/
 $navy: #1ab394;       // Primary color
 $dark-gray: #c2c2c2;  // Default color
 $blue: #1c84c6;       // Success color
@@ -6,7 +8,9 @@ $lazur: #23c6c8;      // Info color
 $yellow: #f8ac59;     // Warrning color
 $red: #ED5565;        // Danger color
 
-// Various colors
+/*********************************************************************************
+* VARIOUS COLORS
+*********************************************************************************/
 $text-color: #676a6c;   // Body text
 $gray: #f3f3f4;         // Background wrapper color
 $light-gray: #D1DADE;   // Default label, badget
@@ -18,7 +22,9 @@ $spin-color: $navy;
 $spin-margin: 0 auto;
 
 
-// IBOX colors ( default panel colors)
+/*********************************************************************************
+* IBOX COLORS (DEFAULT PANEL COLORS)
+*********************************************************************************/
 $border-color: #e7eaec;     // IBox border
 $ibox-title-bg:#ffffff;     // IBox Background header
 $ibox-content-bg:#ffffff;   // IBox Background content
@@ -28,12 +34,14 @@ $sidebar-width: 220px;
 
 // Boxed layout width
 $boxed-width: 1200px;
-$boxed-backgound: url('../img/patterns/shattered.png');
+$boxed-backgound: url('../../images/patterns/shattered.png');
 
 //Border radius for buttons
 $btn-border-radius: 3px;
 
-//Navigation
+/*********************************************************************************
+* NAVIGATION COLORS
+*********************************************************************************/
 $nav-bg: #2F4050;
-$nav-profil-pattern: url("../img/patterns/header-profile.png") no-repeat;
 $nav-text-color: #a7b1c2;
+$nav-profil-pattern: url("../../images/patterns/header-profile.png") no-repeat;

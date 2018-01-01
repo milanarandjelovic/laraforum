@@ -11,8 +11,7 @@ body.md-skin {
 .md-skin {
 
   .nav-header {
-    background: url("patterns/4.png") no-repeat;
-
+    background: url("../../images/patterns/4.png") no-repeat;
   }
 
   .label, .badge {
@@ -94,10 +93,12 @@ body.md-skin {
   .landing-page.navbar-default.navbar-scroll {
     background-color: #fff !important;
   }
+
   .landing-page.navbar-default {
     background-color: transparent !important;
     box-shadow: none;
   }
+
   .landing-page.navbar-default .nav li a {
     font-family: 'Roboto', helvetica, arial, sans-serif;
   }
@@ -187,7 +188,10 @@ body.md-skin {
     background: inherit;
   }
 
-  .pace-done .navbar-static-side, .pace-done .nav-header, .pace-done li.active, .pace-done #page-wrapper, .pace-done .footer {
+  .pace-done .navbar-static-side,
+  .pace-done .nav-header,
+  .pace-done li.active, .pace-done #page-wrapper,
+  .pace-done .footer {
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
     -o-transition: all 0.4s;
@@ -201,7 +205,8 @@ body.md-skin {
     border-bottom: none !important;
   }
 
-  .navbar-fixed-top, .navbar-static-top {
+  .navbar-fixed-top,
+  .navbar-static-top {
     background-color: $md-color-primary !important;
     box-shadow: $md-shadow-main;
   }
@@ -210,8 +215,9 @@ body.md-skin {
     box-shadow: $md-shadow-main;
   }
 
-  // Right sidebar
-
+  /*********************************************************************************
+  * RIGHT SIDEBAR
+  *********************************************************************************/
   #right-sidebar {
     box-shadow: $md-shadow-main;
     border: none;
@@ -287,8 +293,7 @@ body.md-skin {
   }
 
   &.landing-page .navbar-default.navbar-scroll,
-  &.landing-page.body-small .navbar-default
-  {
+  &.landing-page.body-small .navbar-default {
     background-color: #ffffff !important;
   }
 
@@ -381,8 +386,4 @@ body.md-skin {
     position: fixed;
     display: none;
   }
-
 }
-
-
-

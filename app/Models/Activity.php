@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Spatie\Activitylog\Models\Activity as BaseActivity;
+use Spatie\Activitylog\Models\Activity as SpatieActivity;
 
-class Activity extends BaseActivity
+class Activity extends SpatieActivity
 {
     //
 }

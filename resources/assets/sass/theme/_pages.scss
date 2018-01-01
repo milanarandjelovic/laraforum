@@ -1,5 +1,6 @@
-/* SEARCH PAGE */
-
+/*********************************************************************************
+* SEARCH PAGE
+*********************************************************************************/
 .search-form {
   margin-top: 10px;
 }
@@ -18,8 +19,9 @@
   margin-top: 5px;
 }
 
-/* CONTACTS */
-
+/*********************************************************************************
+* CONTACTS
+*********************************************************************************/
 .contact-box {
   background-color: #ffffff;
   border: 1px solid $border-color;
@@ -62,13 +64,20 @@
   padding: 15px 20px;
 }
 
-/* INVOICE */
-
-.invoice-table tbody > tr > td:last-child, .invoice-table tbody > tr > td:nth-child(4), .invoice-table tbody > tr > td:nth-child(3), .invoice-table tbody > tr > td:nth-child(2) {
+/*********************************************************************************
+* INVOICE
+*********************************************************************************/
+.invoice-table tbody > tr > td:last-child,
+.invoice-table tbody > tr > td:nth-child(4),
+.invoice-table tbody > tr > td:nth-child(3),
+.invoice-table tbody > tr > td:nth-child(2) {
   text-align: right;
 }
 
-.invoice-table thead > tr > th:last-child, .invoice-table thead > tr > th:nth-child(4), .invoice-table thead > tr > th:nth-child(3), .invoice-table thead > tr > th:nth-child(2) {
+.invoice-table thead > tr > th:last-child,
+.invoice-table thead > tr > th:nth-child(4),
+.invoice-table thead > tr > th:nth-child(3),
+.invoice-table thead > tr > th:nth-child(2) {
   text-align: right;
 }
 
@@ -86,8 +95,9 @@
   width: 15%;
 }
 
-/* ERROR & LOGIN & LOCKSCREEN*/
-
+/*********************************************************************************
+* ERROR & LOGIN & LOCKSCREEN
+*********************************************************************************/
 .middle-box {
   max-width: 400px;
   z-index: 100;
@@ -151,8 +161,9 @@
   margin-right: 160px;
 }
 
-/* DASBOARD */
-
+/*********************************************************************************
+* DASBOARD
+*********************************************************************************/
 .dashboard-header {
   border-top: 0;
   padding: 20px 20px 20px 20px;
@@ -188,8 +199,9 @@ ul.clear-list:first-child {
   border-top: none !important;
 }
 
-/* Intimeline */
-
+/*********************************************************************************
+* IN TIMELINE
+*********************************************************************************/
 .timeline-item .date i {
   position: absolute;
   top: 0;
@@ -221,8 +233,11 @@ ul.clear-list:first-child {
   background: #f6f6f6;
 }
 
-/* PIN BOARD */
-ul.notes li, ul.tag-list li {
+/*********************************************************************************
+* PIN BOARD
+*********************************************************************************/
+ul.notes li,
+ul.tag-list li {
   list-style: none;
 }
 
@@ -311,8 +326,8 @@ ul.notes li:nth-child(5n) div {
   top: -10px;
 }
 
-ul.notes li div:hover, ul.notes li div:focus {
-
+ul.notes li div:hover,
+ul.notes li div:focus {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   -o-transform: scale(1.1);
@@ -336,8 +351,9 @@ ul.notes li div {
   -webkit-transition: -webkit-transform .15s linear;
 }
 
-/* FILE MANAGER */
-
+/*********************************************************************************
+* FILE MANAGER
+*********************************************************************************/
 .file-box {
   float: left;
   width: 220px;
@@ -493,8 +509,9 @@ a.compose-mail {
   max-width: 300px;
 }
 
-/* PROFILE */
-
+/*********************************************************************************
+* PROFILE
+*********************************************************************************/
 .profile-content {
   border-top: none !important;
 }
@@ -598,8 +615,9 @@ a.compose-mail {
 
 }
 
-/* MAILBOX */
-
+/*********************************************************************************
+* MAILBOX
+*********************************************************************************/
 .mail-box {
   background-color: #ffffff;
   border: 1px solid $border-color;
@@ -660,7 +678,9 @@ a.compose-mail {
   width: 23%;
 }
 
-/* PROJECTS */
+/*********************************************************************************
+* PROJECTS
+*********************************************************************************/
 .project-people, .project-actions {
   text-align: right;
   vertical-align: middle;
@@ -708,8 +728,9 @@ dd.project-people {
   line-height: 22px;
 }
 
-/* FAQ */
-
+/*********************************************************************************
+* FAQ
+*********************************************************************************/
 .faq-item {
   padding: 20px;
   margin-bottom: 2px;
@@ -742,7 +763,9 @@ dd.project-people {
   text-transform: uppercase;
 }
 
-/* Chat view */
+/*********************************************************************************
+* CHAT VIEW
+*********************************************************************************/
 .message-input {
   height: 90px !important;
 }
@@ -860,7 +883,9 @@ dd.project-people {
   margin-bottom: 0;
 }
 
-/* jsTree */
+/*********************************************************************************
+* jsTree
+*********************************************************************************/
 .jstree-open > .jstree-anchor > .fa-folder:before {
   content: "\f07c";
 }
@@ -869,8 +894,9 @@ dd.project-people {
   width: 0;
 }
 
-/* CLIENTS */
-
+/*********************************************************************************
+* CLIENTS
+*********************************************************************************/
 .clients-list {
   margin-top: 20px;
 }
@@ -928,12 +954,16 @@ dd.project-people {
 }
 
 .clients-list {
-  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
     border-bottom: 1px solid #fff;
   }
 }
 
-/* BLOG ARTICLE */
+/*********************************************************************************
+* BLOG ARTICLE
+*********************************************************************************/
 .blog h2 {
   font-weight: 700;
 }
@@ -966,8 +996,9 @@ dd.project-people {
   padding: 40px;
 }
 
-/* ISSUE TRACKER */
-
+/*********************************************************************************
+* ISSUE TRACKER
+*********************************************************************************/
 .issue-tracker .btn-link {
   color: $navy;
 }
@@ -990,7 +1021,9 @@ table.issue-tracker tbody tr td {
   display: block;
 }
 
-/* TEAMS */
+/*********************************************************************************
+* TEAMS
+*********************************************************************************/
 .team-members {
   margin: 10px 0;
 }
@@ -1001,8 +1034,9 @@ table.issue-tracker tbody tr td {
   margin-bottom: 5px;
 }
 
-/* AGILE BOARD */
-
+/*********************************************************************************
+* AGILE BOARD
+*********************************************************************************/
 .sortable-list {
   padding: 10px 0;
 }
@@ -1013,7 +1047,6 @@ table.issue-tracker tbody tr td {
 }
 
 .agile-list li {
-
   background: #FAFAFB;
   border: 1px solid #e7eaec;
   margin: 0 0 10px 0;
@@ -1047,7 +1080,9 @@ table.issue-tracker tbody tr td {
   font-size: 12px;
 }
 
-/* DIFF */
+/*********************************************************************************
+* DIFF
+*********************************************************************************/
 ins {
   background-color: #c6ffc6;
   text-decoration: none;
@@ -1057,10 +1092,11 @@ del {
   background-color: #ffc6c6;
 }
 
-/* E-commerce */
+/*********************************************************************************
+* E-COMMERCE
+*********************************************************************************/
 .product-box {
   padding: 0;
-
   border: 1px solid $border-color;
 }
 
@@ -1121,7 +1157,8 @@ table.shoping-cart-table {
     text-align: right;
   }
 
-  tr td.desc, tr td:first-child {
+  tr td.desc,
+  tr td:first-child {
     text-align: left;
   }
 
@@ -1176,7 +1213,9 @@ table.shoping-cart-table {
   margin: 0 20px;
 }
 
-/* Social feed */
+/*********************************************************************************
+* SOCIAL FEED
+*********************************************************************************/
 .social-feed-separated .social-feed-box {
   margin-left: 62px;
 }
@@ -1198,7 +1237,6 @@ table.shoping-cart-table {
 }
 
 .social-feed-box {
-  /*padding: 15px;*/
   border: 1px solid #e7eaec;
   background: #fff;
   margin-bottom: 15px;
@@ -1273,8 +1311,9 @@ table.shoping-cart-table {
   font-size: 12px;
 }
 
-/* Vote list */
-
+/*********************************************************************************
+* VOTE LIST
+*********************************************************************************/
 .vote-item {
   padding: 20px 25px;
   background: #ffffff;
@@ -1350,7 +1389,6 @@ table.shoping-cart-table {
 body.body-small .vote-icon {
   display: none;
 }
-
 
 .lightBoxGallery {
   text-align: center
