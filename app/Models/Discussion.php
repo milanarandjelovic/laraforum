@@ -31,49 +31,43 @@ class Discussion extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
+                          ->generateSlugsFrom('title')
+                          ->saveSlugsTo('slug');
     }
 
+    /**
+     * A discussion assigned a channel.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function channel()
     {
-        return $this->belongsTo('App\Models\Channel');
+        return $this->belongsTo(Channel::class);
     }
 
+    /**
+     * A discussion belongs to user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function comments()
     {
-        return $this->morphMany('App\Models\Comment', 'commentable')->where('reply_id', null);
+        return $this->morphMany(Comment::class, 'commentable')->where('reply_id', null);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     */
     public function votes()
     {
-        return $this->morphMany('App\Models\Vote', 'voteable');
-    }
-
-    public function toSearchableArray()
-    {
-        return [
-            'id'          => $this->id,
-            'title'       => $this->title,
-            'slug'        => $this->slug,
-            'description' => $this->description,
-            'channel'     => $this->channel,
-        ];
-    }
-
-    public function getAlgoliaRecord()
-    {
-        return [
-            'id'          => $this->id,
-            'title'       => $this->title,
-            'slug'        => $this->slug,
-            'description' => $this->description,
-            'channel'     => $this->channel,
-        ];
+        return $this->morphMany(Vote::class, 'voteable');
     }
 }

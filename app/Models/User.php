@@ -44,6 +44,11 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    /**
+     * Get user first name or full name.
+     *
+     * @return mixed|null|string
+     */
     public function getName()
     {
         if ($this->first_name && $this->last_name) {
@@ -56,21 +61,31 @@ class User extends Authenticatable
         return null;
     }
 
+    /**
+     * Get user username or full name.
+     *
+     * @return mixed
+     */
     public function getNameOrUsername()
     {
         return $this->getName() ?: $this->username;
     }
 
+    /**
+     * Get user first name or username.
+     *
+     * @return mixed
+     */
     public function getFirstNameOrUsername()
     {
         return $this->first_name ?: $this->username;
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany('App\Models\Role');
-    }
-
+    /**
+     * Determinate if the user is an administrator.
+     *
+     * @return bool
+     */
     public function isAdmin()
     {
         // If user admin return true
@@ -81,13 +96,33 @@ class User extends Authenticatable
         return false;
     }
 
-    public function discussions()
+    /**
+     * Get user roles.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles()
     {
-        return $this->hasMany('App\Models\Discussion');
+        return $this->belongsToMany(Role::class);
     }
 
+    /**
+     * Get user discussions.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function discussions()
+    {
+        return $this->hasMany(Discussion::class);
+    }
+
+    /**
+     * Get user comments.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class);
     }
 }

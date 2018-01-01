@@ -23,8 +23,13 @@ class Channel extends Model
         'channel_icon',
     ];
 
+    /**
+     * A channel consists of discussions.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function discussions()
     {
-        return $this->hasMany('App\Models\Discussion');
+        return $this->hasMany(Discussion::class);
     }
 }
